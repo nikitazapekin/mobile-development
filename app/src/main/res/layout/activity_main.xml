@@ -17,11 +17,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Вложенные элементы для демонстрации прокрутки -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello World!"
+                android:text="Hello Worlddddddddd!"
+                android:onClick="onTextViewClick"
                 android:textSize="26sp"/>
 
             <TextView
@@ -35,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hello sss!"
+                android:onClick="onTextViewClick"
                 android:textSize="26sp"/>
 
             <FrameLayout
@@ -338,7 +340,7 @@
 
             </FrameLayout>
 
-            <!-- Дополнительные элементы для демонстрации прокрутки -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -363,17 +365,6 @@
                 android:text="Button in LinearLayout"/>
 
         </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

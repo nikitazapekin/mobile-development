@@ -4,45 +4,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ccc"
-    android:padding="13dp"
-    >
-
+    android:padding="13dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Попробуйте угадать число!"
         android:textSize="23dp"
-        android:layout_gravity="center_horizontal|top"
-        />
-
+        android:layout_gravity="center_horizontal|top" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        >
+        android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Введите число" />
+
+            <EditText
+                android:id="@+id/numberInput"
+                android:layout_width="150dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:hint="Введите число"
+                android:padding="10dp" />
+        </LinearLayout>
+
+        <!-- Центрирование кнопки -->
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Введите число"
-            />
+            android:text="Проверить"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp" />
 
-        <EditText
-            android:id="@+id/numberInput"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
-            android:inputType="number"
-            android:hint="Введите число"
-            android:padding="10dp" />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Неккоректное значение!"
+          android:layout_gravity="center"
+          android:layout_marginTop="20dp"
+          />
+
 
     </LinearLayout>
 
 </FrameLayout>
-
 
 
     <!--

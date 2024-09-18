@@ -1,76 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ccc"
     android:id="@+id/main"
-
+    android:orientation="vertical"
+    android:gravity="center"
     android:padding="13dp">
-    <LinearLayout
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|center_vertical"
+        android:text="Попробуйте угадать число!"
+        android:textSize="23dp"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Попробуйте угадать число!"
-            android:textSize="23dp"
-            android:layout_gravity="center_horizontal|top" />
+        android:layout_gravity="center"
+        android:gravity="center">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:gravity="center">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Введите число" />
+
+            <EditText
+                android:id="@+id/numberInput"
+                android:layout_width="150dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:hint="Введите число"
+                android:padding="10dp"
+                android:layout_marginStart="10dp" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Проверить"
+            android:layout_marginTop="20dp"
+            android:onClick="handleClick" />
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Неккоректное значение!"
+            android:textColor="#FF0000"
+            android:layout_marginTop="20dp"
+            android:textSize="16dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>
+
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ccc"
+        android:id="@+id/main"
+        android:padding="13dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Попробуйте угадать число!"
+                android:textSize="23dp"
+                android:layout_gravity="center_horizontal|top" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="30dp"
-                android:gravity="center">
+                android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Введите число" />
+
+                    <EditText
+                        android:id="@+id/numberInput"
+                        android:layout_width="150dp"
+                        android:layout_height="48dp"
+                        android:inputType="number"
+                        android:hint="Введите число"
+                        android:padding="10dp" />
+                </LinearLayout>
+
+
+                <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Введите число" />
+                    android:text="Проверить"
+                    android:layout_gravity="center"
+                    android:onClick="handleClick"
+                    android:layout_marginTop="20dp" />
 
-                <EditText
-                    android:id="@+id/numberInput"
-                    android:layout_width="150dp"
-                    android:layout_height="48dp"
-                    android:inputType="number"
-                    android:hint="Введите число"
-                    android:padding="10dp" />
+                <TextView
+                    android:id="@+id/error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Неккоректное значение!"
+                    android:layout_gravity="center"
+                    android:textColor="#FF0000"
+                    android:layout_marginTop="20dp"
+                    android:textSize="16dp"
+                    android:visibility="gone"
+                    />
+
+
             </LinearLayout>
-
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Проверить"
-                android:layout_gravity="center"
-                android:onClick="handleClick"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:id="@+id/error"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Неккоректное значение!"
-                android:layout_gravity="center"
-                android:textColor="#FF0000"
-                android:layout_marginTop="20dp"
-                android:textSize="16dp"
-                android:visibility="gone"
-                />
-
-
         </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
-
+    </FrameLayout>
+    -->
 <!--
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

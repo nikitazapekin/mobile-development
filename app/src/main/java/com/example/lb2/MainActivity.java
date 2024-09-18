@@ -36,26 +36,37 @@ public class MainActivity extends AppCompatActivity {
 
     public void handleClick(View view) {
         int random = generateRandomNumber();
-      //  Toast.makeText(this, "Random: " + random, Toast.LENGTH_SHORT).show();
         EditText numberInput = findViewById(R.id.numberInput);
         TextView errorTextView = findViewById(R.id.error);
 
         String inputText = numberInput.getText().toString();
-        String randomText = String.valueOf(random);
         errorTextView.setVisibility(View.VISIBLE);
+
         if (inputText.isEmpty()) {
-          errorTextView.setText("Пожалуйста введите значение в форму");
+            errorTextView.setText("Пожалуйста, введите значение в форму");
             errorTextView.setTextColor(Color.parseColor("#FF0000"));
-        } else if (inputText.equals(randomText)) {
-            errorTextView.setText("Поздравляем! Вы угадали число");
-            errorTextView.setTextColor(Color.parseColor("#008000"));
-
-
         } else {
-            errorTextView.setText("Неверно. Заданное число: " + random);
-            errorTextView.setTextColor(Color.parseColor("#FF0000"));
+            try {
+                int inputNumber = Integer.parseInt(inputText);
+
+                if (inputNumber < 1 || inputNumber > 10) {
+                    errorTextView.setText("Число должно быть от 1 до 10");
+                    errorTextView.setTextColor(Color.parseColor("#FF0000"));
+                } else if (inputNumber == random) {
+                    errorTextView.setText("Поздравляем! Вы угадали число");
+                    errorTextView.setTextColor(Color.parseColor("#008000"));
+                } else {
+                    errorTextView.setText("Неверно. Заданное число: " + random);
+                    errorTextView.setTextColor(Color.parseColor("#FF0000"));
+                }
+
+            } catch (NumberFormatException e) {
+                errorTextView.setText("Пожалуйста, введите корректное число");
+                errorTextView.setTextColor(Color.parseColor("#FF0000"));
+            }
         }
     }
+
 
 }
 

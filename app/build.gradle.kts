@@ -14,6 +14,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+      //  multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -69,4 +70,6 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+  //  implementation("androidx.multidex:multidex:2.0.1")
+
 }

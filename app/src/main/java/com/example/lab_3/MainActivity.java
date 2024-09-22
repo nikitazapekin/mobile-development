@@ -1,15 +1,23 @@
-
 package com.example.lab_3;
-import android.widget.TextView;
+import android.content.pm.PackageManager;
 
+import android.Manifest;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    private EditText firstName;
+    private EditText lastName;
+    private EditText phone;
+    private TextView error;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button button = findViewById(R.id.button2);
-        EditText firstName = findViewById(R.id.firstName);
-        EditText lastName = findViewById(R.id.lastName);
-        EditText phone = findViewById(R.id.phone);
-        TextView error = findViewById(R.id.error);
+        firstName = findViewById(R.id.firstName);
+        lastName = findViewById(R.id.lastName);
+        phone = findViewById(R.id.phone);
+        error = findViewById(R.id.error);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 String firstNameText = firstName.getText().toString().trim();
                 String lastNameText = lastName.getText().toString().trim();
                 String phoneText = phone.getText().toString().trim();
-
 
                 if (firstNameText.isEmpty()) {
                     error.setText("Поле 'Имя' не должно быть пустым");
@@ -56,8 +63,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void handleCall(View v) {
+        String phoneText = phone.getText().toString().trim();
 
-
-
-
+        if (!phoneText.isEmpty()) {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:" + phoneText));
+            if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+            } else {
+                startActivity(callIntent);
+            }
+        } else {
+            error.setText("Введите номер телефона для звонка");
+            error.setVisibility(View.VISIBLE);
+        }
+    }
 }
+

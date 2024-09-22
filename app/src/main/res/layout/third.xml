@@ -13,21 +13,90 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="10dp"
         android:background="#ccc">
 
-        <TextView
-            android:id="@+id/textView"
+        <Button
+            android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Данные не переданы"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintVertical_bias="0.5"
-            android:textSize="33dp"
+            android:text="Назад"
             />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/titleFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Откуда"
+            app:layout_constraintStart_toStartOf="@id/back"
+            app:layout_constraintTop_toBottomOf="@id/back"
+            android:textSize="30dp"
+            />
 
+
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Введите название"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/fromAdressLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/lastNameLabel"
+            app:layout_constraintStart_toStartOf="@+id/lastNameLabel" />
+
+        <TextView
+            android:id="@+id/lastNameLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="24dp"
+            android:text="Название"
+            android:textSize="25dp"
+            app:layout_constraintStart_toStartOf="@id/titleFrom"
+            app:layout_constraintTop_toBottomOf="@id/titleFrom" />
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="4dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name"
+            app:layout_constraintStart_toEndOf="@+id/fromAdressLabel"
+            app:layout_constraintTop_toBottomOf="@+id/firstName" />
+
+        <TextView
+            android:id="@+id/fromAdressLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:text="Адрес"
+            android:textSize="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastNameLabel" />
+
+        <TextView
+            android:id="@+id/toLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Куда"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

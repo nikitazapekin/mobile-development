@@ -21,8 +21,13 @@ public class SecondActivity extends AppCompatActivity {
         String firstName = userData.getFirstName();
         String lastName = userData.getLastName();
         String phone = userData.getPhone();
+
+        String fromName = userData.getFromName();
+        String fromAdress = userData.getFromAdress();
+        String toName = userData.getToName();
+        String toAdress = userData.getToAdress();
         TextView textView = findViewById(R.id.textView);
-        textView.setText("Имя: " + firstName + "\nФамилия: " + lastName + "\nТелефон: " + phone);
+        textView.setText("Имя: " + firstName + "\nФамилия: " + lastName + "\nТелефон: " + phone+ "\n From " + fromName);
     }
 
 

@@ -6,6 +6,12 @@ public class UserData {
     private String lastName;
     private String phone;
 
+
+    private  String fromName;
+    private  String fromAdress;
+    private  String toName;
+    private  String toAdress;
+
     private UserData() { }
 
     public static synchronized UserData getInstance() {
@@ -38,4 +44,34 @@ public class UserData {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public  String getFromName() {
+        return this.fromName;
+    }
+    public  String getFromAdress() {
+        return this.fromAdress;
+    }
+    public  String getToName() {
+        return this.toName;
+    }
+    public  String getToAdress() {
+        return this.toAdress;
+    }
+
+    public  void setFromName(String fromName) {
+        this.fromName = fromName;
+    }
+
+    public  void setFromAdress(String fromAdress) {
+        this.fromAdress = fromAdress;
+    }
+
+    public  void setToName(String toName) {
+        this.toName = toName;
+    }
+
+    public  void setToAdress(String toAdress) {
+        this.toAdress = toAdress;
+    }
+
 }

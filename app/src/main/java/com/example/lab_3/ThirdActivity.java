@@ -72,6 +72,16 @@ public class ThirdActivity extends AppCompatActivity {
             return;
         }
 
+
+
+        UserData userData = UserData.getInstance();
+        userData.setFromName(firstNameText);
+userData.setFromAdress(lastNameText);
+userData.setToName(toNameInputValue);
+userData.setToAdress(toAdressInputValue);
+        Intent intent = new Intent(ThirdActivity.this, SecondActivity.class);
+        startActivity(intent);
+
         errorTextView.setVisibility(View.INVISIBLE);
     }
 }

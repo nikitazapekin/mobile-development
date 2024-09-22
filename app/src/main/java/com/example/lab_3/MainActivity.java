@@ -46,11 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 error.setVisibility(View.INVISIBLE);
-             /*   Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                intent.putExtra("FIRST_NAME", firstNameText);
-                intent.putExtra("LAST_NAME", lastNameText);
-                intent.putExtra("PHONE", phoneText);
-                startActivity(intent); */
+
 
                 UserData userData = UserData.getInstance();
                 userData.setFirstName(firstNameText);

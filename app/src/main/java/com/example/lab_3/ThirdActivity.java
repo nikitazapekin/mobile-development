@@ -13,6 +13,8 @@ public class ThirdActivity extends AppCompatActivity {
 
     private EditText firstNameEditText;
     private EditText lastNameEditText;
+    private EditText toNameInput;
+    private EditText toAdressInput;
     private TextView errorTextView;
 
     @Override
@@ -20,16 +22,17 @@ public class ThirdActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.third);
 
-        // Получаем ссылки на элементы
+
         firstNameEditText = findViewById(R.id.firstName);
         lastNameEditText = findViewById(R.id.editTextText);
-        errorTextView = findViewById(R.id.textView6); // это поле для отображения ошибки
+        toNameInput =  findViewById(R.id.toNameInput);
+        toAdressInput = findViewById(R.id.toAdressName);
+        errorTextView = findViewById(R.id.textView6);
 
-        Button backButton = findViewById(R.id.back);
-        backButton.setOnClickListener(this::handleRedirect);
+        //   Button backButton = findViewById(R.id.back);
+    //    backButton.setOnClickListener(this::handleRedirect);
 
-        Button selectButton = findViewById(R.id.button);
-       // selectButton.setOnClickListener(this::handleValidation);
+
     }
 
 
@@ -43,18 +46,31 @@ public class ThirdActivity extends AppCompatActivity {
         String firstNameText = firstNameEditText.getText().toString().trim();
         String lastNameText = lastNameEditText.getText().toString().trim();
 
+
+        String toNameInputValue = toNameInput.getText().toString().trim();
+        String  toAdressInputValue = toAdressInput.getText().toString().trim();
         if (firstNameText.isEmpty()) {
-            errorTextView.setText("Поле 'Название' не должно быть пустым");
+            errorTextView.setText("Поле 'Название (Откуда)' не должно быть пустым");
             errorTextView.setVisibility(View.VISIBLE);
             return;
         }
 
         if (lastNameText.isEmpty()) {
-            errorTextView.setText("Поле 'Адрес' не должно быть пустым");
+            errorTextView.setText("Поле 'Адрес (Откуда)' не должно быть пустым");
             errorTextView.setVisibility(View.VISIBLE);
             return;
         }
 
+        if (toNameInputValue.isEmpty()) {
+            errorTextView.setText("Поле 'Название (Куда)' не должно быть пустым");
+            errorTextView.setVisibility(View.VISIBLE);
+            return;
+        }
+        if (toAdressInputValue.isEmpty()) {
+            errorTextView.setText("Поле 'Адрес (Куда)' не должно быть пустым");
+            errorTextView.setVisibility(View.VISIBLE);
+            return;
+        }
 
         errorTextView.setVisibility(View.INVISIBLE);
     }

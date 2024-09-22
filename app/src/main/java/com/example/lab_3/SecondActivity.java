@@ -15,10 +15,12 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second);
-        Intent intent = getIntent();
-        String firstName = intent.getStringExtra("FIRST_NAME");
-        String lastName = intent.getStringExtra("LAST_NAME");
-        String phone = intent.getStringExtra("PHONE");
+
+        UserData userData = UserData.getInstance();
+
+        String firstName = userData.getFirstName();
+        String lastName = userData.getLastName();
+        String phone = userData.getPhone();
         TextView textView = findViewById(R.id.textView);
         textView.setText("Имя: " + firstName + "\nФамилия: " + lastName + "\nТелефон: " + phone);
     }

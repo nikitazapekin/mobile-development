@@ -19,76 +19,92 @@
             android:id="@+id/firstNameLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Имя"
             android:layout_marginStart="16dp"
-            app:layout_constraintWidth_default="wrap"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="Имя"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="@id/firstName"
-            app:layout_constraintEnd_toStartOf="@id/firstName"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="wrap" />
+<!--
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:hint="Введите имя"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+-->
+
 
         <EditText
             android:id="@+id/firstName"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Введите имя"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintStart_toEndOf="@id/firstNameLabel"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:hint="Введите имя"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.65"
+        />
+
         <TextView
             android:id="@+id/lastNameLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Фамилия"
             android:layout_marginStart="16dp"
-            app:layout_constraintWidth_default="wrap"
-            app:layout_constraintTop_toBottomOf="@id/firstName"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="Фамилия"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="@id/lastName"
-            app:layout_constraintEnd_toStartOf="@id/lastName"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/firstName"
+
+            app:layout_constraintWidth_default="wrap" />
 
         <EditText
             android:id="@+id/lastName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:hint="Введите фамилию"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintStart_toEndOf="@id/lastNameLabel"
-            app:layout_constraintTop_toBottomOf="@id/firstName"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.65"
+            app:layout_constraintTop_toBottomOf="@id/firstName" />
 
 
         <TextView
             android:id="@+id/phoneLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Телефон"
             android:layout_marginStart="16dp"
-            app:layout_constraintWidth_default="wrap"
-            app:layout_constraintTop_toBottomOf="@id/lastName"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="Телефон"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="@id/phone"
-            app:layout_constraintEnd_toStartOf="@id/phone"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lastName"
+            app:layout_constraintWidth_default="wrap" />
 
         <EditText
             android:id="@+id/phone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:hint="Введите телефон"
             android:inputType="phone"
             android:minHeight="48dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintStart_toEndOf="@id/phoneLabel"
-            app:layout_constraintTop_toBottomOf="@id/lastName"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.65"
+            app:layout_constraintTop_toBottomOf="@id/lastName" />
+
+
+
 
 
         <Button
@@ -96,11 +112,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Войти"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintVertical_bias="1"/>
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="Ошибка"
+            android:textColor="#FF0000"
+            android:textAlignment="center"
+        android:visibility="invisible"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -20,6 +20,13 @@ public class ThirdActivity extends AppCompatActivity {
     }
 
 
+    public void handleRedirect(View view) {
+        Intent intent = new Intent(ThirdActivity.this, SecondActivity.class);
+        startActivity(intent);
+    }
+
+
+
 
 
 

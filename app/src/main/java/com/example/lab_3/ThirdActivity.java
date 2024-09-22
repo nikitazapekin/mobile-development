@@ -28,11 +28,6 @@ public class ThirdActivity extends AppCompatActivity {
         toNameInput =  findViewById(R.id.toNameInput);
         toAdressInput = findViewById(R.id.toAdressName);
         errorTextView = findViewById(R.id.textView6);
-
-        //   Button backButton = findViewById(R.id.back);
-    //    backButton.setOnClickListener(this::handleRedirect);
-
-
     }
 
 
@@ -85,42 +80,3 @@ userData.setToAdress(toAdressInputValue);
         errorTextView.setVisibility(View.INVISIBLE);
     }
 }
-
-
-/*
-
-package com.example.lab_3;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
-
-public class ThirdActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.third);
-
-
-    }
-
-
-    public void handleRedirect(View view) {
-        Intent intent = new Intent(ThirdActivity.this, SecondActivity.class);
-        startActivity(intent);
-    }
-
-
-
-
-
-
-
-
-}
-*/

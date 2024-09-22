@@ -27,7 +27,18 @@ public class SecondActivity extends AppCompatActivity {
         String toName = userData.getToName();
         String toAdress = userData.getToAdress();
         TextView textView = findViewById(R.id.textView);
-        textView.setText("Имя: " + firstName + "\nФамилия: " + lastName + "\nТелефон: " + phone+ "\n From " + fromName);
+        textView.setText("Имя: " + firstName + "\nФамилия: " + lastName + "\nТелефон: " + phone);
+        TextView boxWithText = findViewById(R.id.box_with_text);
+
+
+
+        if (fromName == null || fromAdress == null || toName == null || toAdress == null) {
+            boxWithText.setText("Поездка не выбрана");
+        } else {
+            String boxText = "Поездка из:" + "\nНазвание: " + fromName + "\nАдрес: " + fromAdress +
+                    "\nдо:" + "\nНазвание: " + toName + "\nАдрес: " + toAdress;
+            boxWithText.setText(boxText);
+        }
     }
 
 

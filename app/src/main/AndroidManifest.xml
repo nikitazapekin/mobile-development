@@ -17,6 +17,8 @@
             android:exported="false"
             android:label="@string/title_activity_second"
             android:theme="@style/Theme.Lab3" />
+        <activity android:name=".ThirdActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

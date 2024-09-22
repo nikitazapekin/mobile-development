@@ -102,11 +102,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintWidth_percent="0.65"
             app:layout_constraintTop_toBottomOf="@id/lastName" />
-
-
-
-
-
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
@@ -133,6 +128,11 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

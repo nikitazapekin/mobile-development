@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-
+import android.widget.Toast;
 public class SecondActivity extends AppCompatActivity {
 
     @Override
@@ -31,25 +31,33 @@ public class SecondActivity extends AppCompatActivity {
         TextView boxWithText = findViewById(R.id.box_with_text);
 
 
-
         if (fromName == null || fromAdress == null || toName == null || toAdress == null) {
             boxWithText.setText("Поездка не выбрана");
         } else {
             String boxText = "Поездка из:" + "\nНазвание: " + fromName + "\nАдрес: " + fromAdress +
-                    "\nдо:" + "\nНазвание: " + toName + "\nАдрес: " + toAdress;
+                    "\nдо:" + "\nНазвание: " + toName + "\nАдрес: " + toAdress + "\nПодтвердить заказ?";
             boxWithText.setText(boxText);
         }
     }
 
 
+    public void handleRedirect(View view) {
+        Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
+        startActivity(intent);
+    }
+
+    public void handleSubmit(View view) {
+        UserData userData = UserData.getInstance();
+        String fromName = userData.getFromName();
+        String fromAdress = userData.getFromAdress();
+        String toName = userData.getToName();
+        String toAdress = userData.getToAdress();
+        if (fromName == null || fromAdress == null || toName == null || toAdress == null) {
+            Toast.makeText(SecondActivity.this, "Пожалуйста, выберите путь!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(SecondActivity.this, "Такси в пути!", Toast.LENGTH_SHORT).show();
+        }
 
 
-
-public void handleRedirect(View view) {
-    Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
-    startActivity(intent);
-}
-
-
-
+    }
 }

@@ -1,6 +1,6 @@
 package com.example.lab_3;
 import android.content.pm.PackageManager;
-
+import android.widget.Toast;
 import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
@@ -79,5 +79,22 @@ public class MainActivity extends AppCompatActivity {
             error.setVisibility(View.VISIBLE);
         }
     }
+
+
+
+
+
+
+
+
+    public void launchLab2App(View view) {
+        Intent intent = getPackageManager().getLaunchIntentForPackage("com.example.lb2"); // Replace with actual Lab2 package name
+        if (intent != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Lab2 app not found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
 

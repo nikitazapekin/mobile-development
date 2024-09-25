@@ -1,4 +1,5 @@
 package com.example.lab_3;
+
 import android.content.pm.PackageManager;
 import android.widget.Toast;
 import android.Manifest;
@@ -9,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -18,6 +22,16 @@ public class MainActivity extends AppCompatActivity {
     private EditText lastName;
     private EditText phone;
     private TextView error;
+
+    private ActivityResultLauncher<Intent> secondActivityLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    String returnedData = result.getData().getStringExtra("returnedData");
+                    Toast.makeText(MainActivity.this, "Received from second activity: " + returnedData, Toast.LENGTH_LONG).show();
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +66,21 @@ public class MainActivity extends AppCompatActivity {
                     error.setVisibility(View.VISIBLE);
                     return;
                 }
+
                 error.setVisibility(View.INVISIBLE);
-                UserData userData = UserData.getInstance();
-                userData.setFirstName(firstNameText);
-                userData.setLastName(lastNameText);
-                userData.setPhone(phoneText);
+
+
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
+                Bundle bundle = new Bundle();
+                bundle.putString("firstName", firstNameText);
+                bundle.putString("lastName", lastNameText);
+                bundle.putString("phone", phoneText);
+
+
+                intent.putExtras(bundle);
+
+                secondActivityLauncher.launch(intent);
+
             }
         });
     }
@@ -80,21 +102,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-
-
-
-
-
     public void launchLab2App(View view) {
-        Intent intent = getPackageManager().getLaunchIntentForPackage("com.example.lb2"); // Replace with actual Lab2 package name
+        Intent intent = getPackageManager().getLaunchIntentForPackage("com.example.lb2");
         if (intent != null) {
             startActivity(intent);
         } else {
             Toast.makeText(this, "Lab2 app not found", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
-

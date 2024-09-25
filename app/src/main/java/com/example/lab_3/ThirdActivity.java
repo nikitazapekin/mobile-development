@@ -62,12 +62,7 @@ public class ThirdActivity extends AppCompatActivity {
         }
 
         Intent resultIntent = new Intent();
-        /*  resultIntent.putExtra("fromName", firstNameText);
-        resultIntent.putExtra("fromAddress", lastNameText);
-        resultIntent.putExtra("toName", toNameInputValue);
-        resultIntent.putExtra("toAddress", toAdressInputValue);
 
-         */
 
         Bundle bundle = new Bundle();
         bundle.putString("fromName", firstNameText);

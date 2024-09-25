@@ -1,3 +1,4 @@
+
 package com.example.lab_3;
 
 import android.content.pm.PackageManager;
@@ -26,10 +27,14 @@ public class MainActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> secondActivityLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
-                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+
+
+               if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                     String returnedData = result.getData().getStringExtra("returnedData");
                     Toast.makeText(MainActivity.this, "Received from second activity: " + returnedData, Toast.LENGTH_LONG).show();
                 }
+
+
             }
     );
 
@@ -79,7 +84,10 @@ public class MainActivity extends AppCompatActivity {
 
                 intent.putExtras(bundle);
 
-                secondActivityLauncher.launch(intent);
+              secondActivityLauncher.launch(intent);
+
+
+
 
             }
         });

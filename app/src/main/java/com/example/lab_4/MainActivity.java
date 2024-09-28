@@ -34,15 +34,30 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void handleClick(View v) {
-        int buttonId = v.getId();
 
+    public void handleClick(View v) {
+        // Определяем элементы View
+        View square1 = findViewById(R.id.green_square1);
+        View square2 = findViewById(R.id.green_square2);
+        View square3 = findViewById(R.id.green_square3);
+
+
+        square1.setBackgroundResource(R.drawable.neon_gray_square);
+        square2.setBackgroundResource(R.drawable.neon_gray_square);
+        square3.setBackgroundResource(R.drawable.neon_gray_square);
+
+        int buttonId = v.getId();
         if (buttonId == R.id.button1) {
             Toast.makeText(this, "Нажата кнопка 1 (Желтый)", Toast.LENGTH_SHORT).show();
+            square1.setBackgroundResource(R.drawable.neon_red_square); // Установите желтый фон
         } else if (buttonId == R.id.button2) {
             Toast.makeText(this, "Нажата кнопка 2 (Синий)", Toast.LENGTH_SHORT).show();
+            square2.setBackgroundResource(R.drawable.neon_yellow_square); // Установите синий фон
         } else if (buttonId == R.id.button3) {
             Toast.makeText(this, "Нажата кнопка 3 (Зеленый)", Toast.LENGTH_SHORT).show();
+            square3.setBackgroundResource(R.drawable.neon_green_square); // Установите зеленый фон
         }
     }
+
+
 }

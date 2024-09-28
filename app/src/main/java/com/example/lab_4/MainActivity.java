@@ -1,6 +1,7 @@
 package com.example.lab_4;
 
 import android.os.Bundle;
+import android.os.Handler; // Импортируйте класс Handler
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,6 +12,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final Handler handler = new Handler(); // Создаем экземпляр Handler
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,30 +37,28 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     public void handleClick(View v) {
         // Определяем элементы View
         View square1 = findViewById(R.id.green_square1);
         View square2 = findViewById(R.id.green_square2);
         View square3 = findViewById(R.id.green_square3);
 
-
+        // Сбрасываем фон квадратов
         square1.setBackgroundResource(R.drawable.neon_gray_square);
         square2.setBackgroundResource(R.drawable.neon_gray_square);
         square3.setBackgroundResource(R.drawable.neon_gray_square);
 
         int buttonId = v.getId();
+        // Устанавливаем цвет с задержкой в 500 мс
         if (buttonId == R.id.button1) {
             Toast.makeText(this, "Нажата кнопка 1 (Желтый)", Toast.LENGTH_SHORT).show();
-            square1.setBackgroundResource(R.drawable.neon_red_square); // Установите желтый фон
+            handler.postDelayed(() -> square1.setBackgroundResource(R.drawable.neon_red_square), 500);
         } else if (buttonId == R.id.button2) {
             Toast.makeText(this, "Нажата кнопка 2 (Синий)", Toast.LENGTH_SHORT).show();
-            square2.setBackgroundResource(R.drawable.neon_yellow_square); // Установите синий фон
+            handler.postDelayed(() -> square2.setBackgroundResource(R.drawable.neon_yellow_square), 500);
         } else if (buttonId == R.id.button3) {
             Toast.makeText(this, "Нажата кнопка 3 (Зеленый)", Toast.LENGTH_SHORT).show();
-            square3.setBackgroundResource(R.drawable.neon_green_square); // Установите зеленый фон
+            handler.postDelayed(() -> square3.setBackgroundResource(R.drawable.neon_green_square), 500);
         }
     }
-
-
 }

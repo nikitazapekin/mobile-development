@@ -110,6 +110,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="92dp"
             android:text="SAVE"
+            android:onClick="saveSelectedColor"
             app:layout_constraintStart_toEndOf="@+id/button"
             app:layout_constraintTop_toBottomOf="@+id/button3" />
 

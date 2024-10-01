@@ -20,8 +20,8 @@
             android:id="@+id/button1"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:layout_marginStart="208dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="208dp"
             android:background="@android:color/white"
             android:minWidth="48dp"
             android:minHeight="48dp"
@@ -37,7 +37,6 @@
             android:id="@+id/button2"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:layout_marginStart="208dp"
             android:background="@android:color/white"
             android:minWidth="48dp"
             android:minHeight="48dp"
@@ -46,50 +45,51 @@
             android:stateListAnimator="@null"
             android:text="Желтый"
             android:textColor="#000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button1" />
+            app:layout_constraintStart_toEndOf="@+id/button1"
+            app:layout_constraintTop_toTopOf="@+id/button1" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:layout_marginStart="208dp"
+            android:layout_marginStart="128dp"
             android:background="@android:color/white"
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:onClick="handleClick"
             android:text="Зеленый"
             android:textColor="#000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintStart_toEndOf="@+id/button1"
+            app:layout_constraintTop_toTopOf="@+id/button2" />
 
         <View
             android:id="@+id/green_square1"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="68dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="68dp"
             android:background="@drawable/neon_gray_square"
-            app:layout_constraintEnd_toStartOf="@+id/button1"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/green_square3"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginTop="240dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="2dp"
             android:background="@drawable/neon_gray_square"
-            app:layout_constraintEnd_toEndOf="@+id/green_square2"
+            app:layout_constraintStart_toEndOf="@+id/green_square2"
             app:layout_constraintTop_toTopOf="@+id/green_square1" />
 
         <View
             android:id="@+id/green_square2"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginTop="112dp"
-            android:layout_marginEnd="1dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="2dp"
             android:background="@drawable/neon_gray_square"
-            app:layout_constraintEnd_toEndOf="@+id/green_square1"
+            app:layout_constraintStart_toEndOf="@+id/green_square1"
             app:layout_constraintTop_toTopOf="@+id/green_square1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

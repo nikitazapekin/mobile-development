@@ -24,15 +24,21 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-
+        /*
 View progressBar =  findViewById(R.id.view);
         ProgressBar progressBarElement = findViewById(R.id.progressBar);
 
         new Handler().postDelayed(() -> {
             progressBar.setVisibility(View.GONE);
             progressBarElement.setVisibility(View.GONE);
-        }, 10000);
+        }, 5000);
+
+
+         */
     }
+
+
+
 }
 
 

@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Текст внутри пунктирной рамки"
+                android:text="Пока ничего не выбрано"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
@@ -78,7 +78,7 @@
                 android:layout_marginTop="10dp"
 
                 android:background="@drawable/rectangle_button"
-                android:text="Нажми меня" />
+                android:text="Сделать выбор" />
 
 
 
@@ -87,10 +87,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Текст внутри пунктирной рамки"
+                android:text="После выбора"
+                android:layout_marginTop="20dp"
                 android:textColor="#000000"
                 android:textSize="18sp" />
+
+
+            <ListView
+                android:layout_width="409dp"
+                android:layout_height="446dp"
+                tools:layout_editor_absoluteX="54dp"
+                tools:layout_editor_absoluteY="320dp" />
         </LinearLayout>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

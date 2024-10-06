@@ -22,6 +22,9 @@
         <argument
             android:name="adres"
             app:argType="string" />
+        <action
+            android:id="@+id/action_second_to_makeOrder"
+            app:destination="@id/makeOrder" />
     </fragment>
     <fragment
         android:id="@+id/main2"
@@ -38,5 +41,22 @@
             />
 
         </action>
+    </fragment>
+    <fragment
+        android:id="@+id/makeOrder"
+        android:name="com.example.navig.MakeOrder"
+        android:label="fragment_make_order"
+        tools:layout="@layout/fragment_make_order" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+
+        <argument
+            android:name="telephone"
+            app:argType="string" />
+
+        <argument
+            android:name="adres"
+            app:argType="string" />
     </fragment>
 </navigation>

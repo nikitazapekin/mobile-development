@@ -20,13 +20,12 @@ public class Main extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    // EditText fields
     private EditText editTextName;
     private EditText editTextPhone;
     private EditText editTextAddress;
 
     public Main() {
-        // Required empty public constructor
+
     }
 
     public static Main newInstance(String param1, String param2) {
@@ -51,17 +50,20 @@ public class Main extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        // Initialize EditText fields
+
         editTextName = view.findViewById(R.id.editTextText);
         editTextPhone = view.findViewById(R.id.editTextText2);
         editTextAddress = view.findViewById(R.id.editTextText3);
 
         Button button = view.findViewById(R.id.button);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handleSubmit(view);
             }
+
+
         });
 
         return view;
@@ -86,44 +88,12 @@ public class Main extends Fragment {
             return;
         }
 
-        // Теперь передаем несколько параметров
+
         MainDirections.ActionMain2ToSecond action = MainDirections.actionMain2ToSecond(name, phone, address);
         Navigation.findNavController(v).navigate(action);
     }
 
-    /*
-    public void handleSubmit(View v) {
-        EditText editTextName = getView().findViewById(R.id.editTextText);
-        EditText editTextPhone = getView().findViewById(R.id.editTextText2);
-        EditText editTextAddress = getView().findViewById(R.id.editTextText3);
-        TextView errorTextView = getView().findViewById(R.id.textView7);
 
-        String name = editTextName.getText().toString().trim();
-        String phone = editTextPhone.getText().toString().trim();
-        String address = editTextAddress.getText().toString().trim();
-
-
-        errorTextView.setVisibility(View.GONE);
-
-        if (name.isEmpty() || phone.isEmpty() || address.isEmpty()) {
-            StringBuilder errorMessage = new StringBuilder("Пожалуйста, заполните все поля:\n");
-            if (name.isEmpty()) errorMessage.append("- Имя\n");
-            if (phone.isEmpty()) errorMessage.append("- Телефон\n");
-            if (address.isEmpty()) errorMessage.append("- Адрес доставки\n");
-
-            errorTextView.setText(errorMessage.toString());
-            errorTextView.setVisibility(View.VISIBLE);
-            return;
-        }
-
-
-        String nameForNavigation = "Alex";
-        String telephoneForNavigation = "Aleefe123131x";
-        String adresForNavigation = "Alex";
-        MainDirections.ActionMain2ToSecond action = MainDirections.actionMain2ToSecond(nameForNavigation);
-        Navigation.findNavController(v).navigate(action);
-    }
-*/
     private void showToast(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }

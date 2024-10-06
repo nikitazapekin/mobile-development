@@ -1,9 +1,12 @@
+
 plugins {
     alias(libs.plugins.android.application)
 
 
 
     id("androidx.navigation.safeargs")
+   // apply plugin: "androidx.navigation.safeargs"
+
 }
 
 android {
@@ -45,6 +48,12 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation("androidx.navigation:navigation-fragment:2.8.2")
- 
+  //  implementation("androidx.navigation:navigation-fragment:2.8.2")
+
+
+    val nav_version="2.5.0"
+    implementation("androidx.navigation:navigation-fragment:$nav_version")
+   // implementation("androidx.navigation:navigation-fragment:2.7.0")
+  //  implementation("androidx.navigation:navigation-ui:2.7.0")
 }
+

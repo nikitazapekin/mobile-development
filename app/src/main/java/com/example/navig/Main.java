@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+import com.example.navig.MainDirections;
+
 
 public class Main extends Fragment {
 
@@ -43,9 +45,6 @@ public class Main extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -56,9 +55,22 @@ public class Main extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Click", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view)
 
-                        .navigate(R.id.action_main2_to_second);
+                String name = "Alex";
+
+
+                MainDirections.ActionMain2ToSecond action = MainDirections.actionMain2ToSecond(name);
+
+                //     MainDirections.ActionMain2ToSecond action = MainDirections.ActionMain2ToSecond(name);
+
+
+
+               // MainDirections.ActionMain2ToSecond action = MainDirections.actionMain2ToSecond(name);
+                Navigation.findNavController(view).navigate(action);
+                //   Navigation.findNavController(view)
+                 //      .navigate(action);
+
+
             }
         });
 
@@ -66,3 +78,37 @@ public class Main extends Fragment {
     }
 
 }
+
+/*
+com.example.navig.MainDirections.ActionMainToSecond action = com.example.navig.MainDirections.actionMainToSecond(name);
+                Navigation.findNavController(view)
+                        .navigate(action);
+*/
+
+/*
+
+
+                MainDirections.ActionMain2ToSecond action =
+                        MainDirections.actionMain2ToSecond(name);
+
+                // Навигация с аргументом
+                NavHostFragment.findNavController(Main.this).navigate(action);
+
+
+                 */
+//    MessageFragmentDirections.ActionMessageFragment
+//    MainDirections.ActionMain2ToSecond action =
+//            MainDirections.actionMain2ToSecond(name);
+
+
+
+
+
+
+//    Navigation.findNavController(view)
+
+//          .navigate(R.id.action_main2_to_second);
+
+
+
+//    MainFragmentDirections.ActionMainToSecond action = Main

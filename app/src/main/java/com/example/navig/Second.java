@@ -20,7 +20,7 @@ public class Second extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mName = getArguments().getString(ARG_NAME); // Get the name argument
+            mName = getArguments().getString(ARG_NAME);
         }
     }
 
@@ -29,12 +29,17 @@ public class Second extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
-        // Use Safe Args to retrieve the name argument
+
         String name = SecondArgs.fromBundle(requireArguments()).getName();
-
+        String telephone = SecondArgs.fromBundle(requireArguments()).getTelephone();
+        String adres = SecondArgs.fromBundle(requireArguments()).getAdres();
         TextView textView = view.findViewById(R.id.textView);
-        textView.setText(name); // Set the retrieved name to the TextView
 
+        TextView textView1 = view.findViewById(R.id.textView8);
+        TextView textView2 = view.findViewById(R.id.textView9);
+       // textView.setText(name); // Set the retrieved name to the TextView
+textView1.setText(name);
+textView2.setText(telephone);
         return view;
     }
   /*  public View onCreateView(LayoutInflater inflater, ViewGroup container,

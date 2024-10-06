@@ -1,5 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
+
+
+
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -42,4 +46,5 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation("androidx.navigation:navigation-fragment:2.8.2")
+ 
 }

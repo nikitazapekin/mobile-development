@@ -50,22 +50,35 @@ public class MakeOrder extends Fragment {
         LinearLayout offersContainer = view.findViewById(R.id.offersContainer);
         LayoutInflater itemInflater = LayoutInflater.from(getContext());
 
-        // Создаем список продуктов
+
+
+        String name = SecondArgs.fromBundle(requireArguments()).getName();
+        String telephone = SecondArgs.fromBundle(requireArguments()).getTelephone();
+        String adres = SecondArgs.fromBundle(requireArguments()).getAdres();
+
+        TextView textView1 = view.findViewById(R.id.textView8);
+        TextView textView2 = view.findViewById(R.id.textView9);
+
+        textView1.setText(name);
+        textView2.setText(telephone);
+
+
+
+
         List<Product> productList = getProducts();
 
-        // Добавляем каждую позицию в контейнер
         for (Product product : productList) {
             View itemView = itemInflater.inflate(R.layout.item_order, offersContainer, false);
 
-            // Устанавливаем изображение
+
             ImageView itemImage = itemView.findViewById(R.id.itemImage);
             itemImage.setImageResource(product.getImageResId());
 
-            // Устанавливаем название
+
             TextView itemName = itemView.findViewById(R.id.itemName);
             itemName.setText(product.getName());
 
-            // Устанавливаем цену
+
             TextView itemPrice = itemView.findViewById(R.id.itemPrice);
             itemPrice.setText("Цена: " + product.getPrice() + " руб.");
 
@@ -75,7 +88,7 @@ public class MakeOrder extends Fragment {
         return view;
     }
 
-    // Метод для создания списка продуктов
+
     private List<Product> getProducts() {
         List<Product> products = new ArrayList<>();
 

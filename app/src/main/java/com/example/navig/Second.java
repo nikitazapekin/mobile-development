@@ -28,10 +28,24 @@ public class Second extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
+
+        // Use Safe Args to retrieve the name argument
+        String name = SecondArgs.fromBundle(requireArguments()).getName();
+
+        TextView textView = view.findViewById(R.id.textView);
+        textView.setText(name); // Set the retrieved name to the TextView
+
+        return view;
+    }
+  /*  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_second, container, false);
         TextView textView = view.findViewById(R.id.textView); // Assuming you have a TextView in fragment_second layout
         textView.setText(mName); // Display the name in the TextView
         return view;
     }
+
+   */
 }
 /*
 

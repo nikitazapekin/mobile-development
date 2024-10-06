@@ -13,13 +13,9 @@
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         >
-
-
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
@@ -50,18 +46,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-<!--
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="Выполнить заказ"
-            android:textSize="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
--->
 
         <ScrollView
             android:id="@+id/listOfOffers"
@@ -78,16 +62,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <!--    <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="@+id/listOfOffers"
-                    app:layout_constraintStart_toStartOf="@+id/listOfOffers"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-                    -->
 
 
                 <TextView
@@ -97,11 +71,77 @@
                     android:layout_marginTop="36dp"
                     android:text="Выполнить заказ"
                     android:textSize="30dp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view" />
+
             </LinearLayout>
         </ScrollView>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="372dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="13dp"
+            android:text="Выбрать"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listOfOffers" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="Выбрано:"
+            app:layout_constraintStart_toStartOf="@+id/button2"
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+
+        <ScrollView
+            android:id="@+id/listOfBookedOffers"
+            android:layout_width="370dp"
+            android:layout_height="204dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.619"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+            <LinearLayout
+                android:id="@+id/bookedOffersContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:text="Выполнить заказ"
+                    android:textSize="30dp"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/bookBtn"
+            android:layout_width="369dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+
+            android:text="Сделать выбор"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listOfBookedOffers" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

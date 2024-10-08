@@ -71,9 +71,15 @@ textView2.setText(tel);
 
         });
 
+        TextView itemsTextView = view.findViewById(R.id.textInsideDashedView1);
+
+        //   TextView errorTextView = getView().findViewById(R.id.textInsideDashedView1);
+        if(items.length>1) {
 
 
+        itemsTextView.setVisibility(View.GONE);
 
+        }
         return view;
     }
 

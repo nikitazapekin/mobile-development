@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import java.util.Arrays;
 
 public class Second extends Fragment {
@@ -42,21 +43,21 @@ public class Second extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
         SecondArgs args = SecondArgs.fromBundle(getArguments());
-      //  MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
+        //  MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
 
         name = args.getName();
         tel = args.getTelephone();
         adres = args.getAdres();
 
-         items = args.getSavedItem();
+        items = args.getSavedItem();
 
-
+        Log.d("SecondFragment", "Selected items: " + Arrays.toString(items));
         Toast.makeText(getContext(), "Выбранные элементы: " + Arrays.toString(items), Toast.LENGTH_SHORT).show();
         TextView textView1 = view.findViewById(R.id.textView8);
         TextView textView2 = view.findViewById(R.id.textView9);
 
-textView1.setText(name);
-textView2.setText(tel);
+        textView1.setText(name);
+        textView2.setText(tel);
 
 
 
@@ -75,11 +76,11 @@ textView2.setText(tel);
 
 
         TextView itemsTextView = view.findViewById(R.id.textInsideDashedView);
-       Button chooseBtn = button.findViewById(R.id.buttonInsideDashedView);
+        Button chooseBtn = button.findViewById(R.id.buttonInsideDashedView);
 
         Button backBtn = view.findViewById(R.id.button3);
 
-     backBtn.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handleRedirect(view);
@@ -92,19 +93,19 @@ textView2.setText(tel);
         offersContainer = view.findViewById(R.id.elems);
 
 
-        if(items.length>1) {
-           backBtn.setVisibility(View.VISIBLE);
-chooseBtn.setVisibility(View.GONE);
-        itemsTextView.setVisibility(View.GONE);
+        if(items.length>=1) {
+            backBtn.setVisibility(View.VISIBLE);
+            chooseBtn.setVisibility(View.GONE);
+            itemsTextView.setVisibility(View.GONE);
 
 
 
-for (String item : items ){
-    View itemView = itemInflater.inflate(R.layout.list_item, offersContainer, false);
-    TextView itemName = itemView.findViewById(R.id.itemName);
-    itemName.setText(item);
-    offersContainer.addView(itemView);
-}
+            for (String item : items ){
+                View itemView = itemInflater.inflate(R.layout.list_item, offersContainer, false);
+                TextView itemName = itemView.findViewById(R.id.itemName);
+                itemName.setText(item);
+                offersContainer.addView(itemView);
+            }
 
 
         } else {
@@ -114,7 +115,7 @@ for (String item : items ){
         }
         View receiverView = itemInflater.inflate(R.layout.receiver, offersContainer, false);
         TextView receiverViewText = receiverView.findViewById(R.id.textView10);
-        if(items.length>1) {
+        if(items.length>=1) {
             receiverViewText.setText("Заказ оформлен на:\n Имя: " + name + "\n Телефон:" + tel + "\n Адресс:" + adres);
             offersContainer.addView(receiverView);
         }
@@ -129,9 +130,9 @@ for (String item : items ){
     public void handleRedirect(View v) {
 
 
-   SecondDirections.ActionSecondToMakeOrder action = SecondDirections.actionSecondToMakeOrder(   name ,  tel,adres, items.length> 1 ? items :  new String[0]  );
+        SecondDirections.ActionSecondToMakeOrder action = SecondDirections.actionSecondToMakeOrder(   name ,  tel,adres, items.length> 1 ? items :  new String[0]  );
 
-   Navigation.findNavController(v).navigate(action);
+        Navigation.findNavController(v).navigate(action);
     }
 
 }

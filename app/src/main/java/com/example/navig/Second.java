@@ -17,8 +17,8 @@ public class Second extends Fragment {
 
 
     private  String name="";
-    private String phone="";
-    private String address="";
+    private String tel="";
+    private String adres="";
     public Second() {
 
     }
@@ -37,16 +37,16 @@ public class Second extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
 
-        String name = SecondArgs.fromBundle(requireArguments()).getName();
-        String telephone = SecondArgs.fromBundle(requireArguments()).getTelephone();
-        String adres = SecondArgs.fromBundle(requireArguments()).getAdres();
+       name = SecondArgs.fromBundle(requireArguments()).getName();
+        tel  = SecondArgs.fromBundle(requireArguments()).getTelephone();
+       adres = SecondArgs.fromBundle(requireArguments()).getAdres();
 
 
         TextView textView1 = view.findViewById(R.id.textView8);
         TextView textView2 = view.findViewById(R.id.textView9);
 
 textView1.setText(name);
-textView2.setText(telephone);
+textView2.setText(tel);
 
 
 
@@ -74,8 +74,8 @@ textView2.setText(telephone);
 
     public void handleRedirect(View v) {
 
-
-   SecondDirections.ActionSecondToMakeOrder action = SecondDirections.actionSecondToMakeOrder(name, phone, address);
+name="dsddssd";
+   SecondDirections.ActionSecondToMakeOrder action = SecondDirections.actionSecondToMakeOrder(name , tel, adres);
 
    Navigation.findNavController(v).navigate(action);
     }

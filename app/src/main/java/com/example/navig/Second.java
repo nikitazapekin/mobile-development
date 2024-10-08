@@ -6,8 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import java.util.Arrays;
 
 public class Second extends Fragment {
 
@@ -43,9 +47,11 @@ public class Second extends Fragment {
         name = args.getName();
         tel = args.getTelephone();
         adres = args.getAdres();
-        // items = args.getSavedItems();
-       // items = args.getSavedItems();
+
         String[] items = args.getSavedItem();
+
+
+        Toast.makeText(getContext(), "Выбранные элементы: " + Arrays.toString(items), Toast.LENGTH_SHORT).show();
         TextView textView1 = view.findViewById(R.id.textView8);
         TextView textView2 = view.findViewById(R.id.textView9);
 

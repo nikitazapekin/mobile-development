@@ -54,7 +54,7 @@
 
         <LinearLayout
             android:id="@+id/dashedView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:background="@drawable/dashed_border"
@@ -63,6 +63,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+
+            android:minHeight="400dp"
             app:layout_constraintTop_toBottomOf="@+id/textView6">
 
 
@@ -73,6 +75,8 @@
                 android:layout_gravity="center"
                 android:text="Пока ничего не выбрано"
                 android:textColor="#000000"
+
+
                 android:textSize="18sp" />
             <Button
                 android:id="@+id/buttonInsideDashedView"
@@ -83,22 +87,43 @@
 
                 android:background="@drawable/rectangle_button"
                 android:text="Сделать выбор" />
-            <TextView
+      <!--      <TextView
                 android:id="@+id/textInsideDashedView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+
                 android:text="После выбора"
                 android:textColor="#000000"
                 android:textSize="18sp" />
+-->
 
+            <TextView
+                android:id="@+id/textInsideDashedView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="Пока ничего не выбрано"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-            <ListView
-                android:layout_width="409dp"
-                android:layout_height="446dp"
-                tools:layout_editor_absoluteX="54dp"
-                tools:layout_editor_absoluteY="320dp" />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_button"
+                android:text="Вернуться к заказам" />
+
+            <!--
+                        <ListView
+                            android:layout_width="409dp"
+                            android:layout_height="446dp"
+                            tools:layout_editor_absoluteX="54dp"
+                            tools:layout_editor_absoluteY="320dp" />
+            -->
         </LinearLayout>
 
 

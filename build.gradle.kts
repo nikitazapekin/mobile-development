@@ -11,14 +11,7 @@ buildscript {
         classpath ("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0")
     }
 
-    /*
-    dependencies {
 
-val nav_version="2.5.0"
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
-    }
-
-     */
 }
 
 

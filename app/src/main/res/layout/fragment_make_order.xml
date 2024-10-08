@@ -64,17 +64,12 @@
 
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/emptyOffers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:text="Выполнить заказ"
-                    android:textSize="30dp"
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view" />
-
+                    android:text="Нет доступных предложений"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
             </LinearLayout>
         </ScrollView>
 
@@ -116,18 +111,14 @@
                 android:orientation="vertical">
 
 
+
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/emptyBookedOffers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:text="Выполнить заказ"
-                    android:textSize="30dp"
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view" />
-
+                    android:text="Нет забронированных предложений"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
             </LinearLayout>
         </ScrollView>
 
@@ -145,3 +136,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+

@@ -112,7 +112,7 @@ public class MakeOrder extends Fragment {
                 Product product = (Product) radioButton.getTag();
 
                 View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
-           //     View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_order, bookedOffersContainer, false);
+
                 ImageView bookedItemImage = bookedItemView.findViewById(R.id.itemImage);
                 bookedItemImage.setImageResource(product.getImageResId());
 
@@ -121,6 +121,19 @@ public class MakeOrder extends Fragment {
 
                 TextView bookedItemPrice = bookedItemView.findViewById(R.id.itemPrice);
                 bookedItemPrice.setText("Цена: " + product.getPrice() + " руб.");
+
+                ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bookedOffersContainer.removeView(bookedItemView);
+
+                        if (bookedOffersContainer.getChildCount() == 0) {
+
+                            emptyBookedOffers.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
 
                 bookedOffersContainer.addView(bookedItemView);
                 hasSelected = true;

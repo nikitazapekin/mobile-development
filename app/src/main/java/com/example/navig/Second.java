@@ -74,7 +74,7 @@ textView2.setText(tel);
 
     public void handleRedirect(View v) {
 
-name="dsddssd";
+
    SecondDirections.ActionSecondToMakeOrder action = SecondDirections.actionSecondToMakeOrder(name , tel, adres);
 
    Navigation.findNavController(v).navigate(action);

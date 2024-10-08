@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
+import androidx.navigation.Navigation;
 import java.util.List;
 
 public class MakeOrder extends Fragment {
@@ -57,18 +58,20 @@ public class MakeOrder extends Fragment {
         bookedOffersContainer = view.findViewById(R.id.bookedOffersContainer);
         emptyBookedOffers = view.findViewById(R.id.emptyBookedOffers);
         Button selectButton = view.findViewById(R.id.button2);
+        Button bookButton = view.findViewById(R.id.bookBtn);
+
 
         LayoutInflater itemInflater = LayoutInflater.from(getContext());
 
         String name = SecondArgs.fromBundle(requireArguments()).getName();
-        String telephone = SecondArgs.fromBundle(requireArguments()).getTelephone();
+        String tel = SecondArgs.fromBundle(requireArguments()).getTelephone();
         String adres = SecondArgs.fromBundle(requireArguments()).getAdres();
 
         TextView textView1 = view.findViewById(R.id.textView8);
         TextView textView2 = view.findViewById(R.id.textView9);
 
         textView1.setText(name);
-        textView2.setText(telephone);
+        textView2.setText(tel);
 
         List<Product> productList = getProducts();
 
@@ -94,6 +97,39 @@ public class MakeOrder extends Fragment {
         selectButton.setOnClickListener(v -> {
             addSelectedOffers();
         });
+
+
+        bookButton.setOnClickListener(v -> {
+            List<String> selectedItems = new ArrayList<>();
+
+            for (int i = 0; i < offersContainer.getChildCount(); i++) {
+                View itemView = offersContainer.getChildAt(i);
+                RadioButton radioButton = itemView.findViewById(R.id.radioButton);
+
+                if (radioButton != null && radioButton.isChecked()) {
+                    Product product = (Product) radioButton.getTag();
+                    selectedItems.add(product.getName());
+                }
+            }
+
+            if (!selectedItems.isEmpty()) {
+                String[] itemsArray = selectedItems.toArray(new String[0]);
+
+                MakeOrderDirections.ActionMakeOrderToSecond action = MakeOrderDirections.actionMakeOrderToSecond(itemsArray, tel, adres, name);
+                Navigation.findNavController(v).navigate(action);
+
+                Toast.makeText(getContext(), "Заказ готовится!", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getContext(), itemsArray, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "Пожалуйста, выберите хотя бы один элемент", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
+
 
         return view;
     }
@@ -151,7 +187,7 @@ public class MakeOrder extends Fragment {
 
     private List<Product> getProducts() {
         List<Product> products = new ArrayList<>();
-        // Добавляем товары
+
         products.add(new Product(R.drawable.free_icon_pizza_706934, "Товар 1", 200.0));
         products.add(new Product(R.drawable.free_icon_pizza_706934, "Товар 2", 300.0));
         products.add(new Product(R.drawable.free_icon_pizza_706934, "Товар 3", 150.0));

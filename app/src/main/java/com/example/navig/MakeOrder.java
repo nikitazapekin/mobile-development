@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 import androidx.navigation.Navigation;
 import java.util.List;
+import java.util.Arrays;
 
 public class MakeOrder extends Fragment {
 
@@ -108,18 +109,20 @@ public class MakeOrder extends Fragment {
 
                 if (radioButton != null && radioButton.isChecked()) {
                     Product product = (Product) radioButton.getTag();
-                    selectedItems.add(product.getName());
+                    selectedItems.add(product.getName() + " " +product.getPrice() +"$" );
                 }
             }
 
             if (!selectedItems.isEmpty()) {
-                String[] itemsArray = selectedItems.toArray(new String[0]);
+                  String[] itemsArray = selectedItems.toArray(new String[0]);
+                Toast.makeText(getContext(), "Выбранные элементы: " + Arrays.toString(itemsArray), Toast.LENGTH_SHORT).show();
 
                 MakeOrderDirections.ActionMakeOrderToSecond action = MakeOrderDirections.actionMakeOrderToSecond(itemsArray, tel, adres, name);
+
                 Navigation.findNavController(v).navigate(action);
 
-                Toast.makeText(getContext(), "Заказ готовится!", Toast.LENGTH_SHORT).show();
-             //   Toast.makeText(getContext(), itemsArray, Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getContext(), "Заказ готовится!", Toast.LENGTH_SHORT).show();
+
             } else {
                 Toast.makeText(getContext(), "Пожалуйста, выберите хотя бы один элемент", Toast.LENGTH_SHORT).show();
             }

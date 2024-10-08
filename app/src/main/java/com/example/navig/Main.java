@@ -88,8 +88,8 @@ public class Main extends Fragment {
             return;
         }
 
-
-        MainDirections.ActionMain2ToSecond action = MainDirections.actionMain2ToSecond(name, phone, address);
+    //    MainDirections.ActionMain2ToSecond action = MainDirections.actionMain2ToSecond(name, phone, address);
+        MainDirections.ActionMain2ToSecond action = MainDirections.actionMain2ToSecond(name, phone, address, new String[0]);
         Navigation.findNavController(v).navigate(action);
     }
 

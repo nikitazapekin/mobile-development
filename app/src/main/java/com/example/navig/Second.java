@@ -19,6 +19,7 @@ public class Second extends Fragment {
     private  String name="";
     private String tel="";
     private String adres="";
+    private  String[] items;
     public Second() {
 
     }
@@ -36,12 +37,15 @@ public class Second extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
+        SecondArgs args = SecondArgs.fromBundle(getArguments());
+        MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
 
-       name = SecondArgs.fromBundle(requireArguments()).getName();
-        tel  = SecondArgs.fromBundle(requireArguments()).getTelephone();
-       adres = SecondArgs.fromBundle(requireArguments()).getAdres();
-
-
+        name = args.getName();
+        tel = args.getTelephone();
+        adres = args.getAdres();
+        // items = args.getSavedItems();
+       // items = args.getSavedItems();
+        String[] items = args.getSavedItem();
         TextView textView1 = view.findViewById(R.id.textView8);
         TextView textView2 = view.findViewById(R.id.textView9);
 
@@ -75,7 +79,7 @@ textView2.setText(tel);
     public void handleRedirect(View v) {
 
 
-   SecondDirections.ActionSecondToMakeOrder action = SecondDirections.actionSecondToMakeOrder(name , tel, adres);
+   SecondDirections.ActionSecondToMakeOrder action = SecondDirections.actionSecondToMakeOrder(   name ,  tel,adres,  new String[0] );
 
    Navigation.findNavController(v).navigate(action);
     }

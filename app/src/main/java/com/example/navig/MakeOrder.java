@@ -148,8 +148,8 @@ public class MakeOrder extends Fragment {
 
                     View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
 
-                    ImageView bookedItemImage = bookedItemView.findViewById(R.id.itemImage);
-                    bookedItemImage.setImageResource(product.getImageResId());
+                 //   ImageView bookedItemImage = bookedItemView.findViewById(R.id.itemImage);
+                  //  bookedItemImage.setImageResource(product.getImageResId());
 
                     TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
                     bookedItemName.setText(product.getName());
@@ -206,8 +206,10 @@ public class MakeOrder extends Fragment {
 }
 
 
+
 /*
 package com.example.navig;
+
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -222,9 +224,10 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
-import androidx.navigation.Navigation;
 import java.util.List;
 import java.util.Arrays;
+
+import androidx.navigation.Navigation;
 
 public class MakeOrder extends Fragment {
 
@@ -237,6 +240,9 @@ public class MakeOrder extends Fragment {
     private LinearLayout offersContainer;
     private LinearLayout bookedOffersContainer;
     private TextView emptyBookedOffers;
+
+    private List<Product> allProducts = new ArrayList<>();
+    private List<Product> savedProducts = new ArrayList<>();
 
     public MakeOrder() {
     }
@@ -264,12 +270,19 @@ public class MakeOrder extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_make_order, container, false);
 
+
+
+
+
+
+        MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
+
+
         offersContainer = view.findViewById(R.id.offersContainer);
         bookedOffersContainer = view.findViewById(R.id.bookedOffersContainer);
         emptyBookedOffers = view.findViewById(R.id.emptyBookedOffers);
         Button selectButton = view.findViewById(R.id.button2);
         Button bookButton = view.findViewById(R.id.bookBtn);
-
 
         LayoutInflater itemInflater = LayoutInflater.from(getContext());
 
@@ -283,9 +296,10 @@ public class MakeOrder extends Fragment {
         textView1.setText(name);
         textView2.setText(tel);
 
-        List<Product> productList = getProducts();
 
-        for (Product product : productList) {
+        allProducts = getProducts();
+
+        for (Product product : allProducts) {
             View itemView = itemInflater.inflate(R.layout.item_order, offersContainer, false);
 
             ImageView itemImage = itemView.findViewById(R.id.itemImage);
@@ -297,17 +311,13 @@ public class MakeOrder extends Fragment {
             TextView itemPrice = itemView.findViewById(R.id.itemPrice);
             itemPrice.setText("Цена: " + product.getPrice() + " руб.");
 
-
             RadioButton radioButton = itemView.findViewById(R.id.radioButton);
             radioButton.setTag(product);
 
             offersContainer.addView(itemView);
         }
 
-        selectButton.setOnClickListener(v -> {
-            addSelectedOffers();
-        });
-
+        selectButton.setOnClickListener(v -> addSelectedOffers());
 
         bookButton.setOnClickListener(v -> {
             List<String> selectedItems = new ArrayList<>();
@@ -318,33 +328,31 @@ public class MakeOrder extends Fragment {
 
                 if (radioButton != null && radioButton.isChecked()) {
                     Product product = (Product) radioButton.getTag();
-                    selectedItems.add(product.getName() + " " +product.getPrice() +"$" );
+                    selectedItems.add(product.getName() + " " + product.getPrice() + "$");
                 }
             }
 
             if (!selectedItems.isEmpty()) {
-                  String[] itemsArray = selectedItems.toArray(new String[0]);
-                Toast.makeText(getContext(), "Выбранные элементы: " + Arrays.toString(itemsArray), Toast.LENGTH_SHORT).show();
+               String[] itemsArray = selectedItems.toArray(new String[0]);
+             //   List<Product> itemsArray = savedProducts;
+
+              //  Toast.makeText(getContext(), "Выбранные элементы: " + Arrays.toString(itemsArray), Toast.LENGTH_SHORT).show();
 
                 MakeOrderDirections.ActionMakeOrderToSecond action = MakeOrderDirections.actionMakeOrderToSecond(itemsArray, tel, adres, name);
 
                 Navigation.findNavController(v).navigate(action);
 
-                  Toast.makeText(getContext(), "Заказ готовится!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Заказ готовится!", Toast.LENGTH_SHORT).show();
 
             } else {
                 Toast.makeText(getContext(), "Пожалуйста, выберите хотя бы один элемент", Toast.LENGTH_SHORT).show();
             }
         });
 
-
-
-
         return view;
     }
 
     private void addSelectedOffers() {
-
         int childCount = offersContainer.getChildCount();
         boolean hasSelected = false;
 
@@ -352,39 +360,54 @@ public class MakeOrder extends Fragment {
             View itemView = offersContainer.getChildAt(i);
             RadioButton radioButton = itemView.findViewById(R.id.radioButton);
 
-
             if (radioButton != null && radioButton.isChecked()) {
                 Product product = (Product) radioButton.getTag();
 
-                View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
 
-                ImageView bookedItemImage = bookedItemView.findViewById(R.id.itemImage);
-                bookedItemImage.setImageResource(product.getImageResId());
+                if (!savedProducts.contains(product)) {
+                    savedProducts.add(product);
 
-                TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
-                bookedItemName.setText(product.getName());
+                    View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
 
-                TextView bookedItemPrice = bookedItemView.findViewById(R.id.itemPrice);
-                bookedItemPrice.setText("Цена: " + product.getPrice() + " руб.");
+                  //ImageView bookedItemImage = bookedItemView.findViewById(R.id.itemImage);
+              //      bookedItemImage.setImageResource(product.getImageResId());
 
-                ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
-                deleteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+
+                    //        bookedItemImage.setImageResource("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS-J9cEFQ5IAuYu9XoNnXZiKLamw7LEj8gRQ&s");
+                    TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
+                    bookedItemName.setText(product.getName());
+
+                    TextView bookedItemPrice = bookedItemView.findViewById(R.id.itemPrice);
+                    bookedItemPrice.setText("Цена: " + product.getPrice() + " руб.");
+
+                    ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
+                    deleteButton.setOnClickListener(v -> {
+
                         bookedOffersContainer.removeView(bookedItemView);
+                        savedProducts.remove(product);
+
 
                         if (bookedOffersContainer.getChildCount() == 0) {
-
                             emptyBookedOffers.setVisibility(View.VISIBLE);
                         }
-                    }
-                });
 
-                bookedOffersContainer.addView(bookedItemView);
-                hasSelected = true;
+
+                        for (int j = 0; j < offersContainer.getChildCount(); j++) {
+                            View offerItemView = offersContainer.getChildAt(j);
+                            RadioButton offerRadioButton = offerItemView.findViewById(R.id.radioButton);
+
+                            if (offerRadioButton != null && offerRadioButton.getTag() == product) {
+                                offerRadioButton.setChecked(false);
+                                break;
+                            }
+                        }
+                    });
+
+                    bookedOffersContainer.addView(bookedItemView);
+                    hasSelected = true;
+                }
             }
         }
-
 
         if (hasSelected) {
             emptyBookedOffers.setVisibility(View.GONE);
@@ -404,4 +427,4 @@ public class MakeOrder extends Fragment {
         return products;
     }
 }
-*/
+ */

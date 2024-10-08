@@ -42,13 +42,13 @@ public class Second extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
         SecondArgs args = SecondArgs.fromBundle(getArguments());
-        MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
+      //  MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
 
         name = args.getName();
         tel = args.getTelephone();
         adres = args.getAdres();
 
-        String[] items = args.getSavedItem();
+         items = args.getSavedItem();
 
 
         Toast.makeText(getContext(), "Выбранные элементы: " + Arrays.toString(items), Toast.LENGTH_SHORT).show();
@@ -79,12 +79,19 @@ textView2.setText(tel);
 
         Button backBtn = view.findViewById(R.id.button3);
 
+     backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleRedirect(view);
+            }
 
+
+        });
 
         LayoutInflater itemInflater = LayoutInflater.from(getContext());
         offersContainer = view.findViewById(R.id.elems);
 
-        //textInsideDashedView
+
         if(items.length>1) {
            backBtn.setVisibility(View.VISIBLE);
 chooseBtn.setVisibility(View.GONE);
@@ -122,7 +129,7 @@ for (String item : items ){
     public void handleRedirect(View v) {
 
 
-   SecondDirections.ActionSecondToMakeOrder action = SecondDirections.actionSecondToMakeOrder(   name ,  tel,adres,  new String[0] );
+   SecondDirections.ActionSecondToMakeOrder action = SecondDirections.actionSecondToMakeOrder(   name ,  tel,adres, items.length> 1 ? items :  new String[0]  );
 
    Navigation.findNavController(v).navigate(action);
     }

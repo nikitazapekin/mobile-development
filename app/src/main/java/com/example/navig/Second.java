@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.widget.LinearLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -19,7 +19,7 @@ public class Second extends Fragment {
     private String mName;
 
 
-
+    private LinearLayout offersContainer;
     private  String name="";
     private String tel="";
     private String adres="";
@@ -73,13 +73,30 @@ textView2.setText(tel);
 
         TextView itemsTextView = view.findViewById(R.id.textInsideDashedView1);
 
-        //   TextView errorTextView = getView().findViewById(R.id.textInsideDashedView1);
+
         if(items.length>1) {
 
 
         itemsTextView.setVisibility(View.GONE);
 
+            LayoutInflater itemInflater = LayoutInflater.from(getContext());
+
+            offersContainer = view.findViewById(R.id.elems);
+
+for (String item : items ){
+    View itemView = itemInflater.inflate(R.layout.list_item, offersContainer, false);
+    TextView itemName = itemView.findViewById(R.id.itemName);
+    itemName.setText(item);
+    offersContainer.addView(itemView);
+}
+
+
+        } else {
+            itemsTextView.setVisibility(View.VISIBLE);
         }
+
+
+
         return view;
     }
 

@@ -1,4 +1,5 @@
 package com.example.navig;
+
 import android.util.Log;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,8 +30,8 @@ public class MakeOrder extends Fragment {
     private TextView emptyBookedOffers;
 
     private List<Product> allProducts = new ArrayList<>();
-   // private List<Product> savedProducts = new ArrayList<>();
-private  String[] stored;
+    private List<String> stored = new ArrayList<>();
+
     public MakeOrder() {
     }
 
@@ -49,22 +50,14 @@ private  String[] stored;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+            stored.addAll(Arrays.asList(MakeOrderArgs.fromBundle(getArguments()).getSavedItem()));
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
-
-        stored =   argsOrder.getSavedItem();
-        Log.d("SecondFragment", "elemsss: " + Arrays.toString(stored));
-
-
-
-
-     //   Log.d("Saved", "saved: " + savedProducts);
 
         View view = inflater.inflate(R.layout.fragment_make_order, container, false);
 
@@ -87,7 +80,7 @@ private  String[] stored;
         textView2.setText(tel);
 
         allProducts = getProducts();
-        Log.d("SecondFragment", "all: " +allProducts);
+        Log.d("SecondFragment", "all: " + allProducts);
 
         for (Product product : allProducts) {
             View itemView = itemInflater.inflate(R.layout.item_order, offersContainer, false);
@@ -104,9 +97,12 @@ private  String[] stored;
             RadioButton radioButton = itemView.findViewById(R.id.radioButton);
             radioButton.setTag(product);
 
+            if (stored.contains(product.getName())) {
+                //    radioButton.setEnabled(false);
+            }
+
             offersContainer.addView(itemView);
         }
-
 
         displaySavedProducts();
 
@@ -121,13 +117,13 @@ private  String[] stored;
 
                 if (radioButton != null && radioButton.isChecked()) {
                     Product product = (Product) radioButton.getTag();
-              //      selectedItems.add(product.getName() + " " + product.getPrice() + "$");
-                    selectedItems.add(product.getName() );
+                    selectedItems.add(product.getName());
                 }
             }
 
             if (!selectedItems.isEmpty()) {
-                String[] itemsArray = selectedItems.toArray(new String[0]);
+
+                String[] itemsArray = stored.toArray(new String[0]);
                 Toast.makeText(getContext(), "Выбранные элементы: " + Arrays.toString(itemsArray), Toast.LENGTH_SHORT).show();
 
                 MakeOrderDirections.ActionMakeOrderToSecond action = MakeOrderDirections.actionMakeOrderToSecond(itemsArray, tel, adres, name);
@@ -141,62 +137,76 @@ private  String[] stored;
 
         return view;
     }
-
+/*
     private void displaySavedProducts() {
         bookedOffersContainer.removeAllViews();
-      if (stored.length >= 1) {
+        if (!stored.isEmpty()) {
           emptyBookedOffers.setVisibility(View.GONE);
-
-          for (String product : stored) {
-              View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
-
-              TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
-              bookedItemName.setText(product);
-
-              TextView bookedItemPrice = bookedItemView.findViewById(R.id.itemPrice);
-            //  bookedItemPrice.setText(product);
-
-              ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
-              deleteButton.setOnClickListener(v -> {
-                  bookedOffersContainer.removeView(bookedItemView);
-            //      savedProducts.remove(product);
-
-                  if (bookedOffersContainer.getChildCount() == 0) {
-                      emptyBookedOffers.setVisibility(View.VISIBLE);
-                  }
-              });
-              bookedOffersContainer.addView(bookedItemView);
-          }
-      }
-
-     /*   if (!savedProducts.isEmpty()) {
-            emptyBookedOffers.setVisibility(View.GONE);
-
-            for (Product product : savedProducts) {
+            emptyBookedOffers.setVisibility(View.VISIBLE);
+            for (String product : stored) {
                 View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
 
                 TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
-                bookedItemName.setText(product.getName());
-
-                TextView bookedItemPrice = bookedItemView.findViewById(R.id.itemPrice);
-                bookedItemPrice.setText("Цена: " + product.getPrice() + " руб.");
+                bookedItemName.setText(product);
 
                 ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
                 deleteButton.setOnClickListener(v -> {
                     bookedOffersContainer.removeView(bookedItemView);
-                    savedProducts.remove(product);
+                    stored.remove(product);
+
+
+                    for (int i = 0; i < offersContainer.getChildCount(); i++) {
+                        View itemView = offersContainer.getChildAt(i);
+                        RadioButton radioButton = itemView.findViewById(R.id.radioButton);
+                        Product tagProduct = (Product) radioButton.getTag();
+
+                        if (tagProduct.getName().equals(product)) {
+                 //           radioButton.setEnabled(true);
+                            break;
+                        }
+                    }
 
                     if (bookedOffersContainer.getChildCount() == 0) {
-                        emptyBookedOffers.setVisibility(View.VISIBLE);
+                      emptyBookedOffers.setVisibility(View.VISIBLE);
                     }
                 });
 
                 bookedOffersContainer.addView(bookedItemView);
             }
         } else {
-            emptyBookedOffers.setVisibility(View.VISIBLE);
-        } */
+           emptyBookedOffers.setVisibility(View.VISIBLE);
+        }
     }
+
+ */
+private void displaySavedProducts() {
+    bookedOffersContainer.removeAllViews();
+    if (!stored.isEmpty()) {
+        emptyBookedOffers.setVisibility(View.GONE);
+        for (String product : stored) {
+            View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
+
+            TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
+            bookedItemName.setText(product);
+
+            ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
+            deleteButton.setOnClickListener(v -> {
+                bookedOffersContainer.removeView(bookedItemView);
+                stored.remove(product);
+
+
+                if (bookedOffersContainer.getChildCount() == 0) {
+                    emptyBookedOffers.setVisibility(View.VISIBLE);
+                }
+            });
+
+            bookedOffersContainer.addView(bookedItemView);
+        }
+    } else {
+        emptyBookedOffers.setVisibility(View.VISIBLE);
+    }
+}
+
 
     private void addSelectedOffers() {
         int childCount = offersContainer.getChildCount();
@@ -209,37 +219,37 @@ private  String[] stored;
             if (radioButton != null && radioButton.isChecked()) {
                 Product product = (Product) radioButton.getTag();
 
-              //  if (!savedProducts.contains(product)) {
-               //     savedProducts.add(product);
 
-                    View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
+                View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
 
-                    TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
-                    bookedItemName.setText(product.getName());
+                TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
+                bookedItemName.setText(product.getName());
 
-                    TextView bookedItemPrice = bookedItemView.findViewById(R.id.itemPrice);
-                //    bookedItemPrice.setText("Цена: " + product.getPrice() + " руб.");
-                    //  bookedItemPrice.setText("Цена: " + product.getPrice() + " руб.");
-                    ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
-                    deleteButton.setOnClickListener(v -> {
-                        bookedOffersContainer.removeView(bookedItemView);
-                    //    savedProducts.remove(product);
+                ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
+                deleteButton.setOnClickListener(v -> {
+                    bookedOffersContainer.removeView(bookedItemView);
+                    stored.remove(product.getName());
 
-                        if (bookedOffersContainer.getChildCount() == 0) {
-                            emptyBookedOffers.setVisibility(View.VISIBLE);
-                        }
-                    });
 
-                    bookedOffersContainer.addView(bookedItemView);
-                    hasSelected = true;
-                }
-        //    }
+                 //   radioButton.setEnabled(true);
+
+                    if (bookedOffersContainer.getChildCount() == 0) {
+                      emptyBookedOffers.setVisibility(View.VISIBLE);
+                    }
+                });
+
+                bookedOffersContainer.addView(bookedItemView);
+           //     radioButton.setEnabled(false);
+                stored.add(product.getName());
+
+                hasSelected = true;
+            }
         }
 
         if (hasSelected) {
-            emptyBookedOffers.setVisibility(View.GONE);
+           emptyBookedOffers.setVisibility(View.GONE);
         } else {
-            emptyBookedOffers.setVisibility(View.VISIBLE);
+        emptyBookedOffers.setVisibility(View.VISIBLE);
             Toast.makeText(getContext(), "Пожалуйста, выберите хотя бы один элемент", Toast.LENGTH_SHORT).show();
         }
     }
@@ -251,6 +261,10 @@ private  String[] stored;
         products.add(new Product(R.drawable.free_icon_pizza_706934, "Пиперони", 300.0));
         products.add(new Product(R.drawable.free_icon_pizza_706934, "Чили", 200.0));
         products.add(new Product(R.drawable.free_icon_pizza_706934, "Обычная", 300.0));
+        products.add(new Product(R.drawable.free_icon_pizza_706934, "Испанская", 200.0));
+        products.add(new Product(R.drawable.free_icon_pizza_706934, "Грибная", 300.0));
+        products.add(new Product(R.drawable.free_icon_pizza_706934, "Чили", 200.0));
+
 
         return products;
     }

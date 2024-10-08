@@ -76,10 +76,10 @@ textView2.setText(tel);
 
         TextView itemsTextView = view.findViewById(R.id.textInsideDashedView);
        Button chooseBtn = button.findViewById(R.id.buttonInsideDashedView);
-    //    Button backBtn = button.findViewById(R.id.button3);
+
         Button backBtn = view.findViewById(R.id.button3);
 
-        //   TextView nothingChosen = view.findViewById(R.id.textInsideDashedView);
+
 
         LayoutInflater itemInflater = LayoutInflater.from(getContext());
         offersContainer = view.findViewById(R.id.elems);

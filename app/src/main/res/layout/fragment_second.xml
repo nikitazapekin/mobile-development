@@ -78,7 +78,7 @@
 
 
                 android:textSize="18sp" />
-            <Button
+     <!--        <Button
                 android:id="@+id/buttonInsideDashedView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,27 +87,6 @@
 
                 android:background="@drawable/rectangle_button"
                 android:text="Сделать выбор" />
-      <!--      <TextView
-                android:id="@+id/textInsideDashedView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-
-                android:text="После выбора"
-                android:textColor="#000000"
-                android:textSize="18sp" />
--->
-<!--
-            <TextView
-                android:id="@+id/textInsideDashedView1"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:text="Пока ничего не выбрано"
-                android:textColor="#000000"
-                android:textSize="18sp" />
 -->
 
         <ScrollView
@@ -116,47 +95,54 @@
             android:layout_height="204dp"
             android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_weight="1"
             app:layout_constraintHorizontal_bias="0.619"
             app:layout_constraintStart_toStartOf="parent"
 
             app:layout_constraintTop_toBottomOf="@+id/textView12">
 
-        <LinearLayout
+     <LinearLayout
             android:id="@+id/elems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+
+         <Button
+             android:id="@+id/buttonInsideDashedView"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_marginTop="10dp"
+
+             android:background="@drawable/rectangle_button"
+             android:text="Сделать выбор" />
+           <!--  <TextView
                 android:id="@+id/textInsideDashedView1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
+
                 android:text="Пока ничего не выбрано"
                 android:textColor="#000000"
                 android:textSize="18sp" />
-
+-->
 
         </LinearLayout>
         </ScrollView>
 
 
-            <Button
+           <Button
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rectangle_button"
                 android:text="Вернуться к заказам" />
 
-            <!--
-                        <ListView
-                            android:layout_width="409dp"
-                            android:layout_height="446dp"
-                            tools:layout_editor_absoluteX="54dp"
-                            tools:layout_editor_absoluteY="320dp" />
-            -->
+
         </LinearLayout>
 
 

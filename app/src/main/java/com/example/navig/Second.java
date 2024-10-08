@@ -71,17 +71,26 @@ textView2.setText(tel);
 
         });
 
-        TextView itemsTextView = view.findViewById(R.id.textInsideDashedView1);
 
 
+
+        TextView itemsTextView = view.findViewById(R.id.textInsideDashedView);
+       Button chooseBtn = button.findViewById(R.id.buttonInsideDashedView);
+    //    Button backBtn = button.findViewById(R.id.button3);
+        Button backBtn = view.findViewById(R.id.button3);
+
+        //   TextView nothingChosen = view.findViewById(R.id.textInsideDashedView);
+
+        LayoutInflater itemInflater = LayoutInflater.from(getContext());
+        offersContainer = view.findViewById(R.id.elems);
+
+        //textInsideDashedView
         if(items.length>1) {
-
-
+           backBtn.setVisibility(View.VISIBLE);
+chooseBtn.setVisibility(View.GONE);
         itemsTextView.setVisibility(View.GONE);
 
-            LayoutInflater itemInflater = LayoutInflater.from(getContext());
 
-            offersContainer = view.findViewById(R.id.elems);
 
 for (String item : items ){
     View itemView = itemInflater.inflate(R.layout.list_item, offersContainer, false);
@@ -93,10 +102,15 @@ for (String item : items ){
 
         } else {
             itemsTextView.setVisibility(View.VISIBLE);
+            chooseBtn.setVisibility(View.VISIBLE);
+            backBtn.setVisibility(View.GONE);
         }
-
-
-
+        View receiverView = itemInflater.inflate(R.layout.receiver, offersContainer, false);
+        TextView receiverViewText = receiverView.findViewById(R.id.textView10);
+        if(items.length>1) {
+            receiverViewText.setText("Заказ оформлен на:\n Имя: " + name + "\n Телефон:" + tel + "\n Адресс:" + adres);
+            offersContainer.addView(receiverView);
+        }
         return view;
     }
 

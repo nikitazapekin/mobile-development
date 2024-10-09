@@ -189,7 +189,7 @@ private void displaySavedProducts() {
             TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
             bookedItemName.setText(product);
 
-            ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
+       /*     ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
             deleteButton.setOnClickListener(v -> {
                 bookedOffersContainer.removeView(bookedItemView);
                 stored.remove(product);
@@ -199,7 +199,7 @@ private void displaySavedProducts() {
                     emptyBookedOffers.setVisibility(View.VISIBLE);
                 }
             });
-
+*/
             bookedOffersContainer.addView(bookedItemView);
         }
     } else {
@@ -225,7 +225,7 @@ private void displaySavedProducts() {
                 TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
                 bookedItemName.setText(product.getName());
 
-                ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
+             /*   ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
                 deleteButton.setOnClickListener(v -> {
                     bookedOffersContainer.removeView(bookedItemView);
                     stored.remove(product.getName());
@@ -236,7 +236,7 @@ private void displaySavedProducts() {
                     if (bookedOffersContainer.getChildCount() == 0) {
                       emptyBookedOffers.setVisibility(View.VISIBLE);
                     }
-                });
+                }); */
 
                 bookedOffersContainer.addView(bookedItemView);
            //     radioButton.setEnabled(false);

@@ -63,7 +63,7 @@ public class MakeOrder extends Fragment {
 
         offersContainer = view.findViewById(R.id.offersContainer);
         bookedOffersContainer = view.findViewById(R.id.bookedOffersContainer);
-        emptyBookedOffers = view.findViewById(R.id.emptyBookedOffers);
+    //    emptyBookedOffers = view.findViewById(R.id.emptyBookedOffers);
         Button selectButton = view.findViewById(R.id.button2);
         Button bookButton = view.findViewById(R.id.bookBtn);
 
@@ -137,73 +137,21 @@ public class MakeOrder extends Fragment {
 
         return view;
     }
-/*
-    private void displaySavedProducts() {
-        bookedOffersContainer.removeAllViews();
-        if (!stored.isEmpty()) {
-          emptyBookedOffers.setVisibility(View.GONE);
-            emptyBookedOffers.setVisibility(View.VISIBLE);
-            for (String product : stored) {
-                View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
-
-                TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
-                bookedItemName.setText(product);
-
-                ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
-                deleteButton.setOnClickListener(v -> {
-                    bookedOffersContainer.removeView(bookedItemView);
-                    stored.remove(product);
-
-
-                    for (int i = 0; i < offersContainer.getChildCount(); i++) {
-                        View itemView = offersContainer.getChildAt(i);
-                        RadioButton radioButton = itemView.findViewById(R.id.radioButton);
-                        Product tagProduct = (Product) radioButton.getTag();
-
-                        if (tagProduct.getName().equals(product)) {
-                 //           radioButton.setEnabled(true);
-                            break;
-                        }
-                    }
-
-                    if (bookedOffersContainer.getChildCount() == 0) {
-                      emptyBookedOffers.setVisibility(View.VISIBLE);
-                    }
-                });
-
-                bookedOffersContainer.addView(bookedItemView);
-            }
-        } else {
-           emptyBookedOffers.setVisibility(View.VISIBLE);
-        }
-    }
-
- */
 private void displaySavedProducts() {
     bookedOffersContainer.removeAllViews();
     if (!stored.isEmpty()) {
-        emptyBookedOffers.setVisibility(View.GONE);
+   //     emptyBookedOffers.setVisibility(View.GONE);
         for (String product : stored) {
             View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
 
             TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
             bookedItemName.setText(product);
 
-       /*     ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
-            deleteButton.setOnClickListener(v -> {
-                bookedOffersContainer.removeView(bookedItemView);
-                stored.remove(product);
 
-
-                if (bookedOffersContainer.getChildCount() == 0) {
-                    emptyBookedOffers.setVisibility(View.VISIBLE);
-                }
-            });
-*/
             bookedOffersContainer.addView(bookedItemView);
         }
     } else {
-        emptyBookedOffers.setVisibility(View.VISIBLE);
+  //     emptyBookedOffers.setVisibility(View.VISIBLE);
     }
 }
 
@@ -225,18 +173,7 @@ private void displaySavedProducts() {
                 TextView bookedItemName = bookedItemView.findViewById(R.id.itemName);
                 bookedItemName.setText(product.getName());
 
-             /*   ImageView deleteButton = bookedItemView.findViewById(R.id.imageView3);
-                deleteButton.setOnClickListener(v -> {
-                    bookedOffersContainer.removeView(bookedItemView);
-                    stored.remove(product.getName());
 
-
-                 //   radioButton.setEnabled(true);
-
-                    if (bookedOffersContainer.getChildCount() == 0) {
-                      emptyBookedOffers.setVisibility(View.VISIBLE);
-                    }
-                }); */
 
                 bookedOffersContainer.addView(bookedItemView);
            //     radioButton.setEnabled(false);
@@ -247,9 +184,9 @@ private void displaySavedProducts() {
         }
 
         if (hasSelected) {
-           emptyBookedOffers.setVisibility(View.GONE);
+      //     emptyBookedOffers.setVisibility(View.GONE);
         } else {
-        emptyBookedOffers.setVisibility(View.VISIBLE);
+     //   emptyBookedOffers.setVisibility(View.VISIBLE);
             Toast.makeText(getContext(), "Пожалуйста, выберите хотя бы один элемент", Toast.LENGTH_SHORT).show();
         }
     }

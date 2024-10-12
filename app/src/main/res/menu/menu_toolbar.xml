@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<!--
+    <item android:title="Item" />
+    <item
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView" />
+    <item android:title="Item" />
+
+    -->
+    <item android:id="@+id/fragment1"
+        android:title="Fragment 1"
+        app:showAsAction="never"
+        />
+    <item android:id="@+id/fragment2"
+        android:title="Fragment 2"
+        app:showAsAction="never"
+        />
+    <item android:id="@+id/helpFragment"
+        android:title="Help"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="always"
+        />
+</menu>

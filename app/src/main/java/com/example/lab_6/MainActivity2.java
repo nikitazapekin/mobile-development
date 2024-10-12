@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 public class MainActivity2 extends AppCompatActivity {
 
     @Override
@@ -51,8 +50,6 @@ NavigationUI.setupWithNavController(bottomNavigationView, navController);
             return insets;
         });
     }
-
-
     @Override
     public  boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
@@ -68,8 +65,3 @@ NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
 
 }
-/*package com.example.lab_6;
-
-public class MainActivity2 {
-}
-*/

@@ -50,10 +50,10 @@ dependencies {
 
     //  implementation("androidx.navigation:navigation-fragment:2.8.2")
 
-
+   // implementation("com.google.android.material:material:1.9.0")
     val nav_version="2.5.0"
     implementation("androidx.navigation:navigation-fragment:$nav_version")
-
+implementation("androidx.navigation:navigation-ui:$nav_version")
 }
 
 

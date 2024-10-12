@@ -6,16 +6,18 @@
 
     <item android:id="@+id/second"
         android:title="Биография"
+        android:icon="@drawable/person"
         app:showAsAction="never"
         />
     <item android:id="@+id/third"
+        android:icon="@drawable/ink"
         android:title="Произведения"
         app:showAsAction="never"
         />
 
     <item android:id="@+id/first"
         android:title="Главная"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/hom"
         app:showAsAction="always"
         />
 

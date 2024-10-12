@@ -11,7 +11,7 @@
       android:title="Fragment 2"
       app:showAsAction="never"
       />
-  <item android:id="@+id/helpFragment"
+  <item android:id="@+id/first"
       android:title="Help"
       android:icon="@mipmap/ic_launcher"
       app:showAsAction="always"

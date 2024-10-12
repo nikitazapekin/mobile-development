@@ -8,35 +8,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link third#newInstance} factory method to
- * create an instance of this fragment.
- */
+
+import android.widget.ListView;
+
+import androidx.fragment.app.Fragment;
+import java.util.ArrayList;
+import java.util.List;
 public class third extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private ListView listView;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
     public third() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment third.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static third newInstance(String param1, String param2) {
         third fragment = new third();
         Bundle args = new Bundle();
@@ -55,10 +48,51 @@ public class third extends Fragment {
         }
     }
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_third, container, false);
+
+        listView = rootView.findViewById(R.id.listView);
+
+
+        List<Work> works = new ArrayList<>();
+        works.add(new Work("Руслан и Людмила", "1820"));
+        works.add(new Work("Кавказский пленник", "1821"));
+        works.add(new Work("Борис Годунов", "1825"));
+
+        works.add(new Work("Повести Белкина", "1830"));
+        works.add(new Work("Кавказский пленник", "1821"));
+        works.add(new Work("Маленькие трагедии", "1830"));
+
+        works.add(new Work("Пиковая дама", "1833"));
+        works.add(new Work("Медный всадник", "1833"));
+        works.add(new Work("Капитанская дочка", "1836"));
+
+
+        works.add(new Work("Капитанская дочка", "1836"));
+
+        WorkAdapter adapter = new WorkAdapter(getContext(), works);
+        listView.setAdapter(adapter);
+
+        return rootView;
+    }
+
+
+    /*
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_third, container, false);
     }
+
+     */
+
+
 }
+
+
+

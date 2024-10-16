@@ -61,49 +61,9 @@ public class MainActivity3 extends AppCompatActivity {
         });
     }
 
-    /*
-    @Override
-    public  boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-        return  super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        navController.navigate(item.getItemId());
-        return super.onOptionsItemSelected(item);
-    }
-
-     */
 
 
 
 
 }
 
-
- /*    MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.nav_host_fragment);
-        NavController navController = navHostFragment.getNavController();
-
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupWithNavController(
-                toolbar, navController, appBarConfiguration
-        );
-        toolbar.setVisibility(View.GONE);
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setItemIconTintList(null);
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
-*/
-/*
-
-
-package com.example.lab_6;
-
-
-public class MainActivity3 {
-}
-*/

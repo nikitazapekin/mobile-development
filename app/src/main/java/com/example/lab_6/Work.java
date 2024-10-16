@@ -17,11 +17,3 @@ public class Work {
     }
 }
 
-
-/*
-package com.example.lab_6;
-
-
-public class Work {
-}
-*/

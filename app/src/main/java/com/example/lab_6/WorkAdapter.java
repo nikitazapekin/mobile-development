@@ -32,10 +32,3 @@ public class WorkAdapter extends ArrayAdapter<Work> {
 }
 
 
-/*
-package com.example.lab_6;
-
-
-public class ListView {
-}
-*/

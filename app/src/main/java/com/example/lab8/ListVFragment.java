@@ -44,15 +44,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.util.Log;
 public class ListVFragment extends Fragment {
 
-   String[] names = {
-           "Test",
-           "Test",
-           "Test",
-           "Test",
-           "Test",
-           "Test",
-           "Test",
-   };
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final String TAG = "ListVFragment";

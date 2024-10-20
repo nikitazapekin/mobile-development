@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.navigation.Navigation;
@@ -42,6 +43,7 @@ public class CarAdapterRecycleView extends RecyclerView.Adapter<CarAdapterRecycl
        holder.nameView.setText(car.getName());
         holder.priceView.setText(String.valueOf(car.getPrice()));
           holder.descriptionView.setText(car.getDescribtion());
+          holder.imageView.setImageResource(car.getLogo());
           holder.itemView.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
@@ -57,13 +59,14 @@ public class CarAdapterRecycleView extends RecyclerView.Adapter<CarAdapterRecycl
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView nameView, priceView, descriptionView;
-
+        final ImageView imageView;
         ViewHolder(View view) {
             super(view);
 
             nameView = view.findViewById(R.id.name_text_view1);
            priceView = view.findViewById(R.id.price_text_view1);
             descriptionView = view.findViewById(R.id.describtion_text_view1);
+            imageView = view.findViewById(R.id.imageViewRecycler);
         }
     }
 

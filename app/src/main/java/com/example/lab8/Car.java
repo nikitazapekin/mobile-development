@@ -34,7 +34,7 @@ public class Car {
     }
 
     public String getFullDescribtion() {
-        return description;
+        return fullDescription;
     }
 
     public int getLogo() {

@@ -64,7 +64,7 @@ public class DetailFragment extends Fragment {
         titleText.setText(name);
         describtionText.setText(describtion);
         priceText.setText(price +"$");
-        fulldescribtionText.setText(fullDescribtion);
+        fulldescribtionText.setText( fullDescribtion);
         return view;
     }
 }

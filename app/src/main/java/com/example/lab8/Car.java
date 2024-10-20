@@ -9,7 +9,7 @@ public class Car {
     private byte price;
     private String description;
     private String fullDescription;
-    private int logo;  // Изменено на int для хранения идентификатора ресурса
+    private int logo;
 
 
 

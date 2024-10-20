@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -36,11 +37,17 @@ public class CarAdapter extends ArrayAdapter<Car> {
         TextView nameTextView = convertView.findViewById(R.id.name_text_view);
         TextView priceTextView = convertView.findViewById(R.id.price_text_view);
         TextView describtionTextView = convertView.findViewById(R.id.describtion_text_view);
-
+      //  ImageView carImageView = convertView.findViewById(R.id.test);
         nameTextView.setText(currentCar.getName());
         priceTextView.setText(String.valueOf(currentCar.getPrice()));
         describtionTextView.setText(currentCar.getDescribtion());
 
+
+
+       // ImageView carImageView =  convertView.findViewById(R.id.test);
+     //   Car car = Car.getCars().get(0); // Получите первую машину
+    //    carImageView.setImageResource(currentCar.getLogo());
+     //   carImageView.setImageResource(car.getLogo()); // Установите изображение
         return convertView;
     }
 

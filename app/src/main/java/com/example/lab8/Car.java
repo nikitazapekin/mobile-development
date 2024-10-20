@@ -30,9 +30,9 @@ this.describtion = describtion;
 
     private static List<Car> cars = new ArrayList<>();
     public static  List<Car> getCars() {
-        cars.add(new Car("Tt", (byte) 32, "ddd"));
-        cars.add(new Car("Tt", (byte) 32, "ddd"));
-        cars.add(new Car("Tt", (byte) 32, "ddd"));
+        cars.add(new Car("Car 1 ", (byte) 32, "ddd"));
+        cars.add(new Car("Car 2", (byte) 32, "ddd"));
+        cars.add(new Car("Car 3", (byte) 32, "ddd"));
         return  cars;
     }
 }

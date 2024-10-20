@@ -90,11 +90,7 @@ public class ListVFragment extends Fragment {
                              Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.list_gragment, container, false);
 
-      /*  MaterialToolbar toolbar = view.findViewById(R.id.toolbar);
-        AppCompatActivity appCompatActivity = ((AppCompatActivity)getActivity());
-        if(appCompatActivity!=null) {
-             appCompatActivity.setSupportActionBar(toolbar);
-        } */
+
         ListView lvMain = (ListView) view.findViewById(R.id.lvMain);
 
 
@@ -119,7 +115,7 @@ lvMain.setAdapter(adapter);
 
 
         return view;
-       // return inflater.inflate(R.layout.list_gragment, container, false);
+
     }
 
 /*

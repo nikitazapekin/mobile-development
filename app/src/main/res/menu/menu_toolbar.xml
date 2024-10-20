@@ -10,19 +10,6 @@
         android:title="RecuclerView"
         app:showAsAction="always"
         />
-<!--
-   <item android:id="@+id/ListView"
-        android:title="Home"
-        android:icon="@mipmap/ic_launcher"
-        app:showAsAction="always"
-        />
--->
+
 
 </menu>
-<!--
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-</menu>
-
--->

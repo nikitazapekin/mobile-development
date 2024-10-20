@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import java.util.List;
+
 
 public class ListVFragment extends Fragment {
 
@@ -35,8 +37,10 @@ public class ListVFragment extends Fragment {
     private String mParam2;
 
     public ListVFragment() {
-        // Required empty public constructor
+
     }
+
+
 
 
     public static ListVFragment newInstance(String param1, String param2) {
@@ -70,32 +74,15 @@ public class ListVFragment extends Fragment {
         ListView lvMain = (ListView) view.findViewById(R.id.lvMain);
 
 
-    /*    ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, names);
-        lvMain.setAdapter(adapter); */
-
-
-     /*   ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this, R.array.names,
-                android.R.layout.simple_list_item_single_choice);
-        );
-*/
+/*
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 getActivity(), R.array.names, android.R.layout.simple_list_item_single_choice);
         lvMain.setAdapter(adapter);
-
-
-        /*
-lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-    showToast(getActivity(), "Clicked "+ position+ ", id "+id )    ;
-    }
-    public void onNothingSelected(AdapterView<?> parent) {
-        showToast(getActivity(), "Nothing selected" )    ;
-    }
-});
 */
+        List<Car> cars = Car.getCars();
+ArrayAdapter<Car> adapter = new CarAdapter(getActivity(), R.id.lvMain, cars);
+lvMain.setAdapter(adapter);
+
 
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

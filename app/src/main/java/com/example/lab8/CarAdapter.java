@@ -37,7 +37,7 @@ public class CarAdapter extends ArrayAdapter<Car> {
         TextView nameTextView = convertView.findViewById(R.id.name_text_view);
         TextView priceTextView = convertView.findViewById(R.id.price_text_view);
         TextView describtionTextView = convertView.findViewById(R.id.describtion_text_view);
-      //  ImageView carImageView = convertView.findViewById(R.id.test);
+
         nameTextView.setText(currentCar.getName());
         priceTextView.setText(String.valueOf(currentCar.getPrice()));
         describtionTextView.setText(currentCar.getDescribtion());

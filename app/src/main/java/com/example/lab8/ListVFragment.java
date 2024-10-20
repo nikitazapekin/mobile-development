@@ -118,11 +118,5 @@ lvMain.setAdapter(adapter);
 
     }
 
-/*
-    @Override
-    public  boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-        return  super.onCreateOptionsMenu(menu);
-    }
-*/
+
 }

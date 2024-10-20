@@ -12,12 +12,19 @@ import java.util.List;
 
 public class CarAdapterRecycleView extends RecyclerView.Adapter<CarAdapterRecycleView.ViewHolder> {
 
+
+    interface  OnCarsClickListener {
+        void onCarClick(Car car, int position);
+
+    }
+    private OnCarsClickListener onClickListener;
     private final LayoutInflater inflater;
     private final List<Car> cars;
 
-    CarAdapterRecycleView(Context context, List<Car> cars) {
+    CarAdapterRecycleView(Context context, List<Car> cars, OnCarsClickListener onClickListener) {
         this.cars = cars;
         this.inflater = LayoutInflater.from(context);
+        this.onClickListener = onClickListener;
     }
 
     @Override
@@ -32,6 +39,12 @@ public class CarAdapterRecycleView extends RecyclerView.Adapter<CarAdapterRecycl
        holder.nameView.setText(car.getName());
         holder.priceView.setText(String.valueOf(car.getPrice()));
           holder.descriptionView.setText(car.getDescribtion());
+          holder.itemView.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  onClickListener.onCarClick(car, position);
+              }
+          });
     }
 
     @Override

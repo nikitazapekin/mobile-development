@@ -4,14 +4,14 @@
 
     <item android:id="@+id/listVFragment"
         android:title="ListView"
-        app:showAsAction="never"
+        app:showAsAction="always"
         />
     <item android:id="@+id/recyclerFragment"
         android:title="RecuclerView"
-        app:showAsAction="never"
+        app:showAsAction="always"
         />
-
-  <!--  <item android:id="@+id/first"
+<!--
+   <item android:id="@+id/ListView"
         android:title="Home"
         android:icon="@mipmap/ic_launcher"
         app:showAsAction="always"

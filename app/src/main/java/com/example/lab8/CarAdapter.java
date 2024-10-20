@@ -21,26 +21,6 @@ public class CarAdapter extends ArrayAdapter<Car> {
         this.context = context;
         this.cars = objects;
     }
-/*
-    @Nullable
-
-    public  View getItem(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-    //    return cars.get(position);
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        // LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SEVICE);
-        View rootView = inflater.inflate(R.layout.list_item, parent, false);
-        Car currentCar = cars.get(position);
-
-        TextView nameTextView  = rootView.findViewById(R.id.name_text_view);
-        TextView priceTextView  = rootView.findViewById(R.id.price_text_view);
-        TextView describtionTextView  = rootView.findViewById(R.id.describtion_text_view);
-        nameTextView.setText(currentCar.getName());
-        priceTextView.setText(currentCar.getPrice());
-        describtionTextView.setText(currentCar.getDescribtion());
-        return rootView;
-    }
-    */
 
 
     @Override

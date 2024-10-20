@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,6 +18,29 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.List;
 
+
+
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+
+import com.google.android.material.appbar.MaterialToolbar;
+
+
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 public class ListVFragment extends Fragment {
 
@@ -74,11 +98,6 @@ public class ListVFragment extends Fragment {
         ListView lvMain = (ListView) view.findViewById(R.id.lvMain);
 
 
-/*
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                getActivity(), R.array.names, android.R.layout.simple_list_item_single_choice);
-        lvMain.setAdapter(adapter);
-*/
         List<Car> cars = Car.getCars();
 ArrayAdapter<Car> adapter = new CarAdapter(getActivity(), R.id.lvMain, cars);
 lvMain.setAdapter(adapter);
@@ -102,4 +121,12 @@ lvMain.setAdapter(adapter);
         return view;
        // return inflater.inflate(R.layout.list_gragment, container, false);
     }
+
+/*
+    @Override
+    public  boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return  super.onCreateOptionsMenu(menu);
+    }
+*/
 }

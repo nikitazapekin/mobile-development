@@ -11,10 +11,7 @@
         android:name="com.example.lab8.ListVFragment"
         android:label="list_gragment"
         tools:layout="@layout/list_gragment" >
-    <!--    <action
-            android:id="@+id/action_listVFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
-            -->
+
     </fragment>
     <fragment
         android:id="@+id/recyclerFragment"
@@ -31,6 +28,12 @@
             <argument
                 android:name="fullDescribtion"
                 app:argType="string" />
+            <argument
+                android:name="describtion"
+                app:argType="string" />
+            <argument
+                android:name="price"
+                app:argType="string" />
         </action>
     </fragment>
     <fragment
@@ -43,6 +46,12 @@
             app:argType="string" />
         <argument
             android:name="fullDescribtion"
+            app:argType="string" />
+        <argument
+            android:name="describtion"
+            app:argType="string" />
+        <argument
+            android:name="price"
             app:argType="string" />
     </fragment>
 </navigation>

@@ -153,8 +153,10 @@ public class RecyclerFragment extends Fragment {
     private void handleredirect(View v, Car car, int index) {
         String name = car.getName();
         String fullDecribtion = car.getFullDescribtion();
+        String describtion = car.getDescribtion();
+        String price= String.valueOf(car.getPrice());
         RecyclerFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
-                RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion);
+                RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion, describtion, price);
         Navigation.findNavController(v).navigate(action);
     }
 }

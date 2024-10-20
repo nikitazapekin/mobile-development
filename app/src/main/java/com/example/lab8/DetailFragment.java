@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class DetailFragment extends Fragment {
@@ -18,8 +19,11 @@ public class DetailFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
+    private String name;
     private String fullDescribtion;
+    private String price;
+    private String describtion;
+
     public DetailFragment() {
 
     }
@@ -47,17 +51,20 @@ public class DetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.detail_fragment, container, false);
-   /*     SecondArgs args = SecondArgs.fromBundle(getArguments());
-        //  MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
 
-        name = args.getName();
-        tel = args.getTelephone();
-        adres = args.getAdres();
-
-        items = args.getSavedItem(); */
         DetailFragmentArgs args =    DetailFragmentArgs.fromBundle(getArguments());
         fullDescribtion = args.getFullDescribtion();
-     //   return inflater.inflate(R.layout.detail_fragment, container, false);
+        name = args.getName();
+      describtion = args.getDescribtion();
+     price = args.getPrice();
+        TextView titleText = view.findViewById(R.id.textView);
+        TextView describtionText = view.findViewById(R.id.textView2);
+        TextView priceText = view.findViewById(R.id.textView3);
+        TextView fulldescribtionText = view.findViewById(R.id.textView4);
+        titleText.setText(name);
+        describtionText.setText(describtion);
+        priceText.setText(price +"$");
+        fulldescribtionText.setText(fullDescribtion);
         return view;
     }
 }

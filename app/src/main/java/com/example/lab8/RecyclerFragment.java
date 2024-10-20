@@ -156,8 +156,8 @@ public class RecyclerFragment extends Fragment {
         String fullDecribtion = car.getFullDescribtion();
         String describtion = car.getDescribtion();
         String price= String.valueOf(car.getPrice());
+        int imageResId = car.getLogo();
 
-        int imageResId = R.drawable.car;
         RecyclerFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
                 RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion, describtion, price, imageResId);
         Navigation.findNavController(v).navigate(action);

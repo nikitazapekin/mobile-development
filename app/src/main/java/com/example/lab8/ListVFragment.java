@@ -41,7 +41,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
+import android.util.Log;
 public class ListVFragment extends Fragment {
 
    String[] names = {
@@ -55,7 +55,7 @@ public class ListVFragment extends Fragment {
    };
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final String TAG = "ListVFragment";
 
     private String mParam1;
     private String mParam2;
@@ -104,6 +104,8 @@ lvMain.setAdapter(adapter);
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity(), "Clicked " + position + ", id " + id, Toast.LENGTH_SHORT).show();
+
+                Log.d(TAG, "Clicked " + position + ", id " + id);
             }
 
 

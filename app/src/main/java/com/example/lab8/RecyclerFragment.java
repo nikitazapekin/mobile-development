@@ -140,7 +140,7 @@ public class RecyclerFragment extends Fragment {
             @Override
             public void onCarClick(Car car, int position) {
                 Toast.makeText(getActivity(), "click", Toast.LENGTH_SHORT).show();
-                handleredirect(view, car, position); // Pass the view
+                handleredirect(view, car, position);
             }
         };
 

@@ -83,6 +83,7 @@ RecyclerFragmentDirections.ActionRecyclerFragmentToDetailFragment action = Recyc
 
 package com.example.lab8;
 
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -155,8 +156,10 @@ public class RecyclerFragment extends Fragment {
         String fullDecribtion = car.getFullDescribtion();
         String describtion = car.getDescribtion();
         String price= String.valueOf(car.getPrice());
+
+        int imageResId = R.drawable.car;
         RecyclerFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
-                RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion, describtion, price);
+                RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion, describtion, price, imageResId);
         Navigation.findNavController(v).navigate(action);
     }
 }

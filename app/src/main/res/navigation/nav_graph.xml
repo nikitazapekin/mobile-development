@@ -34,6 +34,9 @@
             <argument
                 android:name="price"
                 app:argType="string" />
+            <argument
+                android:name="imageResId"
+                app:argType="integer" />
         </action>
     </fragment>
     <fragment
@@ -53,5 +56,9 @@
         <argument
             android:name="price"
             app:argType="string" />
+
+        <argument
+            android:name="imageResId"
+            app:argType="integer" />
     </fragment>
 </navigation>

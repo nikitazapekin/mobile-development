@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -23,7 +24,7 @@ public class DetailFragment extends Fragment {
     private String fullDescribtion;
     private String price;
     private String describtion;
-
+private  int imageResId;
     public DetailFragment() {
 
     }
@@ -57,6 +58,7 @@ public class DetailFragment extends Fragment {
         name = args.getName();
       describtion = args.getDescribtion();
      price = args.getPrice();
+     imageResId = args.getImageResId();
         TextView titleText = view.findViewById(R.id.textView);
         TextView describtionText = view.findViewById(R.id.textView2);
         TextView priceText = view.findViewById(R.id.textView3);
@@ -65,6 +67,11 @@ public class DetailFragment extends Fragment {
         describtionText.setText(describtion);
         priceText.setText(price +"$");
         fulldescribtionText.setText( fullDescribtion);
+
+
+        ImageView imageView = view.findViewById(R.id.image);
+        imageView.setImageResource(imageResId);
+
         return view;
     }
 }

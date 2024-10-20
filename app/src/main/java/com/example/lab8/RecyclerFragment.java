@@ -55,14 +55,7 @@ public class RecyclerFragment extends Fragment {
         CarAdapterRecycleView adapter = new CarAdapterRecycleView(getActivity(), cars);
         recyclerView.setAdapter(adapter);
 
-        // If you want to set click listeners for items, you can do that in the adapter itself.
-        // Alternatively, use the following approach to set a click listener for the whole view:
-    /*    adapter.setOnItemClickListener(new CarAdapterRecycleView.OnItemClickListener() {
 
-            public void onItemClick(int position) {
-                Toast.makeText(getActivity(), "Clicked " + position, Toast.LENGTH_SHORT).show();
-            }
-        }); */
 
         return view;
     }

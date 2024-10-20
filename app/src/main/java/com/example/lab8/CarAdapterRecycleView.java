@@ -2,11 +2,14 @@
 
 package com.example.lab8;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
@@ -34,7 +37,7 @@ public class CarAdapterRecycleView extends RecyclerView.Adapter<CarAdapterRecycl
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Car car = cars.get(position);
        holder.nameView.setText(car.getName());
         holder.priceView.setText(String.valueOf(car.getPrice()));
@@ -63,4 +66,7 @@ public class CarAdapterRecycleView extends RecyclerView.Adapter<CarAdapterRecycl
             descriptionView = view.findViewById(R.id.describtion_text_view1);
         }
     }
+
+
+
 }

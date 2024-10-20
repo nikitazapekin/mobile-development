@@ -152,8 +152,9 @@ public class RecyclerFragment extends Fragment {
 
     private void handleredirect(View v, Car car, int index) {
         String name = car.getName();
+        String fullDecribtion = car.getFullDescribtion();
         RecyclerFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
-                RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name);
+                RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion);
         Navigation.findNavController(v).navigate(action);
     }
 }

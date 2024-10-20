@@ -43,11 +43,6 @@ public class CarAdapter extends ArrayAdapter<Car> {
         describtionTextView.setText(currentCar.getDescribtion());
 
 
-
-       // ImageView carImageView =  convertView.findViewById(R.id.test);
-     //   Car car = Car.getCars().get(0); // Получите первую машину
-    //    carImageView.setImageResource(currentCar.getLogo());
-     //   carImageView.setImageResource(car.getLogo()); // Установите изображение
         return convertView;
     }
 

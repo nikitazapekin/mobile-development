@@ -28,6 +28,9 @@
             <argument
                 android:name="name"
                 app:argType="string" />
+            <argument
+                android:name="fullDescribtion"
+                app:argType="string" />
         </action>
     </fragment>
     <fragment
@@ -35,8 +38,11 @@
         android:name="com.example.lab8.DetailFragment"
         android:label="detail_fragment"
         tools:layout="@layout/detail_fragment" >
-     <!--   <action
-            android:id="@+id/action_detailFragment_to_recyclerFragment"
-            app:destination="@id/recyclerFragment" /> -->
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="fullDescribtion"
+            app:argType="string" />
     </fragment>
 </navigation>

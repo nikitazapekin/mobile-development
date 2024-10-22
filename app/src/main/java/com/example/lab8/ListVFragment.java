@@ -97,7 +97,7 @@ lvMain.setAdapter(adapter);
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity(), "Clicked " + position + ", id " + id, Toast.LENGTH_SHORT).show();
 
-                Log.d(TAG, "Clicked " + position + ", id " + id);
+                Log.d(TAG, "id " + id);
             }
 
 

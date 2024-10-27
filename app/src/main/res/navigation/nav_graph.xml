@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress NavigationFile -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/auth">
+
+    <fragment
+        android:id="@+id/auth"
+        android:name="com.example.lab5variant3.Auth"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_auth_to_personal"
+            app:destination="@id/personal" >
+            <argument
+                android:name="name"
+                app:argType="string"
+                />
+            <argument
+                android:name="email"
+                app:argType="string"
+                />
+            <argument
+                android:name="savedItem"
+                app:argType="string[]" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/personal"
+        android:name="com.example.lab5variant3.Personal"
+        android:label="fragment_personal"
+        tools:layout="@layout/fragment_personal" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            />
+        <argument
+            android:name="email"
+            app:argType="string"
+            />
+        <argument
+            android:name="savedItem"
+            app:argType="string[]" />
+        <action
+            android:id="@+id/action_personal_to_add2"
+            app:destination="@id/add2" >
+            <argument
+                android:name="name"
+                app:argType="string"
+                />
+            <argument
+                android:name="email"
+                app:argType="string"
+                />
+            <argument
+                android:name="savedItem"
+                app:argType="string[]" />
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/add2"
+        android:name="com.example.lab5variant3.Add"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            />
+        <argument
+            android:name="email"
+            app:argType="string"
+            />
+        <argument
+            android:name="savedItem"
+            app:argType="string[]" />
+        <action
+            android:id="@+id/action_add2_to_personal"
+            app:destination="@id/personal" >
+            <argument
+                android:name="name"
+                app:argType="string"
+                />
+            <argument
+                android:name="email"
+                app:argType="string"
+                />
+            <argument
+                android:name="savedItem"
+                app:argType="string[]" />
+        </action>
+    </fragment>
+</navigation>

@@ -2,6 +2,7 @@ package com.example.lab7fix;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.google.android.material.appbar.MaterialToolbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,10 +68,11 @@ public class First extends Fragment {
 
 
         });
-
+        MaterialToolbar toolbar = view.findViewById(R.id.toolbar);
+       ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
         return view;
-      //  return inflater.inflate(R.layout.fragment_first, container, false);
+
     }
 
 

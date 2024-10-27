@@ -1,15 +1,21 @@
 package com.example.lab7fix;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -29,19 +35,20 @@ public class Third extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
+    public static final String PREFS_FILE = "screenData";
+
+    private EditText nameEditText;
+    private EditText emailEditText;
+    private EditText passwordEditText;
+    private RadioGroup genderGroup;
+
     public Third() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Third.
-     */
-    // TODO: Rename and change types and number of parameters
+
+
     public static Third newInstance(String param1, String param2) {
         Third fragment = new Third();
         Bundle args = new Bundle();
@@ -59,44 +66,130 @@ public class Third extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-/*
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third, container, false);
-    }
-    */
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
 
         View view = inflater.inflate(R.layout.fragment_third, container, false);
 
-      /*  TextView haveAccount = view.findViewById(R.id.textView7);
+
+
+        TextView haveAccount = view.findViewById(R.id.textView7);
         Button button = view.findViewById(R.id.button);
+        Button signInButton = view.findViewById(R.id.login_button);
+
+
+
+       // nameEditText = view.findViewById(R.id.nameET);
+        emailEditText = view.findViewById(R.id.emailET);
+        passwordEditText = view.findViewById(R.id.passwordET);
+       // genderGroup = view.findViewById(R.id.pizza_group);
+
+
+
+
+
+
+       signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validateForm(view);
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handleRedirect(view);
             }
-
-
         });
+
         haveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handleRedirectToAuthorithation(view);
             }
-        }); */
+        });
+
+
+
         MaterialToolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
         return view;
 
+    }
+
+
+    private void validateForm(View view) {
+
+
+        Log.d("Debug", "emailEditText: " + emailEditText);
+        Log.d("Debug", "passwordEditText: " + passwordEditText);
+
+
+        if ( emailEditText == null || passwordEditText == null ) {
+            Log.e("Debug", "EditText или RadioGroup равны null");
+            return;
+        }
+
+
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+
+
+        if (email.isEmpty()) {
+            Toast.makeText(getActivity(), "Введите почту", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (password.isEmpty()) {
+            Toast.makeText(getActivity(), "Введите пароль", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        if (password.length() < 6) {
+            Toast.makeText(getActivity(), "Пароль должен содержать минимум 6 символов", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Toast.makeText(getActivity(), "dfk", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), email + password, Toast.LENGTH_SHORT).show();
+       // saveUser(view, email, password);
+
+    }
+    private void saveUser(View view,  String email, String password) {
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(PREFS_FILE, AppCompatActivity.MODE_PRIVATE);
+
+
+        String existingEmail = sharedPreferences.getString("email", null);
+        if (existingEmail != null && existingEmail.equals(email)) {
+            Toast.makeText(getActivity(), "Пользователь с таким email уже существует", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("email", email);
+        editor.putString("password", password);
+
+        editor.apply();
+        handleRedirect(view);
+        Toast.makeText(getActivity(), "Данные пользователя сохранены", Toast.LENGTH_SHORT).show();
+    }
+
+    void handleRedirect(View v) {
+        Navigation.findNavController(v).navigate(R.id.action_third_to_second);
+    }
+
+    void handleRedirectToAuthorithation(View v) {
+        Navigation.findNavController(v).navigate(R.id.action_third_to_first);
     }
 
 }

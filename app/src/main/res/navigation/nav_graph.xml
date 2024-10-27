@@ -26,5 +26,12 @@
         android:id="@+id/third"
         android:name="com.example.lab7fix.Third"
         android:label="fragment_third"
-        tools:layout="@layout/fragment_third" />
+        tools:layout="@layout/fragment_third" >
+        <action
+            android:id="@+id/action_third_to_first"
+            app:destination="@id/first" />
+        <action
+            android:id="@+id/action_third_to_second"
+            app:destination="@id/second" />
+    </fragment>
 </navigation>

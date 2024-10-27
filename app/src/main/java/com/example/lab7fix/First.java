@@ -33,7 +33,7 @@ public class First extends Fragment {
     private EditText emailEditText;
     private EditText passwordEditText;
     private RadioGroup genderGroup;
-    SharedPreferences screenData;
+
 
     public First() {
 

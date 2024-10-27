@@ -43,4 +43,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     val nav_version="2.5.0"
     implementation("androidx.navigation:navigation-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-ui:$nav_version")
+        //  implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.11.0")
+
 }

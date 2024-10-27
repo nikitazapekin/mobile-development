@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress NavigationFile -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/first">
 
+
+
+
     <fragment
         android:id="@+id/first"
         android:name="com.example.lab7.First"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_first" />
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_first_to_third"
+            app:destination="@id/third" />
+    </fragment>
     <fragment
         android:id="@+id/second"
         android:name="com.example.lab7.Second"

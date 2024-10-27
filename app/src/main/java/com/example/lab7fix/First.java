@@ -153,7 +153,7 @@ public class First extends Fragment {
 saveUser(name, email, password, selectedGenderId);
         handleRedirect(view);
     }
-
+/*
     private void saveUser(String name, String email, String password, int genderId) {
 
         screenData = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
@@ -168,6 +168,46 @@ saveUser(name, email, password, selectedGenderId);
         editor.apply();
         Toast.makeText(getActivity(), "Данные пользователя сохранены", Toast.LENGTH_SHORT).show();
     }
+
+
+ */
+
+    /*
+private void saveUser(String name, String email, String password, int genderId) {
+    SharedPreferences sharedPreferences = getActivity().getSharedPreferences(PREFS_FILE, AppCompatActivity.MODE_PRIVATE);
+    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+    editor.putString("name", name);
+    editor.putString("email", email);
+    editor.putString("password", password);
+    editor.putInt("genderId", genderId);
+
+    editor.apply();
+    Toast.makeText(getActivity(), "Данные пользователя сохранены", Toast.LENGTH_SHORT).show();
+}
+
+     */
+    private void saveUser(String name, String email, String password, int genderId) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(PREFS_FILE, AppCompatActivity.MODE_PRIVATE);
+
+        // Проверка на существующий email
+        String existingEmail = sharedPreferences.getString("email", null);
+        if (existingEmail != null && existingEmail.equals(email)) {
+            Toast.makeText(getActivity(), "Пользователь с таким email уже существует", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("name", name);
+        editor.putString("email", email);
+        editor.putString("password", password);
+        editor.putInt("genderId", genderId);
+        editor.apply();
+
+        Toast.makeText(getActivity(), "Данные пользователя сохранены", Toast.LENGTH_SHORT).show();
+    }
+
 
     void handleRedirect(View v) {
         Navigation.findNavController(v).navigate(R.id.action_first_to_second);

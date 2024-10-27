@@ -8,8 +8,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 public class First extends Fragment {
 
@@ -52,6 +57,48 @@ public class First extends Fragment {
         View view  = inflater.inflate(R.layout.fragment_first, container, false);
         MaterialToolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+
+
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RadioGroup pizzaGroup =view.findViewById(R.id.pizza_group) ;
+                int pizzaType = pizzaGroup.getCheckedRadioButtonId() ;
+                if (pizzaType == -1) {
+                    Toast.makeText(getActivity(),  "Heo6xogumo BbiOpaTb nuuuy",
+                    Toast.LENGTH_SHORT).show() ;
+                } else {
+                    String order ="";
+                    if (pizzaType == R. id.radio_margarita) {
+
+                        //        }
+
+                        order = "Muuyya \"Mapraputa\"";
+                    }
+else if (pizzaType == R.id.radio_peperoni) {
+
+
+                        order = "Muuya \"Menneponu\"";
+                    }
+                else if (pizzaType == R.id.radio_barbeku) {
+                        order = "Muyya \"Bap6exw\"";
+                    }
+                Chip cheeseBort = view. findViewById(R.id.cheese_bort);
+                order += cheeseBort.isChecked()? " mic cbipHbiii Gopt" : "";
+                Chip mozarelaMini = view.findViewById(R.id.mozarella_mini);
+
+
+
+                        order += mozarelaMini.isChecked() ? " mnoc mouapenna-mini" : "ed";
+
+                        Snackbar.make( fab, order, Snackbar.LENGTH_LONG).show();
+
+            }
+        }
+    });
+
+
         return view;
     }
 }

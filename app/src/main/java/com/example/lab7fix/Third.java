@@ -157,31 +157,33 @@ public class Third extends Fragment {
             Toast.makeText(getActivity(), "Пароль должен содержать минимум 6 символов", Toast.LENGTH_SHORT).show();
             return;
         }
-        Toast.makeText(getActivity(), "dfk", Toast.LENGTH_SHORT).show();
-        Toast.makeText(getActivity(), email + password, Toast.LENGTH_SHORT).show();
-       // saveUser(view, email, password);
 
+       // saveUser(view, email, password);
+checkUser(view, email, password);
     }
-    private void saveUser(View view,  String email, String password) {
+    private void checkUser(View view,  String email, String password) {
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(PREFS_FILE, AppCompatActivity.MODE_PRIVATE);
 
 
         String existingEmail = sharedPreferences.getString("email", null);
-        if (existingEmail != null && existingEmail.equals(email)) {
-            Toast.makeText(getActivity(), "Пользователь с таким email уже существует", Toast.LENGTH_SHORT).show();
-            return;
+        String existingPassword = sharedPreferences.getString("password", null);
+        if (existingEmail != null && existingEmail.equals(email) && existingPassword!=null && existingPassword.equals(password) ) {
+            handleRedirect(view);
+
+        }  else  {
+            Toast.makeText(getActivity(), "Пожалуйста проверьте введенный пароль и почту", Toast.LENGTH_SHORT).show();
         }
 
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+      /*  SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("email", email);
         editor.putString("password", password);
 
         editor.apply();
         handleRedirect(view);
-        Toast.makeText(getActivity(), "Данные пользователя сохранены", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Данные пользователя сохранены", Toast.LENGTH_SHORT).show(); */
     }
 
     void handleRedirect(View v) {

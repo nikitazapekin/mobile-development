@@ -150,47 +150,14 @@ public class First extends Fragment {
             Toast.makeText(getActivity(), "Выберите пол", Toast.LENGTH_SHORT).show();
             return;
         }
-saveUser(name, email, password, selectedGenderId);
-        handleRedirect(view);
+saveUser(view, name, email, password, selectedGenderId);
+
     }
-/*
-    private void saveUser(String name, String email, String password, int genderId) {
+    private void saveUser(View view, String name, String email, String password, int genderId) {
 
-        screenData = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(PREFS_FILE, AppCompatActivity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString("name", name);
-        editor.putString("email", email);
-        editor.putString("password", password);
-        editor.putInt("genderId", genderId);
-
-        editor.apply();
-        Toast.makeText(getActivity(), "Данные пользователя сохранены", Toast.LENGTH_SHORT).show();
-    }
-
-
- */
-
-    /*
-private void saveUser(String name, String email, String password, int genderId) {
-    SharedPreferences sharedPreferences = getActivity().getSharedPreferences(PREFS_FILE, AppCompatActivity.MODE_PRIVATE);
-    SharedPreferences.Editor editor = sharedPreferences.edit();
-
-    editor.putString("name", name);
-    editor.putString("email", email);
-    editor.putString("password", password);
-    editor.putInt("genderId", genderId);
-
-    editor.apply();
-    Toast.makeText(getActivity(), "Данные пользователя сохранены", Toast.LENGTH_SHORT).show();
-}
-
-     */
-    private void saveUser(String name, String email, String password, int genderId) {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(PREFS_FILE, AppCompatActivity.MODE_PRIVATE);
 
-        // Проверка на существующий email
+
         String existingEmail = sharedPreferences.getString("email", null);
         if (existingEmail != null && existingEmail.equals(email)) {
             Toast.makeText(getActivity(), "Пользователь с таким email уже существует", Toast.LENGTH_SHORT).show();
@@ -204,7 +171,7 @@ private void saveUser(String name, String email, String password, int genderId) 
         editor.putString("password", password);
         editor.putInt("genderId", genderId);
         editor.apply();
-
+        handleRedirect(view);
         Toast.makeText(getActivity(), "Данные пользователя сохранены", Toast.LENGTH_SHORT).show();
     }
 

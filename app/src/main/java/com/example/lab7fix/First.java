@@ -95,6 +95,6 @@ public class First extends Fragment {
         //Navigation.findNavController(v).navigate(action);
     }
     void handleRedirectToAuthorithation(View v) {
-        Navigation.findNavController(v).navigate(R.id.action_first_to_second);
+        Navigation.findNavController(v).navigate(R.id.action_first_to_third);
     }
 }

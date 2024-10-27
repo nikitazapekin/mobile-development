@@ -208,6 +208,39 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
 
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+
+
+                            android:layout_marginTop="16dp"
+                            android:text="Ваш пол"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
+
+                        <RadioGroup
+                            android:id="@+id/pizza_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView6"
+                            >
+
+                            <RadioButton android:id="@+id/radio_peperoni"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Мужчина"
+                                />
+                            <RadioButton android:id="@+id/radio_barbeku"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Женщина" />
+                        </RadioGroup>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

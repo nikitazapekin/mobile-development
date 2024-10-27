@@ -96,6 +96,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
             if (email.isEmpty()) errorMessage.append("Почта\n");
 
 
+
             errorTextView.setText(errorMessage.toString());
             errorTextView.setVisibility(View.VISIBLE);
             return;

@@ -1,3 +1,4 @@
+
 package com.example.lab5variant3;
 
 import android.os.Bundle;
@@ -11,12 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Add#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
 public class Add extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -31,10 +32,9 @@ public class Add extends Fragment {
     private EditText editTextName;
     private EditText editTextPhone;
 
-    private  String name="";
-    private String tel="";
-    private String adres="";
-    private String email="";
+    private  String userName="";
+
+    private String userEmail="";
     private  String[] items;
 
     public Add() {
@@ -68,8 +68,10 @@ public class Add extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add, container, false);
       AddArgs args = AddArgs.fromBundle(getArguments());
 
-        name = args.getName();
-      email = args.getEmail();
+     //   name = args.getName();
+     // email = args.getEmail();
+       userName = args.getName();
+      userEmail= args.getEmail();
       items = args.getSavedItem();
         editTextName = view.findViewById(R.id.editTextText3);
         editTextPhone = view.findViewById(R.id.editTextText4);
@@ -87,43 +89,11 @@ public class Add extends Fragment {
     }
 
 
-/*
-    public void handleSubmit(View v) {
-        String name = editTextName.getText().toString().trim();
-        String email = editTextPhone.getText().toString().trim();
-
-        TextView errorTextView = getView().findViewById(R.id.textView7);
-        errorTextView.setVisibility(View.GONE);
-
-        if (name.isEmpty() || email.isEmpty()) {
-            StringBuilder errorMessage = new StringBuilder("Пожалуйста, заполните все поля:\n");
-            if (name.isEmpty()) errorMessage.append("Имя\n");
-            if (email.isEmpty()) errorMessage.append("Почта\n");
-
-            errorTextView.setText(errorMessage.toString());
-            errorTextView.setVisibility(View.VISIBLE);
-            return;
-        }
-
-        // Создаем новый массив с дополнительным местом для строки name + email
-        String[] updatedItems = new String[items.length + 1];
-        System.arraycopy(items, 0, updatedItems, 0, items.length);
-
-        // Добавляем строку name + email в конец нового массива
-        updatedItems[items.length] = name + email;
-
-        // Переход с обновленным массивом items
-        AuthDirections.ActionAuthToPersonal action = AuthDirections.actionAuthToPersonal(name, email, updatedItems);
-        Navigation.findNavController(v).navigate(action);
-    }
-*/
-
 
     public void handleSubmit(View v) {
         String name = editTextName.getText().toString().trim();
         String email = editTextPhone.getText().toString().trim();
 
-        // Получаем ссылку на errorTextView через переданное представление
         TextView errorTextView = v.getRootView().findViewById(R.id.error);
         errorTextView.setVisibility(View.GONE);
 
@@ -137,51 +107,23 @@ public class Add extends Fragment {
             return;
         }
 
- /*       // Создаем новый массив с дополнительным местом для строки name + email
-        String[] updatedItems = new String[items.length + 1];
-        System.arraycopy(items, 0, updatedItems, 0, items.length);
+        // Создаем ArrayList из существующего массива
+        ArrayList<String> itemsList = new ArrayList<>(Arrays.asList(items));
+        itemsList.add(name + " " + email); // Добавляем строку name + email
 
-        // Добавляем строку name + email в конец нового массива
-        updatedItems[items.length] = name + email;
+        // Конвертируем обратно в массив
+        String[] updatedItems = itemsList.toArray(new String[0]);
 
-        // Переход с обновленным массивом items
-        AuthDirections.ActionAuthToPersonal action = AuthDirections.actionAuthToPersonal(name, email, updatedItems);
-        Navigation.findNavController(v).navigate(action);
+        // Выводим новый массив в Toast
+        StringBuilder itemsListToast = new StringBuilder("Новый массив:\n");
+        for (String item : updatedItems) {
+            itemsListToast.append(item).append("\n");
+        }
+        Toast.makeText(v.getContext(), itemsListToast.toString(), Toast.LENGTH_LONG).show();
 
-
-  */
-       AuthDirections.ActionAuthToPersonal action = AuthDirections.actionAuthToPersonal(name, email,new String[0]);
-        //AuthDirections.ActionAuthToPersonal action = AuthDirections.actionAuthToPersonal(name, email,items);
+        AddDirections.ActionAdd2ToPersonal action = AddDirections.actionAdd2ToPersonal(userName, userEmail, updatedItems);
         Navigation.findNavController(v).navigate(action);
     }
 
 }
 
-
-/*
-    public void handleSubmit(View v) {
-        String name = editTextName.getText().toString().trim();
-        String email= editTextPhone.getText().toString().trim();
-
-        TextView errorTextView = getView().findViewById(R.id.error);
-
-        errorTextView.setVisibility(View.GONE);
-
-        if (name.isEmpty() || email.isEmpty()) {
-            StringBuilder errorMessage = new StringBuilder("Пожалуйста, заполните все поля:\n");
-            if (name.isEmpty()) errorMessage.append("Имя\n");
-            if (email.isEmpty()) errorMessage.append("Почта\n");
-
-
-            errorTextView.setText(errorMessage.toString());
-            errorTextView.setVisibility(View.VISIBLE);
-            return;
-        }
-        items.push
-        AddDirections.ActionAdd2ToPersonal action = AddDirections.actionAdd2ToPersonal(name, email, items);
-
-
-        Navigation.findNavController(v).navigate(action);
-
-    }
-    */

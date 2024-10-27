@@ -11,7 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.util.Arrays;
+import android.widget.LinearLayout;
 public class Personal extends Fragment {
 
 
@@ -26,6 +27,7 @@ public class Personal extends Fragment {
     private String adres="";
     private String email="";
     private  String[] items;
+    private LinearLayout offersContainer;
     public Personal() {
         // Required empty public constructor
     }
@@ -54,7 +56,8 @@ public class Personal extends Fragment {
       email = args.getEmail();
 items = args.getSavedItem();
 
-     //   Toast.makeText(getContext(), "Выбранные элементы: " + Arrays.toString(items), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getContext(), "Выбранные элементы: " + Array.toString(items), Toast.LENGTH_SHORT).show();
+
         TextView textView1 = view.findViewById(R.id.textView8);
         TextView textView2 = view.findViewById(R.id.textView9);
 
@@ -73,45 +76,36 @@ items = args.getSavedItem();
 
         });
 
+
+
+        LayoutInflater itemInflater = LayoutInflater.from(getContext());
+        offersContainer = view.findViewById(R.id.elems);
+
+
+        if(items.length>=1) {
+
+
+
+            for (String item : items ){
+                View itemView = itemInflater.inflate(R.layout.list_item, offersContainer, false);
+                TextView itemName = itemView.findViewById(R.id.itemName);
+                itemName.setText(item);
+                offersContainer.addView(itemView);
+            }
+
+
+        } else {
+
+        }
+
+
         return view;
     }
 
     public void useNavigate(View v) {
 //
-        PersonalDirections.ActionPersonalToAdd2 action = PersonalDirections.actionPersonalToAdd2(name, email, items.length > 1 ? items : new String[0]);
+        PersonalDirections.ActionPersonalToAdd2 action = PersonalDirections.actionPersonalToAdd2(name, email, items.length !=0 ? items : new String[0]);
         Navigation.findNavController(v).navigate(action);
 
-        //    PersonalDirections.ActionPersonalToAdd2 action = PersonalDirections.actionPersonalToAdd2(   name ,email, items.length> 1 ? items :  new String[0]  );
-//      PersonalDirections.ActionSecondToMakeOrder action = PersonalDirections.actionSecondToMakeOrder(   name ,  tel,adres, items.length> 1 ? items :  new String[0]  );
-    //    Navigation.findNavController(v).navigate(R.id.action_personal_to_add2);
-  //      Navigation.findNavController(v).navigate(action);
     }
 }
-
-/*
-
-
-package com.example.lab5variant3;
-
-public class Participant {
-
-    private String name;
-    private String email;
-    public Participant(  String name,String email) {
-
-        this.name = name;
-        this.email = email;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-}
-
-
- */

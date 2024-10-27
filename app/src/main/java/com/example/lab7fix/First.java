@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -58,6 +59,8 @@ public class First extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_first, container, false);
+
+        TextView haveAccount = view.findViewById(R.id.textView7);
         Button button = view.findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +70,12 @@ public class First extends Fragment {
             }
 
 
+        });
+        haveAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleRedirectToAuthorithation(view);
+            }
         });
         MaterialToolbar toolbar = view.findViewById(R.id.toolbar);
        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
@@ -84,5 +93,8 @@ public class First extends Fragment {
         //  RecyclerFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
         //        RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion, describtion, price, imageResId);
         //Navigation.findNavController(v).navigate(action);
+    }
+    void handleRedirectToAuthorithation(View v) {
+        Navigation.findNavController(v).navigate(R.id.action_first_to_second);
     }
 }

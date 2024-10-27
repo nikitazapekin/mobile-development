@@ -74,13 +74,28 @@ public class First extends Fragment {
 
 
 
-        //       new StartGameDialogFragment().show(First.this.getActivity()
-          //      .getSupportFragmentManager(), "GAME_DIALOG");
+
         if (getActivity() != null) {
             new StartGameDialogFragment().show(getActivity().getSupportFragmentManager(), "GAME_DIALOG");
         }
 
 
+        AlertDialog.Builder builder =  new AlertDialog.Builder(getActivity());
+        builder.setMessage(R.string.dialog_message)
+                .setTitle(R.string.dialog_title)
+         .setPositiveButton(R.string.start, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // Действие при нажатии "Start"
+            }
+        })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Действие при нажатии "Cancel"
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
         return view;
     }
 

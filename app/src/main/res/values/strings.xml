@@ -8,4 +8,8 @@
     <string name="dialog_start_game">Do you want to start the game?</string>
     <string name="start">Start</string>
     <string name="cancel">Cancel</string>
+
+
+    <string name="dialog_message">Hello</string>
+    <string name="dialog_title">Hell</string>
 </resources>

@@ -81,7 +81,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
 
                         android:layout_width="match_parent"
-                        android:layout_height="523dp"
+                        android:layout_height="match_parent"
                         android:padding="20dp">
 
                         <TextView
@@ -142,7 +142,6 @@
                             app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
 
-
                         <com.google.android.material.textfield.TextInputLayout
 
                             android:id="@+id/textInputLayout1"
@@ -162,8 +161,6 @@
                                 android:layout_height="wrap_content"
 
                                 />
-
-
 
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -193,6 +190,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView5"
+                            app:endIconMode="password_toggle"
                             app:shapeAppearance="@style/Rounded">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -203,10 +201,7 @@
                                 />
 
 
-
-
                         </com.google.android.material.textfield.TextInputLayout>
-
 
 
                         <TextView
@@ -227,15 +222,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView6"
-                            >
+                            app:layout_constraintTop_toBottomOf="@+id/textView6">
 
-                            <RadioButton android:id="@+id/radio_peperoni"
+                            <RadioButton
+                                android:id="@+id/radio_peperoni"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Мужчина"
-                                />
-                            <RadioButton android:id="@+id/radio_barbeku"
+                                android:text="Мужчина" />
+
+                            <RadioButton
+                                android:id="@+id/radio_barbeku"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Женщина" />
@@ -247,68 +243,7 @@
 
 
                 </androidx.cardview.widget.CardView>
-<!--
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="16dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="20sp"
-                        android:text="test" />
-                    <RadioGroup
-                        android:id="@+id/pizza_group"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <RadioButton android:id="@+id/radio_margarita"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="text"
-                            />
-                        <RadioButton android:id="@+id/radio_peperoni"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="test"
-                            />
-                        <RadioButton android:id="@+id/radio_barbeku"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="text" />
-                    </RadioGroup>
-
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <com.google.android.material.chip.Chip
-
-                            android:id="@+id/cheese_bort"
-
-                            android:layout_width="wrap_content"
-
-                            android:layout_height="wrap_content"
-                            android:text="text"
-
-                            style="@style/Widget.MaterialComponents.Chip.Choice" />
-
-                        <com.google.android.material.chip.Chip
-
-                            android:id="@+id/mozarella_mini"
-
-                            android:layout_width="wrap_content"
-
-                            android:layout_height="wrap_content"
-
-                            android:text="ts"
-
-                            style="@style/Widget.MaterialComponents.Chip.Choice"/>
-                    </com.google.android.material.chip.ChipGroup>
-                </LinearLayout>
-                -->
             </androidx.core.widget.NestedScrollView>
 
 
@@ -326,28 +261,6 @@
                 />
 
 
-      <!--      <com.google.android.material.textfield.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-
-                app:endIconMode="password_toggle"
-                android:hint="text"
-                app:shapeAppearance="@style/Rounded"
-                app:layout_constraintTop_toBottomOf="@id/collapsing_toolbar">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/nameET"
-
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            -->
-
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
@@ -362,20 +275,3 @@
 </ScrollView>
 
 
-
-    <!--
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".First">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="first" />
-
-    </FrameLayout>
-
-    -->

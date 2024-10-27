@@ -12,6 +12,12 @@
     android:layout_height="wrap_content"
 android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
 >
+<com.google.android.material.appbar.CollapsingToolbarLayout
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+  >
+
 
 
   <com.google.android.material.appbar.MaterialToolbar
@@ -20,8 +26,23 @@ android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
       android:layout_height="?attr/actionBarSize"
       app:layout_scrollFlags="scroll|enterAlways"
 
+      app:layout_collapseMode="pin"
+
       />
+</com.google.android.material.appbar.CollapsingToolbarLayout>
 </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.core.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+android:text="Test"
+     />
+  </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 <!--

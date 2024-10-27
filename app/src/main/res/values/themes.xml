@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+ <!--   <style name="Base.Theme.Lab7" parent="Theme.Material3.DayNight.NoActionBar">
+
+    </style>
+
+
+    <style name="Theme.Lab7" parent="Base.Theme.Lab7" />
+
+    -->
+    <style name="Base.Theme.Lab7" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+    </style>
+    <style name="Theme.Lab7" parent="Base.Theme.Lab7">
+
+    </style>
+</resources>

@@ -107,7 +107,7 @@ public class First extends Fragment {
 
     private void validateForm(View view) {
 
-        // Debugging logs
+
         Log.d("Debug", "nameEditText: " + nameEditText);
         Log.d("Debug", "emailEditText: " + emailEditText);
         Log.d("Debug", "passwordEditText: " + passwordEditText);

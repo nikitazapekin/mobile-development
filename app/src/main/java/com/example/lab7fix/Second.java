@@ -1,18 +1,26 @@
+
 package com.example.lab7fix;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Second#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.material.appbar.MaterialToolbar;
+
+
 public class Second extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -41,16 +49,39 @@ public class Second extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    //    registerForContextMenu(findViewById(R.id.textView));
+        //registerForContextMenu(() findViewById(R.layout.textView));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_second, container, false);
+
+        registerForContextMenu(view.findViewById(R.id.textView));
+return view;
+
+    //    return inflater.inflate(R.layout.fragment_second, container, false);
     }
+    /*
+
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+        menu.setHeaderTitle("Выберите режим");
+        getMenuInflater().inflate(R.id.menu_edit, menu);
+    }
+public  boolean onContextItemSelected(MenuItem item) {
+
+        TextView textv = (TextView) findViewById(R.id.textView);
+        switch(item.getItemId()) {
+            case R.id.menu_edit:
+                textv.setTextColor(Color.BLUE);
+            default:
+                return super.onContextItemSelected(item);
+        }
 }
+*/
+
+}
+

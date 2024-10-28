@@ -176,14 +176,7 @@ checkUser(view, email, password);
         }
 
 
-      /*  SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putString("email", email);
-        editor.putString("password", password);
-
-        editor.apply();
-        handleRedirect(view);
-        Toast.makeText(getActivity(), "Данные пользователя сохранены", Toast.LENGTH_SHORT).show(); */
     }
 
     void handleRedirect(View v) {

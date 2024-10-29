@@ -8,28 +8,3 @@
         android:id="@+id/menu_edit_default"
         android:title="Сбросить" />
 </menu>
-
-<!--
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
-    <item
-        android:id="@+id/menu_edit_default"
-        android:title="Тестирование"
-        />
-    <item
-        android:id="@+id/menu_edit"
-        android:title="Ввод"
-        />
-
-
-</menu>
--->
-<!--
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
--->

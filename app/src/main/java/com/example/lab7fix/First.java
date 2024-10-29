@@ -1,5 +1,6 @@
 package com.example.lab7fix;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,11 +12,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import android.content.SharedPreferences;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class First extends Fragment {
 
@@ -34,7 +37,7 @@ public class First extends Fragment {
     private EditText passwordEditText;
     private RadioGroup genderGroup;
 
-
+private FloatingActionButton floatingActionButton;
     public First() {
 
     }
@@ -76,6 +79,8 @@ public class First extends Fragment {
 
 
 
+        floatingActionButton = view.findViewById(R.id.fab);
+
 
 
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +103,13 @@ public class First extends Fragment {
                 handleRedirectToAuthorithation(view);
             }
         });
+       floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleDisplayInfo(view);
+            }
+        });
+
 
         MaterialToolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -182,6 +194,24 @@ saveUser(view, name, email, password, selectedGenderId);
 
     void handleRedirectToAuthorithation(View v) {
         Navigation.findNavController(v).navigate(R.id.action_first_to_third);
+    }
+    void handleDisplayInfo(View v) {
+        AlertDialog.Builder builder =  new AlertDialog.Builder(getActivity());
+        builder.setMessage(R.string.dialog_message)
+                .setTitle(R.string.dialog_title)
+                .setPositiveButton(R.string.start, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
 

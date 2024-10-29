@@ -11,12 +11,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.lab7fix.R;
 
 public class Second extends Fragment {
 
+
+
+    private     TextView textView;
     public Second() {
 
     }
@@ -33,12 +37,25 @@ public class Second extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
 
-        TextView textView = view.findViewById(R.id.textView);
-        registerForContextMenu(textView);
+       // TextView textView = view.findViewById(R.id.textView);
+     //   registerForContextMenu(textView);
+
+        Button buttonAdd = view.findViewById(R.id.register_button1);
+       textView = view.findViewById(R.id.textView2);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleAdd(view);
+            }
+        });
 
         return view;
     }
+ void handleAdd(View v) {
+     // TextView textView = v.findViewById(R.id.textView2);
+     textView.setText("click");
 
+ }
 }
 /*
     @Override

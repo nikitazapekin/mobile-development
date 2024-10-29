@@ -1,87 +1,69 @@
-
 package com.example.lab7fix;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.android.material.appbar.MaterialToolbar;
-
+import android.widget.Toast;
+import com.example.lab7fix.R;
 
 public class Second extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     public Second() {
-        // Required empty public constructor
-    }
 
-
-    public static Second newInstance(String param1, String param2) {
-        Second fragment = new Second();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    //    registerForContextMenu(findViewById(R.id.textView));
-        //registerForContextMenu(() findViewById(R.layout.textView));
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
-        registerForContextMenu(view.findViewById(R.id.textView));
-return view;
 
-    //    return inflater.inflate(R.layout.fragment_second, container, false);
+        TextView textView = view.findViewById(R.id.textView);
+        registerForContextMenu(textView);
+
+        return view;
     }
-    /*
 
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
-        menu.setHeaderTitle("Выберите режим");
-        getMenuInflater().inflate(R.id.menu_edit, menu);
+}
+/*
+    @Override
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = requireActivity().getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        menu.setHeaderTitle("Выберите действие");
     }
-public  boolean onContextItemSelected(MenuItem item) {
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        TextView textView = requireView().findViewById(R.id.textView);
+        switch (item.getItemId()) {
 
-        TextView textv = (TextView) findViewById(R.id.textView);
-        switch(item.getItemId()) {
-            case R.id.menu_edit:
-                textv.setTextColor(Color.BLUE);
+            //com.example.lab7fix
+         //   case com.example.lab7Fix:
+          //      textView.setTextColor(Color.BLUE);
+          //      Toast.makeText(getContext(), "Вы выбрали редактирование", Toast.LENGTH_SHORT).show();
+           //     return true;
+            case R.id.menu_edit_default:
+                textView.setTextColor(Color.BLACK);
+                Toast.makeText(getContext(), "Вы выбрали сброс", Toast.LENGTH_SHORT).show();
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }
-}
+    }
 */
-
-}
-

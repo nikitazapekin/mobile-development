@@ -79,7 +79,7 @@ public class First extends Fragment {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
         TextView haveAccount = view.findViewById(R.id.textView7);
-        Button button = view.findViewById(R.id.button);
+
         Button registerButton = view.findViewById(R.id.register_button);
 
 
@@ -99,12 +99,6 @@ public class First extends Fragment {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleRedirect(view);
-            }
-        });
 
         haveAccount.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -83,7 +83,7 @@ public class Third extends Fragment {
 
 
         TextView haveAccount = view.findViewById(R.id.textView7);
-        Button button = view.findViewById(R.id.button);
+
         Button signInButton = view.findViewById(R.id.login_button);
 
 
@@ -105,12 +105,6 @@ public class Third extends Fragment {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleRedirect(view);
-            }
-        });
 
         haveAccount.setOnClickListener(new View.OnClickListener() {
             @Override

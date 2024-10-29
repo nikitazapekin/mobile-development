@@ -151,6 +151,13 @@
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/toolbarSecond"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 

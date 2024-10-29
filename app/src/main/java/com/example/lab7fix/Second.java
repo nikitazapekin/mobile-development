@@ -41,12 +41,20 @@ public class Second extends Fragment {
 
 
         Button buttonAdd = view.findViewById(R.id.register_button1);
+        Button buttonReverse = view.findViewById(R.id.register_button);
        textView = view.findViewById(R.id.textView2);
        editText = view.findViewById(R.id.nameET);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handleAdd(view);
+            }
+        });
+
+        buttonReverse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleReverse(view);
             }
         });
 
@@ -57,6 +65,32 @@ public class Second extends Fragment {
      textView.setText(text);
 
  }
+    /*
+ void handleReverse(View v) {
+
+ }
+
+     */
+
+
+    void handleReverse(View v) {
+        String text = textView.getText().toString().trim();
+        if (!text.isEmpty()) {
+            String[] words = text.split(" ");
+            StringBuilder reversedText = new StringBuilder();
+
+
+            for (int i = words.length - 1; i >= 0; i--) {
+                reversedText.append(words[i]);
+                if (i != 0) {
+                    reversedText.append(" ");
+                }
+            }
+
+            textView.setText(reversedText.toString());
+        }
+    }
+
 }
 /*
     @Override

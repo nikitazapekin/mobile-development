@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.lab7fix.R;
@@ -21,6 +22,7 @@ public class Second extends Fragment {
 
 
     private     TextView textView;
+    private EditText editText;
     public Second() {
 
     }
@@ -37,11 +39,10 @@ public class Second extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
 
-       // TextView textView = view.findViewById(R.id.textView);
-     //   registerForContextMenu(textView);
 
         Button buttonAdd = view.findViewById(R.id.register_button1);
        textView = view.findViewById(R.id.textView2);
+       editText = view.findViewById(R.id.nameET);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,8 +53,8 @@ public class Second extends Fragment {
         return view;
     }
  void handleAdd(View v) {
-     // TextView textView = v.findViewById(R.id.textView2);
-     textView.setText("click");
+     String text =editText.getText().toString().trim();
+     textView.setText(text);
 
  }
 }

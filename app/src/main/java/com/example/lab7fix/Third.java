@@ -3,6 +3,7 @@ package com.example.lab7fix;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -94,7 +95,9 @@ public class Third extends Fragment {
        // genderGroup = view.findViewById(R.id.pizza_group);
 
         floatingActionButton = view.findViewById(R.id.fab);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            floatingActionButton.setTooltipText("send");
+        }
 
 
 

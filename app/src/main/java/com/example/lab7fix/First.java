@@ -91,6 +91,9 @@ public class First extends Fragment {
 
         floatingActionButton = view.findViewById(R.id.fab);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            floatingActionButton.setTooltipText("send");
+        }
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override

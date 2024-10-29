@@ -71,27 +71,6 @@ public class Second extends Fragment {
         }
 
 
-      /*  AlertDialog.Builder builder =  new AlertDialog.Builder(getActivity());
-        builder.setMessage(R.string.dialog_message)
-                .setTitle(R.string.dialog_title)
-                .setPositiveButton(R.string.start, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // Действие при нажатии "Start"
-                    }
-                })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-
-                    }
-                });
-
-        AlertDialog dialog = builder.create();
-        dialog.show(); */
-
-        if (getActivity() != null) {
-            new StartGameDialogFragment().show(getActivity().getSupportFragmentManager(), "GAME_DIALOG");
-        }
-
         return view;
     }
 
@@ -132,23 +111,4 @@ public class Second extends Fragment {
 
 
 
-    public static  class StartGameDialogFragment extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage(R.string.dialog_start_game)
-                    .setPositiveButton(R.string.start, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            // Действие при нажатии "Start"
-                        }
-                    })
-                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            // Действие при нажатии "Cancel"
-                        }
-                    });
-            return builder.create();
-        }
-    }
 }

@@ -1,9 +1,13 @@
 package com.example.lab7fix;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -18,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,7 +47,7 @@ public class Third extends Fragment {
     private EditText emailEditText;
     private EditText passwordEditText;
     private RadioGroup genderGroup;
-
+    private FloatingActionButton floatingActionButton;
     public Third() {
         // Required empty public constructor
     }
@@ -88,7 +93,7 @@ public class Third extends Fragment {
         passwordEditText = view.findViewById(R.id.passwordET);
        // genderGroup = view.findViewById(R.id.pizza_group);
 
-
+        floatingActionButton = view.findViewById(R.id.fab);
 
 
 
@@ -111,6 +116,14 @@ public class Third extends Fragment {
             @Override
             public void onClick(View view) {
                 handleRedirectToAuthorithation(view);
+            }
+        });
+
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleDisplayModal(view);
             }
         });
 
@@ -186,5 +199,31 @@ checkUser(view, email, password);
     void handleRedirectToAuthorithation(View v) {
         Navigation.findNavController(v).navigate(R.id.action_third_to_first);
     }
+    void handleDisplayModal(View v) {
+        if (getActivity() != null) {
+                new StartGameDialogFragment().show(getActivity().getSupportFragmentManager(), "GAME_DIALOG");
+              }
+    }
 
+
+
+    public static  class StartGameDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage(R.string.dialog_start_game)
+                    .setPositiveButton(R.string.start, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });
+            return builder.create();
+        }
+    }
 }

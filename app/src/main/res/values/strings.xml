@@ -1,18 +1,16 @@
 <resources>
     <string name="app_name">Lab7Fix</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <string name="dialog_start_game">Do you want to start the game?</string>
+    <string name="dialog_start_game">Авторизуйтесь чтобы пользоваться сервсиом</string>
     <string name="start">Start</string>
     <string name="cancel">Cancel</string>
 
 
     <string name="dialog_title">Добро пожаловать</string>
     <string name="dialog_message">Зарегистрируйтесь чтобы пользоваться сервисом или авторизуйтесь</string>
-
-
 
     <string name="dialog_title1">Добро пожаловать</string>
     <string name="dialog_message1">Авторизуйтесь чтобы пользоваться сервсиом</string>

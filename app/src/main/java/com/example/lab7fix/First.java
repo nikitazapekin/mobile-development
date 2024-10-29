@@ -1,6 +1,10 @@
 package com.example.lab7fix;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,9 +18,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
 import android.content.SharedPreferences;
+
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -31,13 +40,16 @@ public class First extends Fragment {
     private static final String TAG = "MainActivity";
     private static final String USER_KEY = "userData";
     public static final String PREFS_FILE = "screenData";
+    private static final String CHANNEL_ID = "registration_channel";
+    private static final int NOTIFICATION_ID = 1;
 
     private EditText nameEditText;
     private EditText emailEditText;
     private EditText passwordEditText;
     private RadioGroup genderGroup;
 
-private FloatingActionButton floatingActionButton;
+    private FloatingActionButton floatingActionButton;
+
     public First() {
 
     }
@@ -71,16 +83,13 @@ private FloatingActionButton floatingActionButton;
         Button registerButton = view.findViewById(R.id.register_button);
 
 
-
         nameEditText = view.findViewById(R.id.nameET);
         emailEditText = view.findViewById(R.id.nameET1);
         passwordEditText = view.findViewById(R.id.nameET2);
         genderGroup = view.findViewById(R.id.pizza_group);
 
 
-
         floatingActionButton = view.findViewById(R.id.fab);
-
 
 
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +112,7 @@ private FloatingActionButton floatingActionButton;
                 handleRedirectToAuthorithation(view);
             }
         });
-       floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handleDisplayInfo(view);
@@ -162,9 +171,10 @@ private FloatingActionButton floatingActionButton;
             Toast.makeText(getActivity(), "Выберите пол", Toast.LENGTH_SHORT).show();
             return;
         }
-saveUser(view, name, email, password, selectedGenderId);
-
+        saveUser(view, name, email, password, selectedGenderId);
+        showNotification();
     }
+
     private void saveUser(View view, String name, String email, String password, int genderId) {
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(PREFS_FILE, AppCompatActivity.MODE_PRIVATE);
@@ -195,8 +205,9 @@ saveUser(view, name, email, password, selectedGenderId);
     void handleRedirectToAuthorithation(View v) {
         Navigation.findNavController(v).navigate(R.id.action_first_to_third);
     }
+
     void handleDisplayInfo(View v) {
-        AlertDialog.Builder builder =  new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(R.string.dialog_message)
                 .setTitle(R.string.dialog_title)
                 .setPositiveButton(R.string.start, new DialogInterface.OnClickListener() {
@@ -213,9 +224,37 @@ saveUser(view, name, email, password, selectedGenderId);
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+
+    private void showNotification() {
+        // Создание канала уведомлений, если версия Android >= Oreo
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Registration Channel";
+            String description = "Notifications for successful registration";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+
+        // Создание самого уведомления
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), CHANNEL_ID)
+                      .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("Регистрация успешна")
+                .setContentText("Ваши данные успешно сохранены.")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
+        if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+        }
+        notificationManager.notify(NOTIFICATION_ID, builder.build());
+    }
 }
 
-
-//  RecyclerFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
-//        RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion, describtion, price, imageResId);
-//Navigation.findNavController(v).navigate(action);

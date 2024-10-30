@@ -224,7 +224,7 @@ public class First extends Fragment {
 
 
     private void showNotification() {
-        // Создание канала уведомлений, если версия Android >= Oreo
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Registration Channel";
             String description = "Notifications for successful registration";
@@ -238,7 +238,7 @@ public class First extends Fragment {
             }
         }
 
-        // Создание самого уведомления
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), CHANNEL_ID)
                       .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Регистрация успешна")

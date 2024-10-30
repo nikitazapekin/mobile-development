@@ -25,15 +25,9 @@ import android.widget.Toast;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Third#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Third extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -50,7 +44,7 @@ public class Third extends Fragment {
     private RadioGroup genderGroup;
     private FloatingActionButton floatingActionButton;
     public Third() {
-        // Required empty public constructor
+
     }
 
 
@@ -89,10 +83,9 @@ public class Third extends Fragment {
 
 
 
-       // nameEditText = view.findViewById(R.id.nameET);
         emailEditText = view.findViewById(R.id.emailET);
         passwordEditText = view.findViewById(R.id.passwordET);
-       // genderGroup = view.findViewById(R.id.pizza_group);
+
 
         floatingActionButton = view.findViewById(R.id.fab);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -168,7 +161,6 @@ public class Third extends Fragment {
             return;
         }
 
-       // saveUser(view, email, password);
 checkUser(view, email, password);
     }
     private void checkUser(View view,  String email, String password) {

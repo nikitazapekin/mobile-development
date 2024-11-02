@@ -13,10 +13,10 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-
+import android.util.Log;
 public class MainActivity extends AppCompatActivity {
 
-
+    private static final String TAG = "MainActivity";
     private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,28 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText(value);
             }
         });
+
+        /* DataController dataController = DataController.getInstance();
+        mediatorLiveData.observe(this, new Observer<String>() {
+                    @Override
+                    public void onChanged(@Nullable String s) {
+                        log("onChanged " + s);
+                    }
+                }
+*/
+
+        DataController dataController = DataController.getInstance();
+
+        // Наблюдение за mediatorLiveData
+         dataController.getMediatorLiveData().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                Log.d(TAG, "onChanged: " + s);
+            }
+        });
+
+        // Пример обновления данных
+        dataController.setData("Hello, World!");
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

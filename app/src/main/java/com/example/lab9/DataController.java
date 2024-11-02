@@ -55,8 +55,7 @@ public class DataController {
 
     private LiveData<User> getUser(Long id) {
         MutableLiveData<User> userLiveData = new MutableLiveData<>();
-        // Получение данных пользователя (например, из базы данных)
-        // userLiveData.setValue(...); // Установите значение пользователя
+
         return userLiveData;
     }
     public LiveData<User> liveDataUser = (LiveData<User>) Transformations.switchMap(liveDataId, new Function<Long, LiveData<User>>() {
@@ -75,43 +74,31 @@ public class DataController {
 
     });
 
-    /*
-    LiveData<Long> liveDataId =
-
-            LiveData<User> liveDataUser = Transformations.switchMap(liveDatalId,
-                    new Function<Long, LiveData<User>>() {
-
-                        @Override
-                        public LiveData<User> apply(Long id) {
-                            return getUser(id);
-
-                        }
-                    });
-*/
-
-/*
-    MutableLiveData<String> liveDatal = new MutableLiveData<>();
-    MutableLiveData<String> liveData2 = new MutableLiveData<>();
-
-    MediatorLiveData<String> mediatorLiveData = new MediatorLiveData<>();
-
-mediatorLiveData.addSource(liveDatal, new Observer<String>() {
-        @Override
-        public void onChanged(@Nullable String s) {
-            mediatorLiveData.setValue(s);
-        }
 
 
-        mediatorLiveData.addSource(liveData2, new Observer<String>() {
+    private final MutableLiveData<String> liveDatal = new MutableLiveData<>();
+    private final MutableLiveData<String> liveData2 = new MutableLiveData<>();
+    private final MediatorLiveData<String> mediatorLiveData = new MediatorLiveData<>();
 
+    public DataController() {
+
+        mediatorLiveData.addSource(liveDatal, new Observer<String>() {
             @Override
-
             public void onChanged(@Nullable String s) {
                 mediatorLiveData.setValue(s);
-
             }
         });
 
- */
+        mediatorLiveData.addSource(liveData2, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                mediatorLiveData.setValue(s);
+            }
+        });
+    }
+
+    public LiveData<String> getMediatorLiveData() {
+        return mediatorLiveData;
+    }
 
 }

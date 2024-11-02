@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        getLifecycle().addObserver(new MyServer());
+        getLifecycle().addObserver(new MyServer(this));
 
 
         if (getLifecycle() .getCurrentState() == Lifecycle.State.RESUMED) {
@@ -63,3 +63,54 @@ public class MainActivity extends AppCompatActivity {
 
  */
 }
+
+
+
+/*
+package com.example.lab9;
+
+import android.content.Context;
+import android.widget.Toast;
+
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.OnLifecycleEvent;
+
+public class MyServer implements LifecycleObserver {
+
+private final Context context;
+
+public MyServer(Context context) {
+    this.context = context;
+}
+
+
+
+@OnLifecycleEvent(Lifecycle.Event.ON_START)
+public void connect() {
+    Toast.makeText(context, "connect() method executed", Toast.LENGTH_SHORT).show();
+//
+}
+
+@OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+public void disconnect() {
+    Toast.makeText(context, "disconnect() method executed", Toast.LENGTH_SHORT).show();
+//
+}
+@OnLifecycleEvent (Lifecycle.Event.ON_ANY)
+void onAny(LifecycleOwner source, Lifecycle.Event event) {
+    Toast.makeText(context, "onAny() method executed: " + event.name(), Toast.LENGTH_SHORT).show();
+}
+
+
+
+}
+
+ */
+/*
+public class MyServer {
+}
+
+
+ */

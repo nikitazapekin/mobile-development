@@ -45,7 +45,12 @@ dependencies {
     val nav_version="2.5.0"
     implementation("androidx.navigation:navigation-fragment:$nav_version")
 
-    val lifecycle_version = "2.5.0"
+
+    implementation("androidx.lifecycle:lifecycle-process:2.2.0")
+        //  implementation("android.arch.lifecycle:extensions:1.1.1")
+        /*   val lifecycle_version = "2.5.0"
     implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livadata:$lifecycle_version")
+*/
+
 }

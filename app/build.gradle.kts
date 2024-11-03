@@ -51,6 +51,11 @@ dependencies {
         /*   val lifecycle_version = "2.5.0"
     implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livadata:$lifecycle_version")
+
+
 */
+    val lifecycle_version = "2.5.0"
+    implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
+   // implementation("adroidx.lifecycle:lifecycle-view");
 
 }

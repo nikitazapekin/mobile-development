@@ -13,6 +13,8 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.util.Log;
 public class MainActivity extends AppCompatActivity {
 
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         DataController dataController = DataController.getInstance();
 
-        // Наблюдение за mediatorLiveData
+
          dataController.getMediatorLiveData().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -68,8 +70,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Пример обновления данных
         dataController.setData("Hello, World!");
+
+
+
+
+
+
+        MyViewModel  viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+
+        String nameText = viewModel.getNameText();
+        textView.setText(nameText);
+
+
+
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

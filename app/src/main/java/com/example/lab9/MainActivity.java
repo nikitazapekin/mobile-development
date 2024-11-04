@@ -92,7 +92,16 @@ public class MainActivity extends AppCompatActivity {
 
         button.setOnClickListener(view-> {
             textView1.setText(editText.getText());
+
+            viewModel.saveText(editText.getText().toString());
         } );
+
+
+        String text = viewModel.loadText();
+         if( text!=null) {
+textView1.setText(text);
+         }
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

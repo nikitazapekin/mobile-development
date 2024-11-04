@@ -1,6 +1,8 @@
 package com.example.lab9;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -80,11 +82,17 @@ public class MainActivity extends AppCompatActivity {
         MyViewModel  viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         String nameText = viewModel.getNameText();
+   
         textView.setText(nameText);
 
 
+        EditText editText  = findViewById(R.id.editTextText);
+        Button button  = findViewById(R.id.button);
+        TextView textView1 = findViewById(R.id.textView);
 
-
+        button.setOnClickListener(view-> {
+            textView1.setText(editText.getText());
+        } );
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

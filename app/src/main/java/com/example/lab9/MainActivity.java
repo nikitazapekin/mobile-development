@@ -104,13 +104,11 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
         Toast.makeText(this, "Цвет сохранен: " + color, Toast.LENGTH_SHORT).show();
     }
-
     private void applySavedColor(String color) {
         if (color.isEmpty()) {
             Toast.makeText(this, "Сохраненный цвет отсутствует!", Toast.LENGTH_SHORT).show();
             return;
         }
-
         View square1 = findViewById(R.id.green_square1);
         View square2 = findViewById(R.id.green_square2);
         View square3 = findViewById(R.id.green_square3);

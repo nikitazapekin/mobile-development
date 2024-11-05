@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress NavigationFile -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listVFragment">
+
+    <fragment
+        android:id="@+id/listVFragment"
+        android:name="com.example.lab9.ListVFragment"
+        android:label="list_gragment"
+        tools:layout="@layout/list_gragment" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/recyclerFragment"
+        android:name="com.example.lab9.RecyclerFragment"
+        android:label="recycler_fragment"
+        tools:layout="@layout/recycler_fragment" >
+        <action
+            android:id="@+id/action_recyclerFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            >
+            <argument
+                android:name="name"
+                app:argType="string" />
+            <argument
+                android:name="fullDescribtion"
+                app:argType="string" />
+            <argument
+                android:name="describtion"
+                app:argType="string" />
+            <argument
+                android:name="price"
+                app:argType="string" />
+            <argument
+                android:name="imageResId"
+                app:argType="integer" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.lab9.DetailFragment"
+        android:label="detail_fragment"
+        tools:layout="@layout/detail_fragment" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="fullDescribtion"
+            app:argType="string" />
+        <argument
+            android:name="describtion"
+            app:argType="string" />
+        <argument
+            android:name="price"
+            app:argType="string" />
+
+        <argument
+            android:name="imageResId"
+            app:argType="integer" />
+    </fragment>
+</navigation>

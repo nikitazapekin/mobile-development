@@ -38,6 +38,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -53,9 +54,12 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livadata:$lifecycle_version")
 
 
-*/
+    */
     val lifecycle_version = "2.5.0"
     implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
-   // implementation("adroidx.lifecycle:lifecycle-view");
+    // implementation("adroidx.lifecycle:lifecycle-view");
+
+   // implementation("androidx.recyclerview:recyclerview:1.3.1")
+//    implementation("androidx.navigation:navigation-ui:$nav_version")
 
 }

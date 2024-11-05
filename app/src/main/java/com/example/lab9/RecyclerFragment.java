@@ -159,7 +159,7 @@ public class RecyclerFragment extends Fragment {
 
                 viewModel.setCurrentCar(selectedCar);
 
-//                DataController.getInstance().setDataForScreen2(selectedCar);
+
 
 
                 updateUI(selectedCar);

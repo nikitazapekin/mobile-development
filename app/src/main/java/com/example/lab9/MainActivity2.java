@@ -46,18 +46,6 @@ public class MainActivity2 extends AppCompatActivity {
 
 
 
-/*
-
-        LiveData<String> liveData = DataController.getInstance().getData() ;
-
-        liveData.observe (this, new Observer<String>() {
-
-            public void onChanged(@Nullable String value) {
-                //  textView.setText(value);
-            }
-        });
-*/
-    //    DataController.getInstance().setData("123");
 
 
 

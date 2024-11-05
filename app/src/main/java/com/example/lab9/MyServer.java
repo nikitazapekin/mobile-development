@@ -31,7 +31,7 @@ public class MyServer implements LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void disconnect() {
         Toast.makeText(context, "disconnect() method executed", Toast.LENGTH_SHORT).show();
-//
+
     }
     @OnLifecycleEvent (Lifecycle.Event.ON_ANY)
     void onAny(LifecycleOwner source, Lifecycle.Event event) {

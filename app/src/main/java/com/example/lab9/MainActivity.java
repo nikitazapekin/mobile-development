@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (viewModel != null) {
-            viewModel.saveCurrentColor(color);
+           viewModel.saveCurrentColor(color);
         } else {
             Log.e(TAG, "viewModel is null");
         }

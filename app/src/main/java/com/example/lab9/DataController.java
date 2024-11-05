@@ -3,6 +3,7 @@
 package com.example.lab9;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -69,5 +70,30 @@ public class DataController {
     }
 
 
+
+
+    public boolean hasActiveObservers() {
+        return mediatorLiveData.hasActiveObservers();
+    }
+
+
+    public boolean hasObservers() {
+        return mediatorLiveData.hasObservers();
+    }
+
+
+    public void observeForever(Observer<Car> observer) {
+        mediatorLiveData.observeForever(observer);
+    }
+
+
+    public void removeObserver(Observer<Car> observer) {
+        mediatorLiveData.removeObserver(observer);
+    }
+
+
+    public void removeObservers(LifecycleOwner owner) {
+        mediatorLiveData.removeObservers(owner);
+    }
 
 }

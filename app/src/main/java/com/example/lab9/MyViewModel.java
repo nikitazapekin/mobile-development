@@ -7,8 +7,17 @@ public class MyViewModel extends ViewModel {
     String nameText;
 private String  text;
 
+private String currentColor = "";
+
     public String getNameText() {
         return nameText;
+    }
+
+    public String getCurrentColor() {
+        return currentColor;
+    }
+    void saveCurrentColor(String s) {
+        currentColor =s;
     }
     public  void setNameText(String name) {
         nameText= name;
@@ -17,6 +26,9 @@ private String  text;
 
     String loadText() {
         return text;
+    }
+    String loadCurrentColor() {
+        return currentColor;
     }
     void saveText(String s) {
         text =s;

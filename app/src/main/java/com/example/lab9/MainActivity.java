@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.content.res.Configuration;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String PREFS_FILE = "screenData";
 
     SharedPreferences screenData;
+
+    private MyViewModel viewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +68,47 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Log.d(TAG, "onCreate");
+
+
+
+
+
+
+
+        MyViewModel  viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+    String currentColor  = viewModel.getCurrentColor();
+    applySavedColor(currentColor);
+
+        String col = viewModel.loadText();
+        if( col!=null) {
+           // textView1.setText(text);
+            applySavedColor(col);
+        }
+        //  viewModel.saveCurrentColor(currentColor);
+    /*    MyViewModel  viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+
+        String nameText = viewModel.getNameText();
+
+        textView.setText(nameText);
+
+
+       EditText editText  = findViewById(R.id.editTextText);
+        Button button  = findViewById(R.id.button);
+        TextView textView1 = findViewById(R.id.textView);
+
+        button.setOnClickListener(view-> {
+            textView1.setText(editText.getText());
+
+            viewModel.saveText(editText.getText().toString());
+        } );
+
+
+        String text = viewModel.loadText();
+        if( text!=null) {
+            textView1.setText(text);
+        }
+*/
+
     }
 
     public void handleClick(View v) {
@@ -87,6 +133,13 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Нажата кнопка 3 (Зеленый)", Toast.LENGTH_SHORT).show();
             square3.setBackgroundResource(R.drawable.neon_green_square);
             color = "green";
+        }
+     //   viewModel.saveCurrentColor(color);
+
+        if (viewModel != null) {
+            viewModel.saveCurrentColor(color);
+        } else {
+            Log.e(TAG, "viewModel is null");
         }
     }
 
@@ -131,12 +184,14 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Загружен цвет: " + color, Toast.LENGTH_SHORT).show();
     }
 
+
+    /*
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(COLOR_KEY, color);
     }
-
+*/
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

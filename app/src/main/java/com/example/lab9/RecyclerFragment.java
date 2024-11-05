@@ -77,10 +77,10 @@ public class RecyclerFragment extends Fragment {
         String price= String.valueOf(car.getPrice());
         int imageResId = car.getLogo();
 
-   /*     RecyclerFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
+     RecyclerFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
                 RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion, describtion, price, imageResId);
         Navigation.findNavController(v).navigate(action);
 
-    */
+
     }
 }

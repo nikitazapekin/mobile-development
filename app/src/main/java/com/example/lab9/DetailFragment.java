@@ -54,7 +54,7 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.detail_fragment, container, false);
 
-        /*    DetailFragmentArgs args =    DetailFragmentArgs.fromBundle(getArguments());
+       DetailFragmentArgs args =    DetailFragmentArgs.fromBundle(getArguments());
         fullDescribtion = args.getFullDescribtion();
         name = args.getName();
         describtion = args.getDescribtion();
@@ -72,7 +72,7 @@ public class DetailFragment extends Fragment {
 
         ImageView imageView = view.findViewById(R.id.image);
         imageView.setImageResource(imageResId);
-*/
+
         return view;
     }
 }

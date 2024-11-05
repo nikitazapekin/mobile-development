@@ -64,6 +64,16 @@ public class MainActivity extends AppCompatActivity {
 
         screenData = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
 
+
+
+        color = screenData.getString(COLOR_KEY, "");
+
+        if (savedInstanceState != null) {
+            color = savedInstanceState.getString(COLOR_KEY, "");
+            applySavedColor(color);
+        }
+
+
         Log.d(TAG, "onCreate");
     }
 

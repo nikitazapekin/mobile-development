@@ -36,6 +36,7 @@
             android:id="@+id/button2"
             android:layout_width="130dp"
             android:layout_height="130dp"
+            android:layout_marginTop="4dp"
             android:background="@android:color/white"
             android:minWidth="48dp"
             android:minHeight="48dp"
@@ -44,9 +45,7 @@
             android:stateListAnimator="@null"
             android:text="Желтый"
             android:textColor="#000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.73"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/button1"
             app:layout_constraintTop_toBottomOf="@+id/button1" />
 
         <Button

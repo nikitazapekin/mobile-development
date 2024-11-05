@@ -21,4 +21,9 @@ private String  text;
     void saveText(String s) {
         text =s;
     }
+
+@Override
+    protected  void onCleared() {
+
+    }
 }

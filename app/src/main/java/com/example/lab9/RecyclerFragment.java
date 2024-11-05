@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -24,6 +27,20 @@ public class RecyclerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
+
+
+
+    private String name;
+    private String fullDescribtion;
+    private byte  price;
+    private String describtion;
+    private  int imageResId;
+    TextView titleText;
+    TextView describtionText;
+    TextView priceText;
+    TextView fulldescribtionText;
+    ImageView imageView;
     public RecyclerFragment() {
 
     }
@@ -51,16 +68,48 @@ public class RecyclerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_fragment, container, false);
 
+
+
+        titleText = view.findViewById(R.id.textView5);
+        describtionText = view.findViewById(R.id.textView2);
+        priceText = view.findViewById(R.id.textView3);
+        fulldescribtionText = view.findViewById(R.id.textView4);
+        imageView = view.findViewById(R.id.image);
+
+
+
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         List<Car> cars = Car.getCars();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity() , LinearLayoutManager.HORIZONTAL, false));
 
         CarAdapterRecycleView.OnCarsClickListener carsClickListener = new CarAdapterRecycleView.OnCarsClickListener() {
             @Override
             public void onCarClick(Car car, int position) {
                 Toast.makeText(getActivity(), "click", Toast.LENGTH_SHORT).show();
-                handleredirect(view, car, position);
+                //       handleredirect(view, car, position);
+
+
+
+
+                Car selectedCar = cars.get(position);
+                name = selectedCar.getName();
+                describtion = selectedCar.getDescribtion();
+                fullDescribtion = selectedCar.getFullDescribtion();
+                imageResId = selectedCar.getLogo();
+                price = selectedCar.getPrice();
+
+
+
+                titleText.setText(name);
+                describtionText.setText(describtion);
+                priceText.setText(price + "$");
+                fulldescribtionText.setText( fullDescribtion);
+
+
+
+                imageView.setImageResource(imageResId);
+
             }
         };
 
@@ -70,17 +119,5 @@ public class RecyclerFragment extends Fragment {
         return view;
     }
 
-    private void handleredirect(View v, Car car, int index) {
-        String name = car.getName();
-        String fullDecribtion = car.getFullDescribtion();
-        String describtion = car.getDescribtion();
-        String price= String.valueOf(car.getPrice());
-        int imageResId = car.getLogo();
 
-     RecyclerFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
-                RecyclerFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion, describtion, price, imageResId);
-        Navigation.findNavController(v).navigate(action);
-
-
-    }
 }

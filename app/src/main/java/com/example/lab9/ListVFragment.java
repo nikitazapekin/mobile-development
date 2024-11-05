@@ -1,7 +1,9 @@
 package com.example.lab9;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -135,6 +137,21 @@ TextView priceText;
         return view;
 
     }
+
+
+
+/*
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // Handle landscape layout if needed
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            // Handle portrait layout if needed
+        }
+    }
+*/
 
 
 }

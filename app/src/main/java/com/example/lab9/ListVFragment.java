@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -31,6 +33,19 @@ public class ListVFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
+
+
+    private String name;
+    private String fullDescribtion;
+    private byte  price;
+    private String describtion;
+    private  int imageResId;
+    TextView titleText;
+    TextView describtionText;
+TextView priceText;
+    TextView fulldescribtionText;
+    ImageView imageView;
     public ListVFragment() {
 
     }
@@ -62,6 +77,14 @@ public class ListVFragment extends Fragment {
         View view = inflater.inflate(R.layout.list_gragment, container, false);
 
 
+
+        titleText = view.findViewById(R.id.textView5);
+        describtionText = view.findViewById(R.id.textView2);
+       priceText = view.findViewById(R.id.textView3);
+        fulldescribtionText = view.findViewById(R.id.textView4);
+        imageView = view.findViewById(R.id.image);
+
+
         ListView lvMain = (ListView) view.findViewById(R.id.lvMain);
 
 
@@ -75,6 +98,28 @@ public class ListVFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity(), "Clicked: " + id , Toast.LENGTH_SHORT).show();
+
+
+                Car selectedCar = cars.get(position);
+                name = selectedCar.getName();
+                describtion = selectedCar.getDescribtion();
+                fullDescribtion = selectedCar.getFullDescribtion();
+                imageResId = selectedCar.getLogo();
+            price = selectedCar.getPrice();
+
+
+
+                titleText.setText(name);
+                describtionText.setText(describtion);
+               priceText.setText(price + "$");
+                fulldescribtionText.setText( fullDescribtion);
+
+
+
+                imageView.setImageResource(imageResId);
+
+
+
 
                 Log.d(TAG, "id " + id);
             }

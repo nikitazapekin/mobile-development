@@ -9,10 +9,13 @@ import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -40,6 +43,21 @@ public class MainActivity2 extends AppCompatActivity {
         NavigationUI.setupWithNavController(
                 toolbar, navController, appBarConfiguration
         );
+
+
+
+/*
+
+        LiveData<String> liveData = DataController.getInstance().getData() ;
+
+        liveData.observe (this, new Observer<String>() {
+
+            public void onChanged(@Nullable String value) {
+                //  textView.setText(value);
+            }
+        });
+*/
+    //    DataController.getInstance().setData("123");
 
 
 

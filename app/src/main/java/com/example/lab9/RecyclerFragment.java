@@ -2,13 +2,18 @@ package com.example.lab9;
 
 
 
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -81,7 +86,37 @@ public class RecyclerFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         List<Car> cars = Car.getCars();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity() , LinearLayoutManager.HORIZONTAL, false));
+     //   recyclerView.setLayoutManager(new LinearLayoutManager(getActivity() , LinearLayoutManager.HORIZONTAL, false));
+
+
+        int orientation = getResources().getConfiguration().orientation;
+
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        } else {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        }
+
+
+
+
+
+
+/*
+        LiveData<Car> liveData = DataController.getInstance().getData() ;
+
+        liveData.observe (getViewLifecycleOwner(), new Observer<Car>() {
+
+            public void onChanged(@Nullable Car value) {
+                //  textView.setText(value);
+            }
+        });
+*/
+        //    DataController.getInstance().setData("123");
+
+
+
 
         CarAdapterRecycleView.OnCarsClickListener carsClickListener = new CarAdapterRecycleView.OnCarsClickListener() {
             @Override

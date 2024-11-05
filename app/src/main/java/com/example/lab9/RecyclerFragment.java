@@ -66,12 +66,26 @@ public class RecyclerFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        DataController dataController = DataController.getInstance();
+        //   dataController.getMediatorLiveData().observe(this, new Observer<Car>() {
+        dataController.getDataScreen2().observe(this, new Observer<Car>() {
+            @Override
+            public void onChanged(@Nullable Car car) {
+                if (car != null) {
+                    updateUI(car);
+                }
+            }
+        });
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_fragment, container, false);
+
+
 
 
 
@@ -85,8 +99,6 @@ public class RecyclerFragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         List<Car> cars = Car.getCars();
-
-     //   recyclerView.setLayoutManager(new LinearLayoutManager(getActivity() , LinearLayoutManager.HORIZONTAL, false));
 
 
         int orientation = getResources().getConfiguration().orientation;
@@ -103,26 +115,11 @@ public class RecyclerFragment extends Fragment {
 
 
 
-/*
-        LiveData<Car> liveData = DataController.getInstance().getData() ;
-
-        liveData.observe (getViewLifecycleOwner(), new Observer<Car>() {
-
-            public void onChanged(@Nullable Car value) {
-                //  textView.setText(value);
-            }
-        });
-*/
-        //    DataController.getInstance().setData("123");
-
-
-
-
         CarAdapterRecycleView.OnCarsClickListener carsClickListener = new CarAdapterRecycleView.OnCarsClickListener() {
             @Override
             public void onCarClick(Car car, int position) {
                 Toast.makeText(getActivity(), "click", Toast.LENGTH_SHORT).show();
-                //       handleredirect(view, car, position);
+
 
 
 
@@ -145,6 +142,15 @@ public class RecyclerFragment extends Fragment {
 
                 imageView.setImageResource(imageResId);
 
+
+               // Car selectedCar = cars.get(position);
+
+
+                DataController.getInstance().setDataForScreen2(selectedCar);
+
+
+                updateUI(selectedCar);
+
             }
         };
 
@@ -153,6 +159,15 @@ public class RecyclerFragment extends Fragment {
 
         return view;
     }
+
+    private void updateUI(Car car) {
+        titleText.setText(car.getName());
+        describtionText.setText(car.getDescribtion());
+        priceText.setText(car.getPrice() + "$");
+        fulldescribtionText.setText(car.getFullDescribtion());
+        imageView.setImageResource(car.getLogo());
+    }
+
 
 
 }

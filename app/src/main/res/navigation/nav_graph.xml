@@ -81,77 +81,15 @@
 
         </action>
     </fragment>
-
-
-
-    <!--
     <fragment
-        android:id="@+id/second"
-        android:name="com.example.navig.Second"
-        android:label="fragment_second"
-        tools:layout="@layout/fragment_second">
-
-
-        <argument
-            android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="telephone"
-            app:argType="string" />
-        <argument
-            android:name="adres"
-            app:argType="string" />
-        <argument
-            android:name="savedItem"
-            app:argType="string[]" />
-
+        android:id="@+id/blankFragment"
+        android:name="com.example.navig.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" >
         <action
-            android:id="@+id/action_second_to_makeOrder"
-            app:destination="@id/makeOrder" />
+            android:id="@+id/action_blankFragment_to_second"
+            app:destination="@id/second" />
     </fragment>
 
-    <fragment
-        android:id="@+id/main2"
-        android:name="com.example.navig.Main"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main">
-
-        <action
-            android:id="@+id/action_main2_to_second"
-            app:destination="@id/second">
-            <argument
-                android:name="name"
-                app:argType="string" />
-        </action>
-    </fragment>
-    <fragment
-        android:id="@+id/makeOrder"
-        android:name="com.example.navig.MakeOrder"
-        android:label="fragment_make_order"
-        tools:layout="@layout/fragment_make_order">
-
-
-        <argument
-            android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="telephone"
-            app:argType="string" />
-        <argument
-            android:name="adres"
-            app:argType="string" />
-
-
-        <action
-            android:id="@+id/action_makeOrder_to_second"
-            app:destination="@id/second">
-
-
-            <argument
-                android:name="savedItem"
-                app:argType="string[]" />
-        </action>
-    </fragment>
--->
 
 </navigation>

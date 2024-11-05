@@ -8,7 +8,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:id="@+id/main"
-    android:background="#F4D3BE"
+
     tools:context=".Second"
     android:fillViewport="true">
 
@@ -28,7 +28,7 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toStartOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6"
-            app:srcCompat="@drawable/free_icon_pizza_9633377" />
+        />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -37,27 +37,27 @@
             android:layout_marginStart="12dp"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6"
-            app:srcCompat="@drawable/free_icon_pizza_706934" />
+          />
 
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="80dp"
             android:text="Сделать выбор"
             android:textFontWeight="900"
             android:textSize="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <LinearLayout
             android:id="@+id/dashedView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:background="@drawable/dashed_border"
+
             android:orientation="vertical"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +105,7 @@
              android:layout_gravity="center"
              android:layout_marginTop="10dp"
 
-             android:background="@drawable/rectangle_button"
+
              android:text="Сделать выбор" />
 
 
@@ -119,22 +119,12 @@
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle_button"
+
                 android:text="Вернуться к заказам" />
 
 
         </LinearLayout>
 
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#AE8871"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView8"
@@ -142,20 +132,17 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textSize="22dp"
-            android:layout_marginLeft="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
             android:text="TextView"
             android:textSize="22dp"
-            android:layout_marginRight="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

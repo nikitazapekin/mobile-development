@@ -73,11 +73,7 @@ public class MakeOrder extends Fragment {
         String tel = SecondArgs.fromBundle(requireArguments()).getTelephone();
         String adres = SecondArgs.fromBundle(requireArguments()).getAdres();
 
-        TextView textView1 = view.findViewById(R.id.textView8);
-        TextView textView2 = view.findViewById(R.id.textView9);
 
-        textView1.setText(name);
-        textView2.setText(tel);
 
         allProducts = getProducts();
         Log.d("SecondFragment", "all: " + allProducts);
@@ -85,8 +81,7 @@ public class MakeOrder extends Fragment {
         for (Product product : allProducts) {
             View itemView = itemInflater.inflate(R.layout.item_order, offersContainer, false);
 
-            ImageView itemImage = itemView.findViewById(R.id.itemImage);
-            itemImage.setImageResource(product.getImageResId());
+
 
             TextView itemName = itemView.findViewById(R.id.itemName);
             itemName.setText(product.getName());
@@ -97,9 +92,7 @@ public class MakeOrder extends Fragment {
             RadioButton radioButton = itemView.findViewById(R.id.radioButton);
             radioButton.setTag(product);
 
-            if (stored.contains(product.getName())) {
-                //    radioButton.setEnabled(false);
-            }
+
 
             offersContainer.addView(itemView);
         }
@@ -140,7 +133,7 @@ public class MakeOrder extends Fragment {
 private void displaySavedProducts() {
     bookedOffersContainer.removeAllViews();
     if (!stored.isEmpty()) {
-   //     emptyBookedOffers.setVisibility(View.GONE);
+
         for (String product : stored) {
             View bookedItemView = LayoutInflater.from(getContext()).inflate(R.layout.booked__item, bookedOffersContainer, false);
 
@@ -151,7 +144,7 @@ private void displaySavedProducts() {
             bookedOffersContainer.addView(bookedItemView);
         }
     } else {
-  //     emptyBookedOffers.setVisibility(View.VISIBLE);
+
     }
 }
 
@@ -176,7 +169,7 @@ private void displaySavedProducts() {
 
 
                 bookedOffersContainer.addView(bookedItemView);
-           //     radioButton.setEnabled(false);
+
                 stored.add(product.getName());
 
                 hasSelected = true;
@@ -184,9 +177,9 @@ private void displaySavedProducts() {
         }
 
         if (hasSelected) {
-      //     emptyBookedOffers.setVisibility(View.GONE);
+
         } else {
-     //   emptyBookedOffers.setVisibility(View.VISIBLE);
+
             Toast.makeText(getContext(), "Пожалуйста, выберите хотя бы один элемент", Toast.LENGTH_SHORT).show();
         }
     }
@@ -194,13 +187,13 @@ private void displaySavedProducts() {
     private List<Product> getProducts() {
         List<Product> products = new ArrayList<>();
 
-        products.add(new Product(R.drawable.free_icon_pizza_706934, "Моцарела", 200.0));
-        products.add(new Product(R.drawable.free_icon_pizza_706934, "Пиперони", 300.0));
-        products.add(new Product(R.drawable.free_icon_pizza_706934, "Чили", 200.0));
-        products.add(new Product(R.drawable.free_icon_pizza_706934, "Обычная", 300.0));
-        products.add(new Product(R.drawable.free_icon_pizza_706934, "Испанская", 200.0));
-        products.add(new Product(R.drawable.free_icon_pizza_706934, "Грибная", 300.0));
-        products.add(new Product(R.drawable.free_icon_pizza_706934, "Чили", 200.0));
+        products.add(new Product(  "Моцарела", 200.0));
+        products.add(new Product(  "Пиперони", 300.0));
+        products.add(new Product( "Чили", 200.0));
+        products.add(new Product( "Обычная", 300.0));
+        products.add(new Product( "Испанская", 200.0));
+        products.add(new Product( "Грибная", 300.0));
+        products.add(new Product(  "Чили", 200.0));
 
 
         return products;

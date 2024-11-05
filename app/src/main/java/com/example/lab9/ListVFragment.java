@@ -64,17 +64,7 @@ public class ListVFragment extends Fragment {
         }
 
 
-      /*  DataController dataController = DataController.getInstance();
-        dataController.getDataScreen1().observe(this, new Observer<Car>() {
-            @Override
-            public void onChanged(@Nullable Car car) {
-                if (car != null) {
-                    updateUI(car);
-                }
-            }
-        });
 
-       */
     }
 
     @Override
@@ -97,15 +87,7 @@ public class ListVFragment extends Fragment {
         car = viewModel.getCurrentCar();
 
 
-        /*   titleText.setText(car.getName());
-        describtionText.setText(car.getDescribtion());
-        fulldescribtionText.setText(car.getFullDescribtion());
-        priceText.setText(car.getPrice());
-        imageView.setImageResource(car.getLogo());
-*/
 
-
-        // Устанавливаем начальные данные, если они уже есть
         Car initialCar = viewModel.getCurrentCar();
         if (initialCar != null) {
             updateUI(initialCar);
@@ -135,9 +117,6 @@ public class ListVFragment extends Fragment {
 
 
                 viewModel.setCurrentCar(selectedCar);
-            //    viewModel.saveText(editText.getText().toString());
-           //     DataController.getInstance().setDataForScreen1(selectedCar);
-
 
                 updateUI(selectedCar);
             }

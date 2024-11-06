@@ -71,7 +71,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="10dp"
-                    android:text="TextView" />
+                    android:text="Не выбрано" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -81,7 +81,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="10dp"
-                    android:text="TextView" />
+                    android:text="Не выбрано" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -91,7 +91,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="10dp"
-                    android:text="TextView" />
+                    android:text="Не выбрано" />
 
                 <ImageView
                     android:id="@+id/image"
@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="TextView"
+            android:text="Не выбрано"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.62"
             app:layout_constraintStart_toStartOf="parent"

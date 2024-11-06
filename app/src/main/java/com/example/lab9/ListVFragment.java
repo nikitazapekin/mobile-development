@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +35,8 @@ public class ListVFragment extends Fragment {
     TextView priceText;
     TextView fulldescribtionText;
     ImageView imageView;
-
+    TextView errorText;
+    LinearLayout list;
    private String title;
  private    String desccribtion;
    private String fullDescribtion;
@@ -42,6 +44,8 @@ public class ListVFragment extends Fragment {
     private int  resIdImage;
 
     private Car car;
+    private boolean isSelected = false;
+
     public ListVFragment() {
 
     }
@@ -77,6 +81,7 @@ public class ListVFragment extends Fragment {
         fulldescribtionText = view.findViewById(R.id.textView4);
         imageView = view.findViewById(R.id.image);
 
+list = view.findViewById(R.id.list);
         ListView lvMain = view.findViewById(R.id.lvMain);
         List<Car> cars = Car.getCars();
         ArrayAdapter<Car> adapter = new CarAdapter(getActivity(), R.id.lvMain, cars);
@@ -119,6 +124,7 @@ public class ListVFragment extends Fragment {
                 viewModel.setCurrentCar(selectedCar);
 
                 updateUI(selectedCar);
+
             }
 
             public void onNothingSelected(AdapterView<?> parent) {

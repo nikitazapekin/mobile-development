@@ -1,5 +1,18 @@
 package com.example.lab10;
 
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+
+public interface JSONPlaceholderApi {
+
+    @GET("/posts/{id}")
+    Call<Post> getPostWithID(@Path("id") int id);
+}
+
+/*
+package com.example.lab10;
+
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -15,3 +28,5 @@ public interface JSONPlaceholderApi {
 
     Call<Post> getPostWithID(int i);
 }
+
+*/

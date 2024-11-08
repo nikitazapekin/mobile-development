@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textView = findViewById(R.id.textView);
+      //  TextView textView = findViewById(R.id.textView);
 
 
 
@@ -43,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
+ /*
         NetworkService.getInstance()
                 .getJSONApi()
                 .getPostWithID(1)
@@ -53,10 +52,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(@NonNull Call<Post> call, @NonNull Response<Post> response) {
                         Post post = response.body();
                         if (post != null) {
-                       //     textView.append("ID -> " + post.getId() + "\n");
+
                             textView.append("UserID -> " + post.getUserId() + "\n");
-                       //     textView.append("Title -> " + post.getTitle() + "\n");
-                         //   textView.append("Body -> " + post.getBody() + "\n");
+
                         } else {
                             textView.append("Response is empty\n");
                         }
@@ -68,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         t.printStackTrace();
                     }
                 });
+        */
     }
 
 

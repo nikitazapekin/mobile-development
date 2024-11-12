@@ -43,7 +43,7 @@ public class Car {
     }
 
     private static List<Car> cars = new ArrayList<>();
-
+/*
     public static List<Car> getCars() {
 
         if (cars.isEmpty()) {
@@ -66,4 +66,6 @@ public class Car {
         }
         return cars;
     }
+
+ */
 }

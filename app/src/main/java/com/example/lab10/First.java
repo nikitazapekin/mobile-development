@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,8 +16,8 @@ import retrofit2.Response;
 public class First extends Fragment {
 
     private TextView todoTitle, todoStatus, userId, todoId, errorTextView;
-
-
+private Boolean isFetching;
+private ProgressBar progressBar;
     public First() {}
 
     public static First newInstance(String param1, String param2) {
@@ -46,13 +47,15 @@ public class First extends Fragment {
         userId = view.findViewById(R.id.userId);
         todoId = view.findViewById(R.id.todoId);
 errorTextView = view.findViewById(R.id.errorTextView);
-
+progressBar = view.findViewById(R.id.progress);
         fetchTodoData();
 
         return view;
     }
 
     private void fetchTodoData() {
+
+
         NetworkService networkService = NetworkService.getInstance();
         JSONPlaceholderApi api = networkService.getJSONApi();
         Call<Todo> call = api.getTodoWithID(125);
@@ -66,6 +69,7 @@ errorTextView = view.findViewById(R.id.errorTextView);
                     todoStatus.setText(todo.isCompleted() ? "Status: Completed" : "Status: Not Completed");
                     userId.setText("User ID: " + todo.getUserId());
                     todoId.setText("TODO ID: " + todo.getId());
+
 
                 }
             }

@@ -28,7 +28,7 @@ public class CarsRecyclerAdapter  extends RecyclerView.Adapter<CarsRecyclerAdapt
     @NonNull
     @Override
     public CarsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.smartphone_recycler_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.car_recycler_item, parent, false);
         return new CarsViewHolder(view);
     }
     @Override
@@ -45,21 +45,27 @@ public class CarsRecyclerAdapter  extends RecyclerView.Adapter<CarsRecyclerAdapt
     public static class CarsViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
-        private TextView brandTextView;
+        private TextView titleTextView;
         private TextView priceTextView;
-        private TextView memoryTextView;
+        private TextView describtionTextView;
 
         public CarsViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.smartphone_image);
-            brandTextView = itemView.findViewById(R.id.smartphone_brand);
-            priceTextView = itemView.findViewById(R.id.smartphone_price);
-            memoryTextView = itemView.findViewById(R.id.smartphone_memory);
+
+
+            titleTextView = itemView.findViewById(R.id.titleView);
+            describtionTextView = itemView.findViewById(R.id.describtionView);
+            priceTextView = itemView.findViewById(R.id.priceView);
+         imageView = itemView.findViewById(R.id.imageView);
+
         }
 
         public void bind(Car car, OnItemClickListener listener) {
-            brandTextView.setText(car.getName());
 
+titleTextView.setText(car.getName());
+describtionTextView.setText(car.getDescribtion());
+priceTextView.setText(car.getPrice()+"$");
+imageView.setImageResource(car.getLogo());
 
 
                 itemView.setOnClickListener(v -> listener.onItemClick(car));

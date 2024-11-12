@@ -1,5 +1,7 @@
 package com.example.lab10;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,16 +9,203 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Third#newInstance} factory method to
- * create an instance of this fragment.
- */
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Third extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    private String mParam1;
+    private String mParam2;
+
+    public Third() {
+        // Required empty public constructor
+    }
+
+    public static Third newInstance(String param1, String param2) {
+        Third fragment = new Third();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_third, container, false);
+        ImageView imageView = view.findViewById(R.id.imageView);
+
+        String url = "https://jsonplaceholder.typicode.com/photos/200";
+        JSONPlaceholderApi api = NetworkService.getInstance().getJSONApi();
+
+        Call<ResponseBody> call = api.getImage(url);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Bitmap bmp = BitmapFactory.decodeStream(response.body().byteStream());
+                    imageView.setImageBitmap(bmp);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                // Handle the error
+            }
+        });
+
+        return view;
+    }
+}
+
+
+/*
+package com.example.lab10;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class Third extends Fragment {
+
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    private String mParam1;
+    private String mParam2;
+
+    public Third() {
+        // Required empty public constructor
+    }
+
+    public static Third newInstance(String param1, String param2) {
+        Third fragment = new Third();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_third, container, false);
+        ImageView imageView = view.findViewById(R.id.imageView);
+String url = "https://jsonplaceholder.typicode.com/photos/200";
+JSONPlaceholderApi api = NetworkService.getInstance().getJSONApi();
+
+       // String url = "https://via.placeholder.com/600/d32776";
+Call<Photo>  call = api.getImage(url);
+call.enqueue(new Callback<Photo>() {
+    @Override
+    public void onResponse(Call<Photo> call, Response<Photo> response) {
+        if (response.isSuccessful() && response.body()!=null) {
+            Bitmap bmp = BitmapFactory.decodeStream(response.body().byteStream());
+            imageView.setImageResource(bmp);
+        }
+    }
+
+    @Override
+    public void onFailure(Call<Photo> call, Throwable t) {
+
+    }
+});
+*/
+
+
+/*
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_third, container, false);
+        ImageView imageView = view.findViewById(R.id.imageView);
+
+        String url = "https://via.placeholder.com/600/d32776";
+        JSONPlaceholderApi api = NetworkService.getInstance().getJSONApi();
+        //Call<ResponseBody> call = api.getPhoto(url);
+    //    Call<ResponseBody> call = api.getPhoto(200);
+        Call<Photo> call = api.getPhoto(200);
+        call.enqueue(new Callback<Photo>() {
+            @Override
+            public void onResponse(Call<Photo> call, Response<Photo> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                //    Bitmap bmp = BitmapFactory.decodeStream(response.body().byteStream());
+                    Bitmap bmp = BitmapFactory.decodeStream(response.body().byteStream());
+                    imageView.setImageBitmap(bmp);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Photo> call, Throwable t) {
+                // Handle failure here
+            }
+        });
+
+        return view;
+    }
+
+
+
+
+        return view;
+    }
+}
+ */
+
+/*
+package com.example.lab10;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+public class Third extends Fragment {
+
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -25,18 +214,10 @@ public class Third extends Fragment {
     private String mParam2;
 
     public Third() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Third.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static Third newInstance(String param1, String param2) {
         Third fragment = new Third();
         Bundle args = new Bundle();
@@ -58,7 +239,36 @@ public class Third extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
+
+
+
+        ImageView imageView = findViewById(R.id.image);
+        String url = "https: //via.placeholder .com/600/d32776" ;
+        JSONPlaceholderApi api = NetworkService.getInstance().getJSONApi();
+        Call<ResponseBody> call = api.getImage(url);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+
+                        Bitmap bmp = BitmapFactory.decodeStream(response.body().byteStream());
+                        imageView.setImageBitmap(bmp) ;
+
+                    } else {
+
+                    }
+                } else {
+                }
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+
+                    }
+
+
         return inflater.inflate(R.layout.fragment_third, container, false);
     }
 }
+*/

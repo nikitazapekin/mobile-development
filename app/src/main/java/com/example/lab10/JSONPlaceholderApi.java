@@ -12,8 +12,6 @@ import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 
-import retrofit2.Call;
-
 public interface JSONPlaceholderApi {
 
     @GET("/posts/{id}")
@@ -35,13 +33,13 @@ public interface JSONPlaceholderApi {
     @GET
     Call<Photo> downloadImage(@Path("imageUrl") String fileUrl);
 
-
-/*
-    @GET
-    Call<Photo> getImage(@Url String url);
-*/
-
     @GET
     Call<ResponseBody> getImage(@Url String url);
+
+
+    @GET
+    Call<Photo> getPhoto(@Url String url);
+
+ 
 
 }

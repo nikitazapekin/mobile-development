@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -40,4 +41,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+
+
+    implementation ("com.squareup.retrofit2:retrofit:2.4.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.3.0")
+    val nav_version="2.5.0"
+    implementation("androidx.navigation:navigation-fragment:$nav_version")
+
+
+
+
+    implementation("androidx.navigation:navigation-ui:$nav_version")
+    implementation("com.google.android.material:material:1.11.0")
 }

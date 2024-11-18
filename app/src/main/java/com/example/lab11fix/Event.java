@@ -119,6 +119,9 @@ class Event {
             public String getRole() { return role; }
             public void setRole(String role) { this.role = role; }
         }
+        public List<Creators.CreatorItem> getItems() {
+            return items;
+        }
     }
 
     public static class Characters {
@@ -146,6 +149,9 @@ class Event {
 
             public String getName() { return name; }
             public void setName(String name) { this.name = name; }
+        }
+        public List<CharacterItem> getItems() {
+            return items;
         }
     }
 
@@ -181,6 +187,9 @@ class Event {
             public String getType() { return type; }
             public void setType(String type) { this.type = type; }
         }
+        public List<Stories.StoryItem> getItems() {
+            return items;
+        }
     }
 
     public static class Comics {
@@ -209,6 +218,9 @@ class Event {
             public String getName() { return name; }
             public void setName(String name) { this.name = name; }
         }
+        public List<Comics.ComicItem> getItems() {
+            return items;
+        }
     }
 
     public static class Series {
@@ -236,6 +248,9 @@ class Event {
 
             public String getName() { return name; }
             public void setName(String name) { this.name = name; }
+        }
+        public List<Series.SeriesItem> getItems() {
+            return items;
         }
     }
 

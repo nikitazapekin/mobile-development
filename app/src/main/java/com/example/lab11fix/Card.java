@@ -8,6 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class Card extends Fragment {
 
@@ -22,7 +26,7 @@ public class Card extends Fragment {
 
     private String mParam1;
     private String mParam2;
-
+private String id;
     public Card() {
         // Required empty public constructor
     }
@@ -49,7 +53,42 @@ public class Card extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
+       CardArgs args =CardArgs.fromBundle(getArguments());
+        //  MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
+
+     id = args.getId();
+
+
         return inflater.inflate(R.layout.fragment_card, container, false);
+    }
+
+
+    private void loadEvents(int page) {
+   /*     isLoading = true;
+        pageNumber.setText("Page " + (page + 1));
+        events.clear();
+        NetworkService.getInstance()
+                .getMarvelApi()
+                .getEvents(limit, page * limit, ts, apiKey, hash)
+                .enqueue(new Callback<MarvelResponse<Event>>() {
+                    @Override
+                    public void onResponse(Call<MarvelResponse<Event>> call, Response<MarvelResponse<Event>> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            events.addAll(response.body().getData().getResults());
+                            adapter.notifyDataSetChanged();
+                        }
+                        isLoading = false;
+                    }
+
+                    @Override
+                    public void onFailure(Call<MarvelResponse<Event>> call, Throwable t) {
+                        t.printStackTrace();
+                        isLoading = false;
+                        errorTextView.setVisibility(View.VISIBLE);
+                    }
+                });
+
+    */
     }
 }

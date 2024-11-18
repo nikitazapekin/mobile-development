@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress NavigationFile -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,11 +13,20 @@
         tools:layout="@layout/fragment_list_of_events" >
         <action
             android:id="@+id/action_listOfEvents_to_card"
-            app:destination="@id/card" />
+            app:destination="@id/card" >
+            <argument
+                android:name="id"
+                app:argType="string" />
+
+        </action>
     </fragment>
     <fragment
         android:id="@+id/card"
         android:name="com.example.lab11fix.Card"
         android:label="fragment_card"
-        tools:layout="@layout/fragment_card" />
+        tools:layout="@layout/fragment_card" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>

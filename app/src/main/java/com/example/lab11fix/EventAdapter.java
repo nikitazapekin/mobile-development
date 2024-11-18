@@ -13,7 +13,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     private final List<Event> events;
 
-    // Конструктор для передачи списка событий
+
     public EventAdapter(List<Event> events) {
         this.events = events;
     }
@@ -31,8 +31,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         Event event = events.get(position);
         holder.titleTextView.setText(event.getTitle());
         holder.descriptionTextView.setText(event.getDescription());
-    //    holder.startDateTextView.setText(event.getStartDate());
-      //  holder.endDateTextView.setText(event.getEndDate());
+      holder.startDateTextView.setText(event.getStart());
+        holder.endDateTextView.setText(event.getEnd());
     }
 
     @Override

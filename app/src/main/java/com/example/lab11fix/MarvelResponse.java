@@ -67,6 +67,14 @@ class Event {
     @SerializedName("description")
     private String description;
 
+
+
+    @SerializedName("start")
+    private String start;
+
+    @SerializedName("end")
+    private String end;
+
     public int getId() {
         return id;
     }
@@ -77,5 +85,12 @@ class Event {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getStart() {
+        return start;
+    }
+    public String getEnd() {
+        return end;
     }
 }

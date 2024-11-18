@@ -63,10 +63,11 @@ public class Card extends Fragment {
         btnSeries.setOnClickListener(v -> loadData("series"));
 
         CardArgs args =CardArgs.fromBundle(getArguments());
-        //  MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
 
-        //   id = args.getId();
+
+
         id = Integer.parseInt(args.getId());
+        Toast.makeText(getContext(), "ID: " + id, Toast.LENGTH_SHORT).show();
         return view;
     }
 

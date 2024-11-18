@@ -46,7 +46,12 @@ public class ListOfEvents extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new EventAdapter(events);
+     //  adapter = new EventAdapter(events);
+        adapter = new EventAdapter(events, event -> {
+         //   ListOfEventsDirections.ActionListOfEventsToCard action = ListOfEventsDirections.actionListOfEventsToCard("1");
+          ListOfEventsDirections.ActionListOfEventsToCard action = ListOfEventsDirections.actionListOfEventsToCard(String.valueOf(event.getId()));
+            Navigation.findNavController(view).navigate(action);
+        });
         recyclerView.setAdapter(adapter);
 
         prevButton = view.findViewById(R.id.prevButton);

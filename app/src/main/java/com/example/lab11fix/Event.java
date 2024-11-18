@@ -10,6 +10,8 @@ import java.util.List;
 class Event {
     @SerializedName("id")
     private int id;
+    public int getId() { return id; }
+
 
     @SerializedName("title")
     private String title;
@@ -56,7 +58,7 @@ class Event {
     @SerializedName("previous")
     private Resource previous;
 
-    // Вложенные классы
+
     public static class Url {
         @SerializedName("type")
         private String type;
@@ -251,8 +253,8 @@ class Event {
         public void setName(String name) { this.name = name; }
     }
 
-    // Геттеры и сеттеры для полей Event
-    public int getId() { return id; }
+
+  //  public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
     public String getTitle() { return title; }

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -58,7 +59,7 @@ private String id;
         //  MakeOrderArgs argsOrder = MakeOrderArgs.fromBundle(getArguments());
 
      id = args.getId();
-
+        Toast.makeText(getContext(), "ID: " + id, Toast.LENGTH_SHORT).show();
 
         return inflater.inflate(R.layout.fragment_card, container, false);
     }

@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -39,6 +41,10 @@ public class Card extends Fragment {
     private MarvelItemAdapter adapter;
     private int id;
 
+    private boolean isLoading = false;
+
+    private ProgressBar progressBar;
+
     private Button btnCharacters, btnStories, btnCreators, btnComics, btnSeries;
 
     @Override
@@ -55,7 +61,7 @@ public class Card extends Fragment {
         btnCreators = view.findViewById(R.id.btnCreators);
         btnComics = view.findViewById(R.id.btnComics);
         btnSeries = view.findViewById(R.id.btnSeries);
-
+        progressBar = view.findViewById(R.id.progressBar);
         btnCharacters.setOnClickListener(v -> loadData("characters"));
         btnStories.setOnClickListener(v -> loadData("stories"));
         btnCreators.setOnClickListener(v -> loadData("creators"));
@@ -72,6 +78,8 @@ public class Card extends Fragment {
     }
 
     private void loadData(String type) {
+
+        progressBar.setVisibility(View.VISIBLE);
         MarvelApi marvelApi = NetworkService.getInstance().getMarvelApi();
 
         Call<MarvelResponse<Event>> call = marvelApi.getEventById(id, ts, apiKey, hash);
@@ -80,6 +88,7 @@ public class Card extends Fragment {
             @Override
             public void onResponse(Call<MarvelResponse<Event>> call, Response<MarvelResponse<Event>> response) {
                 if (response.isSuccessful()) {
+                    progressBar.setVisibility(View.GONE);
                     MarvelResponse<Event> marvelResponse = response.body();
                     if (marvelResponse != null && marvelResponse.getData() != null) {
                         Event event = marvelResponse.getData().getResults().get(0);
@@ -123,6 +132,7 @@ public class Card extends Fragment {
 
             @Override
             public void onFailure(Call<MarvelResponse<Event>> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

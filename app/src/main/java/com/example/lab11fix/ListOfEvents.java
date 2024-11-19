@@ -80,7 +80,7 @@ private ProgressBar progressBar;
 
     private void loadEvents(int page) {
         isLoading = true;
-        progressBar.setVisibility(View.VISIBLE); // Показать ProgressBar
+        progressBar.setVisibility(View.VISIBLE);
         errorTextView.setVisibility(View.GONE);
         pageNumber.setText("Page " + (page + 1));
         events.clear();
@@ -91,7 +91,7 @@ private ProgressBar progressBar;
                     @Override
                     public void onResponse(Call<MarvelResponse<Event>> call, Response<MarvelResponse<Event>> response) {
                         if (response.isSuccessful() && response.body() != null) {
-                            progressBar.setVisibility(View.GONE); // Скрыть ProgressBar
+                            progressBar.setVisibility(View.GONE);
                             events.addAll(response.body().getData().getResults());
                             adapter.notifyDataSetChanged();
                         }
@@ -110,44 +110,7 @@ private ProgressBar progressBar;
 
 
 
-    /*
-    private void loadEvents(int page) {
-        isLoading = true;
-        progressBar.setVisibility(View.VISIBLE); // Показать ProgressBar
-        errorTextView.setVisibility(View.GONE); // Скрыть ошибку
-        pageNumber.setText("Page " + (page + 1));
-        events.clear();
-
-        NetworkService.getInstance()
-                .getMarvelApi()
-                .getEvents(limit, page * limit, ts, apiKey, hash)
-                .enqueue(new Callback<MarvelResponse<Event>>() {
-                    @Override
-                    public void onResponse(Call<MarvelResponse<Event>> call, Response<MarvelResponse<Event>> response) {
-                        progressBar.setVisibility(View.GONE); // Скрыть ProgressBar
-                        if (response.isSuccessful() && response.body() != null) {
-                            events.addAll(response.body().getData().getResults());
-                            adapter.notifyDataSetChanged();
-                        }
-                        isLoading = false;
-                    }
-
-                    @Override
-                    public void onFailure(Call<MarvelResponse<Event>> call, Throwable t) {
-                        progressBar.setVisibility(View.GONE); // Скрыть ProgressBar
-                        t.printStackTrace();
-                        isLoading = false;
-                        errorTextView.setVisibility(View.VISIBLE); // Показать ошибку
-                    }
-                });
-    }
-*/
 
 
-    public void handleRedirect(View v) {
-        ListOfEventsDirections.ActionListOfEventsToCard action =
-                ListOfEventsDirections.actionListOfEventsToCard("1");
-        Navigation.findNavController(v).navigate(action);
-    }
 
 }

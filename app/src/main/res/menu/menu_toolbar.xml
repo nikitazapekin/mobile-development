@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:id="@+id/first"
+  <!--  <item android:id="@+id/first"
         android:title="Выйти"
         app:showAsAction="always"
         />
@@ -16,7 +16,30 @@
         android:title="Выйти"
         app:showAsAction="always"
         />
-
-
-
+-->
+    <item
+android:id="@+id/characters"
+        android:title="Персонажи"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/stories"
+        android:title="Истории"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/creators"
+        android:title="Создатели"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/comics"
+        android:title="Комиксы"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/series"
+        android:title="Серии"
+        app:showAsAction="always"
+        />
 </menu>

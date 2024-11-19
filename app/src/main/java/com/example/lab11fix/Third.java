@@ -25,18 +25,18 @@ public class Third extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Инициализация Toolbar
+
         MaterialToolbar toolbar = view.findViewById(R.id.toolbarSecond);
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
 
-        // Инициализация кнопки для показа PopupMenu
+
         TextView showPopupButton = view.findViewById(R.id.showPopupButton);
         showPopupButton.setOnClickListener(v -> showPopupMenu(v));
     }
 
     private void showPopupMenu(View anchorView) {
         // Создаем PopupMenu
-        PopupMenu popupMenu = new PopupMenu(requireContext(), anchorView);
+   /*     PopupMenu popupMenu = new PopupMenu(requireContext(), anchorView);
         popupMenu.inflate(R.menu.menu_toolbar); // Подключаем меню
 
         // Обработка кликов на элементы меню
@@ -56,7 +56,10 @@ public class Third extends Fragment {
         });
 
         // Показываем меню
+
         popupMenu.show();
+
+    */
     }
 }
 

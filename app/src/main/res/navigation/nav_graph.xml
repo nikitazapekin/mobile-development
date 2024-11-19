@@ -29,9 +29,5 @@
             android:name="id"
             app:argType="string" />
     </fragment>
-    <fragment
-        android:id="@+id/third"
-        android:name="com.example.lab11fix.Third"
-        android:label="fragment_third"
-        tools:layout="@layout/fragment_third" />
+
 </navigation>

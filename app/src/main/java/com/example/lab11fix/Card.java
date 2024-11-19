@@ -39,6 +39,7 @@ public class Card extends Fragment {
     private RecyclerView recyclerView;
     private MarvelItemAdapter adapter;
     private ProgressBar progressBar;
+    private TextView textView;
     private int id;
 
     @Nullable
@@ -46,18 +47,18 @@ public class Card extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_card, container, false);
 
-        // Инициализация UI компонентов
+
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter = new MarvelItemAdapter();
         recyclerView.setAdapter(adapter);
 
         progressBar = view.findViewById(R.id.progressBar);
-
+textView = view.findViewById(R.id.textView);
         TextView showPopupButton = view.findViewById(R.id.showPopupButton);
         showPopupButton.setOnClickListener(this::showPopupMenu);
 
-        // Получение аргументов
+
         if (getArguments() != null) {
             CardArgs args = CardArgs.fromBundle(getArguments());
             id = Integer.parseInt(args.getId());
@@ -99,6 +100,7 @@ public class Card extends Fragment {
     }
 
   private void loadData(String type) {
+        textView.setVisibility(View.GONE);
         Log.d("API Response", "START");
         Log.d("loadData", "Type: " + type + ", ID: " + id);
         progressBar.setVisibility(View.VISIBLE);

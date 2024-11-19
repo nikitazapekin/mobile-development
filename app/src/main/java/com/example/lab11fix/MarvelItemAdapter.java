@@ -27,6 +27,7 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
     public void onBindViewHolder(@NonNull MarvelItemViewHolder holder, int position) {
         MarvelItem item = marvelItems.get(position);
         holder.nameTextView.setText(item.getName());
+        holder.resourseTextView.setText(item.getResourceURI());
 
     }
 
@@ -37,16 +38,19 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
 
     public void setMarvelItems(List<MarvelItem> items) {
         this.marvelItems = items;
-        notifyDataSetChanged();  // Обновляем RecyclerView
+        notifyDataSetChanged();
     }
 
     public static class MarvelItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView nameTextView;
+        TextView resourseTextView;
 
         public MarvelItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameTextView = itemView.findViewById(R.id.nameTextView); // Инициализируйте TextView для имени
+            nameTextView = itemView.findViewById(R.id.nameTextView);
+          resourseTextView = itemView.findViewById(R.id.resourceUriTextView);
+
         }
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,7 +36,7 @@ public class ListOfEvents extends Fragment {
     private boolean isLoading = false;
     private Button prevButton, nextButton;
     private TextView pageNumber, errorTextView;
-
+private ProgressBar progressBar;
     public  ListOfEvents() {}
 
     @Nullable
@@ -58,7 +59,7 @@ public class ListOfEvents extends Fragment {
         nextButton = view.findViewById(R.id.nextButton);
         pageNumber = view.findViewById(R.id.pageNumber);
         errorTextView = view.findViewById(R.id.errorTextView);
-
+        progressBar = view.findViewById(R.id.progressBar);
         loadEvents(currentPage);
 
         prevButton.setOnClickListener(v -> {
@@ -76,8 +77,11 @@ public class ListOfEvents extends Fragment {
         return view;
     }
 
+
     private void loadEvents(int page) {
         isLoading = true;
+        progressBar.setVisibility(View.VISIBLE); // Показать ProgressBar
+        errorTextView.setVisibility(View.GONE);
         pageNumber.setText("Page " + (page + 1));
         events.clear();
         NetworkService.getInstance()
@@ -87,6 +91,7 @@ public class ListOfEvents extends Fragment {
                     @Override
                     public void onResponse(Call<MarvelResponse<Event>> call, Response<MarvelResponse<Event>> response) {
                         if (response.isSuccessful() && response.body() != null) {
+                            progressBar.setVisibility(View.GONE); // Скрыть ProgressBar
                             events.addAll(response.body().getData().getResults());
                             adapter.notifyDataSetChanged();
                         }
@@ -95,6 +100,7 @@ public class ListOfEvents extends Fragment {
 
                     @Override
                     public void onFailure(Call<MarvelResponse<Event>> call, Throwable t) {
+                        progressBar.setVisibility(View.GONE);
                         t.printStackTrace();
                         isLoading = false;
                         errorTextView.setVisibility(View.VISIBLE);
@@ -102,6 +108,40 @@ public class ListOfEvents extends Fragment {
                 });
     }
 
+
+
+    /*
+    private void loadEvents(int page) {
+        isLoading = true;
+        progressBar.setVisibility(View.VISIBLE); // Показать ProgressBar
+        errorTextView.setVisibility(View.GONE); // Скрыть ошибку
+        pageNumber.setText("Page " + (page + 1));
+        events.clear();
+
+        NetworkService.getInstance()
+                .getMarvelApi()
+                .getEvents(limit, page * limit, ts, apiKey, hash)
+                .enqueue(new Callback<MarvelResponse<Event>>() {
+                    @Override
+                    public void onResponse(Call<MarvelResponse<Event>> call, Response<MarvelResponse<Event>> response) {
+                        progressBar.setVisibility(View.GONE); // Скрыть ProgressBar
+                        if (response.isSuccessful() && response.body() != null) {
+                            events.addAll(response.body().getData().getResults());
+                            adapter.notifyDataSetChanged();
+                        }
+                        isLoading = false;
+                    }
+
+                    @Override
+                    public void onFailure(Call<MarvelResponse<Event>> call, Throwable t) {
+                        progressBar.setVisibility(View.GONE); // Скрыть ProgressBar
+                        t.printStackTrace();
+                        isLoading = false;
+                        errorTextView.setVisibility(View.VISIBLE); // Показать ошибку
+                    }
+                });
+    }
+*/
 
 
     public void handleRedirect(View v) {

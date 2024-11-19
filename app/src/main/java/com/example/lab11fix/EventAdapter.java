@@ -39,7 +39,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.startDateTextView.setText(event.getStart());
         holder.endDateTextView.setText(event.getEnd());
 
-        // Обработка клика
+
         holder.itemView.setOnClickListener(v -> clickListener.onItemClick(event));
     }
 

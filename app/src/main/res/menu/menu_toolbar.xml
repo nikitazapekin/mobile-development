@@ -8,5 +8,15 @@
         app:showAsAction="always"
         />
 
+    <item android:id="@+id/first1"
+        android:title="Выйти"
+        app:showAsAction="always"
+        />
+    <item android:id="@+id/first2"
+        android:title="Выйти"
+        app:showAsAction="always"
+        />
+
+
 
 </menu>

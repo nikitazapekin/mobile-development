@@ -1,3 +1,4 @@
+
 package com.example.lab11fix;
 
 import android.os.Bundle;
@@ -97,7 +98,7 @@ public class Card extends Fragment {
         popupMenu.show();
     }
 
-    private void loadData(String type) {
+  private void loadData(String type) {
         Log.d("API Response", "START");
         Log.d("loadData", "Type: " + type + ", ID: " + id);
         progressBar.setVisibility(View.VISIBLE);
@@ -162,4 +163,6 @@ public class Card extends Fragment {
 
         return items;
     }
+
+
 }

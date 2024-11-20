@@ -135,29 +135,6 @@ public class Card extends Fragment {
         }
 
         call.enqueue(new Callback<MarvelResponse<MarvelItem>>() {
-         /*   @Override
-            public void onResponse(Call<MarvelResponse<MarvelItem>> call, Response<MarvelResponse<MarvelItem>> response) {
-                progressBar.setVisibility(View.GONE);
-                if (response.isSuccessful() && response.body() != null) {
-                    List<MarvelItem> items = response.body().getData().getResults();
-                    if (items.isEmpty()) {
-                        textView.setVisibility(View.VISIBLE);
-                        textView.setText("No data available.");
-                    } else {
-
-                        for (MarvelItem item : items) {
-
-                            item.setImagePath(item.getThumbnail().getPath());
-                            item.setImageExtension(item.getThumbnail().getExtension());
-                        }
-                        adapter.setMarvelItems(items);
-                    }
-                } else {
-                    Toast.makeText(getContext(), "Failed to load data", Toast.LENGTH_SHORT).show();
-                }
-            }
-*/
-
 
 
             public void onResponse(Call<MarvelResponse<MarvelItem>> call, Response<MarvelResponse<MarvelItem>> response) {

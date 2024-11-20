@@ -85,7 +85,7 @@ public class Character {
         private String collectionURI;
         private List<EventItem> items;
 
-        // Getters and setters
+
 
         public static class EventItem {
             private String resourceURI;
@@ -99,6 +99,6 @@ public class Character {
         private String type;
         private String url;
 
-        // Getters and setters
+
     }
 }

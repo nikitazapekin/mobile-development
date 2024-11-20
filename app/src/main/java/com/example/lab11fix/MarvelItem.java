@@ -2,13 +2,14 @@ package com.example.lab11fix;
 
 public class MarvelItem {
     private String name;
+    private String title;
     private String resourceURI;
     private String imageUrl;
     private Thumbnail thumbnail;
     private String imagePath;
     private String imageExtension;
 
-    // Constructor
+
     public MarvelItem(String name, String resourceURI, Thumbnail thumbnail) {
         this.name = name;
         this.resourceURI = resourceURI;
@@ -17,6 +18,9 @@ public class MarvelItem {
 
     public String getName() {
         return name;
+    }
+    public String getTitle() {
+        return title;
     }
 
     public String getResourceURI() {

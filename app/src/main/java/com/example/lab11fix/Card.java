@@ -100,70 +100,7 @@ public class Card extends Fragment {
     }
 
 
-    /*
-    private void loadData(String type) {
-        textView.setVisibility(View.GONE);
-        Log.d("API Response", "START");
-        Log.d("loadData", "Type: " + type + ", ID: " + id);
-        progressBar.setVisibility(View.VISIBLE);
 
-        MarvelApi marvelApi = NetworkService.getInstance().getMarvelApi();
-        Call<MarvelResponse<MarvelItem>> call;
-        Call<MarvelResponse<Character>> picture;
-
-
-        switch (type) {
-            case "characters":
-                call = marvelApi.getEventCharacters(id, TS, API_KEY, HASH);
-             //   picture = marvelApi.getCharacterByResourceUri( TS, API_KEY, HASH);
-                break;
-            case "comics":
-                call = marvelApi.getEventComics(id, TS, API_KEY, HASH);
-
-                break;
-            case "creators":
-                call = marvelApi.getEventCreators(id, TS, API_KEY, HASH);
-                break;
-            case "series":
-                call = marvelApi.getEventSeries(id, TS, API_KEY, HASH);
-                break;
-            case "stories":
-                call = marvelApi.getEventStories(id, TS, API_KEY, HASH);
-                break;
-            default:
-                Toast.makeText(getContext(), "Unknown type: " + type, Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.GONE);
-                return;
-        }
-
-
-
-        call.enqueue(new Callback<MarvelResponse<MarvelItem>>() {
-            @Override
-            public void onResponse(Call<MarvelResponse<MarvelItem>> call, Response<MarvelResponse<MarvelItem>> response) {
-                progressBar.setVisibility(View.GONE);
-                if (response.isSuccessful() && response.body() != null) {
-                    List<MarvelItem> items = response.body().getData().getResults();
-                    if (items.isEmpty()) {
-                        textView.setVisibility(View.VISIBLE);
-                        textView.setText("No data available.");
-                    } else {
-                        adapter.setMarvelItems(items);
-                    }
-                } else {
-                    Toast.makeText(getContext(), "Failed to load data", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<MarvelResponse<MarvelItem>> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-*/
 
 
     private void loadData(String type) {

@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
-
+import okhttp3.ResponseBody;
 public interface MarvelApi {
 
     @GET("v1/public/events")
@@ -80,7 +80,7 @@ public interface MarvelApi {
     );
 
     @GET
-    Call<MarvelItem> getImage(@Url String url);
+    Call<ResponseBody> getImage(@Url String url);
 
 
 

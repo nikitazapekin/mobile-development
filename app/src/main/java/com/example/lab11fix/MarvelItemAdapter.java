@@ -1,3 +1,4 @@
+
 package com.example.lab11fix;
 
 import android.view.LayoutInflater;
@@ -14,33 +15,27 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.ViewHolder> {
+public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.MarvelItemViewHolder> {
 
-    private final List<MarvelItem> marvelItems = new ArrayList<>();
-
-    public void setMarvelItems(List<MarvelItem> items) {
-        marvelItems.clear();
-        marvelItems.addAll(items);
-        notifyDataSetChanged();
-    }
+    private List<MarvelItem> marvelItems = new ArrayList<>();
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MarvelItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_marvel, parent, false);
-        return new ViewHolder(view);
+        return new MarvelItemViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        MarvelItem item = marvelItems.get(position);
-        holder.nameTextView.setText(item.getName());
+    public void onBindViewHolder(@NonNull MarvelItemViewHolder holder, int position) {
+        MarvelItem marvelItem = marvelItems.get(position);
+        holder.nameTextView.setText(marvelItem.getName()+"|"+ marvelItem.getImagePath() + "." + marvelItem.getImageExtension());
 
-        if (item.getThumbnailUrl() != null) {
-           Glide.with(holder.thumbnailImageView.getContext())
-                    .load(item.getThumbnailUrl())
-                    .into(holder.thumbnailImageView);
-        }
+
+        String imageUrl = marvelItem.getImagePath() + "." + marvelItem.getImageExtension();
+        Glide.with(holder.imageView.getContext())
+                .load(imageUrl)
+                .into(holder.imageView);
     }
 
     @Override
@@ -48,17 +43,29 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Vi
         return marvelItems.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTextView;
-        ImageView thumbnailImageView;
+    public void setMarvelItems(List<MarvelItem> items) {
+        this.marvelItems = items;
+        notifyDataSetChanged();
+    }
 
-        ViewHolder(@NonNull View itemView) {
+    class MarvelItemViewHolder extends RecyclerView.ViewHolder {
+
+        TextView nameTextView;
+        TextView   resourseTextView;
+        ImageView imageView;
+
+        public MarvelItemViewHolder(View itemView) {
             super(itemView);
+
             nameTextView = itemView.findViewById(R.id.nameTextView);
-            thumbnailImageView = itemView.findViewById(R.id.thumbnailImageView);
+            resourseTextView = itemView.findViewById(R.id.resourceUriTextView);
+            imageView = itemView.findViewById(R.id.thumbnailImageView);
+   //         textView = itemView.findViewById(R.id.marvelItemText);
+      //      imageView = itemView.findViewById(R.id.marvelItemImage);  // инициализация ImageView
         }
     }
 }
+
 
 /*
 
@@ -67,10 +74,13 @@ package com.example.lab11fix;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +102,8 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
         holder.nameTextView.setText(item.getName());
         holder.resourseTextView.setText(item.getResourceURI());
 
+
+
     }
 
     @Override
@@ -108,13 +120,15 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
 
         TextView nameTextView;
         TextView resourseTextView;
-
+        ImageView imageView;
         public MarvelItemViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
-          resourseTextView = itemView.findViewById(R.id.resourceUriTextView);
+            resourseTextView = itemView.findViewById(R.id.resourceUriTextView);
+       imageView = itemView.findViewById(R.id.thumbnailImageView);
 
         }
     }
 }
+
 */

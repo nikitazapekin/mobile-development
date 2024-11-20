@@ -79,5 +79,9 @@ public interface MarvelApi {
             @Query("hash") String hash
     );
 
+    @GET
+    Call<MarvelItem> getImage(@Url String url);
+
+
 
 }

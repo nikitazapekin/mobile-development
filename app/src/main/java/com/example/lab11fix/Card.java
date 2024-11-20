@@ -207,9 +207,9 @@ public class Card extends Fragment {
                         textView.setVisibility(View.VISIBLE);
                         textView.setText("No data available.");
                     } else {
-                        // Добавляем пути изображений в объекты
+
                         for (MarvelItem item : items) {
-                            // Путь к изображению и расширение
+
                             item.setImagePath(item.getThumbnail().getPath());
                             item.setImageExtension(item.getThumbnail().getExtension());
                         }

@@ -1,7 +1,10 @@
+
+
 package com.example.lab11fix;
 public class MarvelItem {
-    private String name;
-    private String resourceURI;
+    private final String name;
+    private final String resourceURI;
+    private String thumbnailUrl;
 
     public MarvelItem(String name, String resourceURI) {
         this.name = name;
@@ -14,5 +17,13 @@ public class MarvelItem {
 
     public String getResourceURI() {
         return resourceURI;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 }

@@ -98,7 +98,7 @@ textView = view.findViewById(R.id.textView);
 
         popupMenu.show();
     }
-
+    /*
   private void loadData(String type) {
         textView.setVisibility(View.GONE);
         Log.d("API Response", "START");
@@ -132,15 +132,81 @@ textView = view.findViewById(R.id.textView);
             }
         });
     }
+*/
+
+    private void loadData(String type) {
+        textView.setVisibility(View.GONE);
+        Log.d("API Response", "START");
+        Log.d("loadData", "Type: " + type + ", ID: " + id);
+        progressBar.setVisibility(View.VISIBLE);
+
+        MarvelApi marvelApi = NetworkService.getInstance().getMarvelApi();
+        Call<MarvelResponse<MarvelItem>> call;
+
+
+        switch (type) {
+            case "characters":
+                call = marvelApi.getEventCharacters(id, TS, API_KEY, HASH);
+                break;
+            case "comics":
+                call = marvelApi.getEventComics(id, TS, API_KEY, HASH);
+                break;
+            case "creators":
+                call = marvelApi.getEventCreators(id, TS, API_KEY, HASH);
+                break;
+            case "series":
+                call = marvelApi.getEventSeries(id, TS, API_KEY, HASH);
+                break;
+            case "stories":
+                call = marvelApi.getEventStories(id, TS, API_KEY, HASH);
+                break;
+            default:
+                Toast.makeText(getContext(), "Unknown type: " + type, Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
+                return;
+        }
+
+        call.enqueue(new Callback<MarvelResponse<MarvelItem>>() {
+            @Override
+            public void onResponse(@NonNull Call<MarvelResponse<MarvelItem>> call, @NonNull Response<MarvelResponse<MarvelItem>> response) {
+                progressBar.setVisibility(View.GONE);
+                if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
+                    List<MarvelItem> items = response.body().getData().getResults();
+                    adapter.setMarvelItems(items);
+                    Log.d("API Response", "Loaded " + items.size() + " items.");
+                } else {
+                    Toast.makeText(getContext(), "Failed to load data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<MarvelResponse<MarvelItem>> call, @NonNull Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                Log.e("API Response", "Error: " + t.getMessage());
+                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     private List<MarvelItem> parseItems(Event event, String type) {
         List<MarvelItem> items = new ArrayList<>();
 
-        if (type.equals("characters")) {
+      /*  if (type.equals("characters")) {
             for (Event.Characters.CharacterItem character : event.getCharacters().getItems()) {
                 items.add(new MarvelItem(character.getName(), character.getResourceURI()));
                 Log.d("parseItems", "Added character: " + character.getName());
             }
+
+       */
+        if (type.equals("characters")) {
+            for (Event.Characters.CharacterItem character : event.getCharacters().getItems()) {
+                MarvelItem item = new MarvelItem(character.getName(), character.getResourceURI());
+                items.add(item);
+
+
+                fetchCharacterThumbnail(item, () -> adapter.notifyDataSetChanged());
+            }
+
         } else if (type.equals("stories")) {
             for (Event.Stories.StoryItem story : event.getStories().getItems()) {
                 items.add(new MarvelItem(story.getName(), story.getResourceURI()));
@@ -166,5 +232,27 @@ textView = view.findViewById(R.id.textView);
         return items;
     }
 
+    private void fetchCharacterThumbnail(MarvelItem item, Runnable onComplete) {
+        MarvelApi marvelApi = NetworkService.getInstance().getMarvelApi();
+
+        // Выполняем запрос по resourceURI
+        Call<MarvelResponse<Character>> call = marvelApi.getCharacterByResourceUri(item.getResourceURI(), TS, API_KEY, HASH);
+        call.enqueue(new Callback<MarvelResponse<Character>>() {
+            @Override
+            public void onResponse(@NonNull Call<MarvelResponse<Character>> call, @NonNull Response<MarvelResponse<Character>> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
+                    Character character = response.body().getData().getResults().get(0);
+                    //   String thumbnail = character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension();
+                    //item.setThumbnailUrl(thumbnail);
+                }
+                onComplete.run();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<MarvelResponse<Character>> call, @NonNull Throwable t) {
+                onComplete.run();
+            }
+        });
+    }
 
 }

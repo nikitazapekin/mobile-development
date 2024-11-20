@@ -132,6 +132,17 @@ class Event {
         @SerializedName("returned")
         private int returned;
 
+
+
+        private String thumbnailUrl;
+
+        public String getThumbnailUrl() {
+            return thumbnailUrl;
+        }
+
+        public void setThumbnailUrl(String thumbnailUrl) {
+            this.thumbnailUrl = thumbnailUrl;
+        }
         public static class CharacterItem {
             @SerializedName("resourceURI")
             private String resourceURI;
@@ -144,6 +155,13 @@ class Event {
 
             public String getName() { return name; }
             public void setName(String name) { this.name = name; }
+
+
+            private Thumbnail thumbnail;
+
+            public Thumbnail getThumbnail() {
+                return thumbnail;
+            }
         }
         public List<CharacterItem> getItems() {
             return items;

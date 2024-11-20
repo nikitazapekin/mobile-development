@@ -135,7 +135,7 @@ public class Card extends Fragment {
         }
 
         call.enqueue(new Callback<MarvelResponse<MarvelItem>>() {
-            @Override
+         /*   @Override
             public void onResponse(Call<MarvelResponse<MarvelItem>> call, Response<MarvelResponse<MarvelItem>> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful() && response.body() != null) {
@@ -156,6 +156,44 @@ public class Card extends Fragment {
                     Toast.makeText(getContext(), "Failed to load data", Toast.LENGTH_SHORT).show();
                 }
             }
+*/
+
+
+
+            public void onResponse(Call<MarvelResponse<MarvelItem>> call, Response<MarvelResponse<MarvelItem>> response) {
+                progressBar.setVisibility(View.GONE);
+                try {
+                    if (response.isSuccessful() && response.body() != null) {
+                        List<MarvelItem> items = response.body().getData().getResults();
+                        if (items.isEmpty()) {
+                            textView.setVisibility(View.VISIBLE);
+                            textView.setText("No data available.");
+                        } else {
+
+                            for (MarvelItem item : items) {
+
+                                if (item.getThumbnail() != null) {
+                                    item.setImagePath(item.getThumbnail().getPath());
+                                    item.setImageExtension(item.getThumbnail().getExtension());
+                                } else {
+
+                                    item.setImagePath("");
+                                    item.setImageExtension("");
+                                }
+                            }
+                            adapter.setMarvelItems(items);
+                        }
+                    } else {
+                        Toast.makeText(getContext(), "Failed to load data", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+
+                    Log.e("MarvelResponse", "Error processing response", e);
+                    Toast.makeText(getContext(), "An error occurred while processing data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
 
             @Override
             public void onFailure(Call<MarvelResponse<MarvelItem>> call, Throwable t) {

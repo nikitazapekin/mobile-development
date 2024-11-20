@@ -47,20 +47,36 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
     public void onBindViewHolder(@NonNull MarvelItemViewHolder holder, @SuppressLint("RecyclerView") int position) {
         MarvelItem marvelItem = marvelItems.get(position);
         holder.nameTextView.setText(marvelItem.getName() + "|" + marvelItem.getImagePath() + "." + marvelItem.getImageExtension());
+        String imagePath;
+        String imageExtension;
+        String imageUrl="";
+        //  String imageUrl = marvelItem.getImagePath() + "." + marvelItem.getImageExtension();
+       // Log.d("url", imageUrl);
 
-        String imageUrl = marvelItem.getImagePath() + "." + marvelItem.getImageExtension();
-        Log.d("url", imageUrl);
+        try {
+
+           imagePath = marvelItem.getImagePath();
+             imageExtension = marvelItem.getImageExtension();
+
+            if (imagePath != null && imageExtension != null) {
+
+            imageUrl = imagePath + "." + imageExtension;
+                Log.d("url", imageUrl);
 
 
+                holder.nameTextView.setText(marvelItem.getName() + "|" + imageUrl);
+            } else {
 
-      /*  Glide.with(holder.imageView.getContext())
+                Log.e("MarvelItemAdapter", "Error: imagePath or imageExtension is null");
 
+                holder.nameTextView.setText(marvelItem.getName() + "| No image");
+            }
+        } catch (Exception e) {
 
-               .load(imageUrl)
+            Log.e("MarvelItemAdapter", "Error getting image data", e);
 
-                .into(holder.imageView);
-
-       */
+            holder.nameTextView.setText(marvelItem.getName() + "| Error loading image");
+        }
 
 
 

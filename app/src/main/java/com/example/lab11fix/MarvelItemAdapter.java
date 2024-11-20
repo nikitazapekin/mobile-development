@@ -53,16 +53,17 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
 
 
 
-        Glide.with(holder.imageView.getContext())
-              //  .load("https://i.annihil.us/u/prod/marvel/i/mg/b/b0/4ce59ea2103ac.jpg")
+      /*  Glide.with(holder.imageView.getContext())
+
 
                .load(imageUrl)
-             //   .timeout(10000)
+
                 .into(holder.imageView);
 
+       */
 
 
-/*
+
         MarvelApi marvelApi = NetworkService.getInstance().getMarvelApi();
         Call<ResponseBody> imageCall = marvelApi.getImage(imageUrl);
 
@@ -94,7 +95,7 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
             }
         });
 
-*/
+
 
 
     }

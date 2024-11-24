@@ -67,7 +67,6 @@ public class CustomerAdapter extends ListAdapter<Customer, CustomerAdapter.Custo
             tvId = itemView.findViewById(R.id.text_id);
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
-                //  int position = getBindingAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     onCustomerClickListener.onCustomerClick(getItem(position));
                 }

@@ -40,17 +40,7 @@ public class AddCustomerFragment extends Fragment {
        //String birthdayStr = binding.etBirthday.getText().toString().trim();
         String phone = binding.etPhone.getText().toString().trim();
 
-      /*  if (!name.isEmpty() && !lastName.isEmpty() && !birthdayStr.isEmpty() && !phone.isEmpty()) {
-            Date birthday = parseDate(birthdayStr);
-            if (birthday == null) {
-                Toast.makeText(
-                        requireContext(),
-                        "Некорректная дата. Используйте формат yyyy-MM-dd.",
-                        Toast.LENGTH_SHORT
-                ).show();
-                return;
-            }
-*/
+
             Customer customer = new Customer();
             customer.name = name;
             customer.lastName = lastName;
@@ -61,22 +51,3 @@ public class AddCustomerFragment extends Fragment {
             getParentFragmentManager().popBackStack();
         }
     }
-
-    /*
-    private Date parseDate(String dateStr) {
-        try {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-            return format.parse(dateStr);
-        } catch (ParseException e) {
-            return null; // Возвращаем null в случае ошибки
-        }
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-}
-
-     */

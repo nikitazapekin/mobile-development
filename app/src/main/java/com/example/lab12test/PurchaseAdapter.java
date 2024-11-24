@@ -65,7 +65,7 @@ public class PurchaseAdapter extends ListAdapter<Purchase, PurchaseAdapter.Purch
             tvDetails = itemView.findViewById(R.id.tv_details);
 
             itemView.setOnClickListener(v -> {
-              //  int position = getBindingAdapterPosition();
+
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     onPurchaseClickListener.onPurchaseClick(getItem(position));
@@ -74,8 +74,8 @@ public class PurchaseAdapter extends ListAdapter<Purchase, PurchaseAdapter.Purch
         }
 
         public void bind(Purchase purchase) {
-            tvProduct.setText(purchase.product);
-            tvDetails.setText("Count: " + purchase.count + ", Price: $" + purchase.price);
+            tvProduct.setText("Название товара: "+purchase.product);
+            tvDetails.setText("Количество на складе: " + purchase.count + ", Стоимость: " + purchase.price+" руб.");
         }
     }
 }

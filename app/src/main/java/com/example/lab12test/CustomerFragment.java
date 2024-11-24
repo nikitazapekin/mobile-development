@@ -33,11 +33,27 @@ public class CustomerFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void setupRecyclerView() {
+   /* private void setupRecyclerView() {
         binding.recyclerViewCustomers.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new CustomerAdapter(customer -> openPurchases(customer.getId()));
         binding.recyclerViewCustomers.setAdapter(adapter);
     }
+
+    */
+   private void setupRecyclerView() {
+       binding.recyclerViewCustomers.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+       adapter = new CustomerAdapter(
+               customer -> openPurchases(customer.getId()),
+               customer -> {
+                   viewModel.deleteCustomer(customer);
+
+               }
+       );
+
+       binding.recyclerViewCustomers.setAdapter(adapter);
+   }
 
     private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);

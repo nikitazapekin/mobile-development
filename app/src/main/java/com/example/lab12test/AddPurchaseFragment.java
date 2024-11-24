@@ -2,15 +2,20 @@ package com.example.lab12test;
 
 
 
+import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.viewbindingactivityfragment.R;
 import com.example.viewbindingactivityfragment.databinding.FragmentAddPurchaseBinding;
 
 
@@ -51,7 +56,7 @@ public class AddPurchaseFragment extends Fragment {
         String countStr = binding.etCount.getText().toString().trim();
         String priceStr = binding.etPrice.getText().toString().trim();
 
-        if (!product.isEmpty() && !countStr.isEmpty() && !priceStr.isEmpty()) {
+        /* if (!product.isEmpty() && !countStr.isEmpty() && !priceStr.isEmpty()) {
             Purchase purchase = new Purchase();
             purchase.product = product;
             purchase.count = Integer.parseInt(countStr);
@@ -61,11 +66,47 @@ public class AddPurchaseFragment extends Fragment {
             viewModel.insertPurchase(purchase);
             getParentFragmentManager().popBackStack();
         }
+
+         */
+
+        if (product.isEmpty() || countStr.isEmpty() || priceStr.isEmpty()) {
+            showErrorDialog("Пожалуйста, заполните все поля.");
+            return;
+        }
+        Purchase purchase = new Purchase();
+        purchase.product = product;
+        purchase.count = Integer.parseInt(countStr);
+        purchase.price = Double.parseDouble(priceStr);
+        purchase.customerId = customerId;
+
+        viewModel.insertPurchase(purchase);
+        getParentFragmentManager().popBackStack();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null; // Очистка binding для предотвращения утечек памяти
+        binding = null;
+    }
+
+    private void showErrorDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.custom_alert_dialog, null);
+        builder.setView(dialogView);
+
+        AlertDialog alertDialog = builder.create();
+
+        TextView tvMessage = dialogView.findViewById(R.id.tvMessage);
+        TextView btnOk = dialogView.findViewById(R.id.btnOk);
+
+        tvMessage.setText(message);
+
+        btnOk.setOnClickListener(v -> alertDialog.dismiss());
+
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        alertDialog.show();
     }
 }

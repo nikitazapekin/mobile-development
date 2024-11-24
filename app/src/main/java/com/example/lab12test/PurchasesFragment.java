@@ -65,7 +65,7 @@ private @NonNull FragmentPurchasesBinding binding;
     }
 
     private void setupFab() {
-        binding.fabAddPurchase.setOnClickListener(v -> openAddPurchase());
+        binding.button2.setOnClickListener(v -> openAddPurchase());
     }
 
     private void openAddPurchase() {

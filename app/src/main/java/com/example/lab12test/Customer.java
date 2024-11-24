@@ -16,7 +16,7 @@ public class Customer {
     public String name;
     @ColumnInfo(name = "last_name")
     public String lastName;
-    public Date birthday;
+ //   public Date birthday;
     public String phone;
 
     public long getId() {
@@ -43,14 +43,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Date getBirthday() {
-        return birthday;
-    }
 
-    public void setBirthday(Date birthday) {
+   /* public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
-
+*/
     public String getPhone() {
         return phone;
     }

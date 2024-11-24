@@ -37,10 +37,10 @@ public class AddCustomerFragment extends Fragment {
     private void addCustomer() {
         String name = binding.etName.getText().toString().trim();
         String lastName = binding.etLastName.getText().toString().trim();
-        String birthdayStr = binding.etBirthday.getText().toString().trim();
+       //String birthdayStr = binding.etBirthday.getText().toString().trim();
         String phone = binding.etPhone.getText().toString().trim();
 
-        if (!name.isEmpty() && !lastName.isEmpty() && !birthdayStr.isEmpty() && !phone.isEmpty()) {
+      /*  if (!name.isEmpty() && !lastName.isEmpty() && !birthdayStr.isEmpty() && !phone.isEmpty()) {
             Date birthday = parseDate(birthdayStr);
             if (birthday == null) {
                 Toast.makeText(
@@ -50,11 +50,11 @@ public class AddCustomerFragment extends Fragment {
                 ).show();
                 return;
             }
-
+*/
             Customer customer = new Customer();
             customer.name = name;
             customer.lastName = lastName;
-            customer.birthday = birthday;
+           // customer.birthday = birthday;
             customer.phone = phone;
 
             viewModel.insertCustomer(customer);
@@ -62,6 +62,7 @@ public class AddCustomerFragment extends Fragment {
         }
     }
 
+    /*
     private Date parseDate(String dateStr) {
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -77,3 +78,5 @@ public class AddCustomerFragment extends Fragment {
         binding = null;
     }
 }
+
+     */

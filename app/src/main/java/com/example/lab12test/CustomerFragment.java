@@ -45,7 +45,8 @@ public class CustomerFragment extends Fragment {
     }
 
     private void setupFab() {
-        binding.fabAddCustomer.setOnClickListener(v -> openAddCustomer());
+        binding.button.setOnClickListener(v -> openAddCustomer());
+        //binding.fabAddCustomer.setOnClickListener(v -> openAddCustomer());
     }
 
     private void openAddCustomer() {

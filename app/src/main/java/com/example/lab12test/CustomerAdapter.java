@@ -37,7 +37,7 @@ public class CustomerAdapter extends ListAdapter<Customer, CustomerAdapter.Custo
         public boolean areContentsTheSame(@NonNull Customer oldItem, @NonNull Customer newItem) {
             return oldItem.name.equals(newItem.name) &&
                     oldItem.lastName.equals(newItem.lastName) &&
-                    oldItem.birthday.equals(newItem.birthday) &&
+                  //  oldItem.birthday.equals(newItem.birthday) &&
                     oldItem.phone.equals(newItem.phone);
         }
     };
@@ -58,15 +58,16 @@ public class CustomerAdapter extends ListAdapter<Customer, CustomerAdapter.Custo
     class CustomerViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvName;
         private final TextView tvPhone;
+        private final TextView tvId;
 
         public CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tv_name);
-            tvPhone = itemView.findViewById(R.id.tv_phone);
-
+            tvName = itemView.findViewById(R.id.text_name);
+            tvPhone = itemView.findViewById(R.id.text_phone);
+            tvId = itemView.findViewById(R.id.text_id);
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
-              //  int position = getBindingAdapterPosition();
+                //  int position = getBindingAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     onCustomerClickListener.onCustomerClick(getItem(position));
                 }
@@ -74,8 +75,9 @@ public class CustomerAdapter extends ListAdapter<Customer, CustomerAdapter.Custo
         }
 
         public void bind(Customer customer) {
-            tvName.setText(customer.name + " " + customer.lastName);
-            tvPhone.setText(customer.phone);
+            tvName.setText("Пользователь: "+customer.name + " " + customer.lastName);
+            tvPhone.setText("Номер телефона: "+customer.phone);
+            tvId.setText("Номер пользователя: "+customer.id);
         }
     }
 }

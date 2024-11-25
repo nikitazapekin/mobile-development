@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/listViewFragment">
+
+    <fragment
+        android:id="@+id/listViewFragment"
+        android:name="com.example.myapplication.ListViewFragment"
+        tools:layout="@layout/fragment_list_view" />
+
+    <fragment
+        android:id="@+id/recyclerFragment"
+        android:name="com.example.myapplication.RecyclerFragment"
+        tools:layout="@layout/fragment_recycler" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.myapplication.DetailFragment"
+        tools:layout="@layout/fragment_detail" />
+</navigation>
+
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+
+    <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        app:startDestination="@id/listViewFragment">
+
+        <fragment
+            android:id="@+id/listViewFragment"
+            android:name="com.example.myapplication.ListViewFragment"
+            tools:layout="@layout/fragment_list_view" />
+
+        <fragment
+            android:id="@+id/recyclerFragment"
+            android:name="com.example.myapplication.RecyclerFragment"
+            tools:layout="@layout/fragment_recycler" />
+
+        <fragment
+            android:id="@+id/detailFragment"
+            android:name="com.example.myapplication.DetailFragment"
+            tools:layout="@layout/fragment_detail" />
+    </navigation>
+
+    -->

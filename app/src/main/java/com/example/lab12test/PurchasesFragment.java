@@ -34,6 +34,8 @@ private @NonNull FragmentPurchasesBinding binding;
         return fragment;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,8 @@ private @NonNull FragmentPurchasesBinding binding;
 
         return binding.getRoot();
     }
+
+
 
     private void setupRecyclerView() {
         binding.recyclerViewPurchases.setLayoutManager(new LinearLayoutManager(getContext()));

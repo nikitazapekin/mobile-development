@@ -56,23 +56,42 @@ public class AddPurchaseFragment extends Fragment {
         String countStr = binding.etCount.getText().toString().trim();
         String priceStr = binding.etPrice.getText().toString().trim();
 
-        /* if (!product.isEmpty() && !countStr.isEmpty() && !priceStr.isEmpty()) {
-            Purchase purchase = new Purchase();
-            purchase.product = product;
-            purchase.count = Integer.parseInt(countStr);
-            purchase.price = Double.parseDouble(priceStr);
-            purchase.customerId = customerId;
 
-            viewModel.insertPurchase(purchase);
-            getParentFragmentManager().popBackStack();
-        }
-
-         */
 
         if (product.isEmpty() || countStr.isEmpty() || priceStr.isEmpty()) {
             showErrorDialog("Пожалуйста, заполните все поля.");
             return;
         }
+
+
+        int count;
+        double price;
+
+
+        try {
+            count = Integer.parseInt(countStr);
+            if (count <= 0) {
+                showErrorDialog("Количество должно быть положительным числом.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            showErrorDialog("Количество должно быть целым числом.");
+            return;
+        }
+
+
+        try {
+            price = Double.parseDouble(priceStr);
+            if (price <= 0) {
+                showErrorDialog("Цена должна быть положительным числом.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            showErrorDialog("Цена должна быть числом.");
+            return;
+        }
+
+
         Purchase purchase = new Purchase();
         purchase.product = product;
         purchase.count = Integer.parseInt(countStr);

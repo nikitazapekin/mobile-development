@@ -1,6 +1,5 @@
 package com.example.lab8ksen;
 
-import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -50,26 +49,30 @@ public class RecycleFragment extends Fragment {
         View view = inflater.inflate(R.layout.recycler_fragment, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        List<Car> cars = Car.getCars();
 
+        List<OlympicSport> sports = OlympicSport.getSports();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        CarAdapterRecycleView.OnCarsClickListener carsClickListener = new CarAdapterRecycleView.OnCarsClickListener() {
+
+    RecycleViewAdapter.OnSportsClickListener sportClickListener = new RecycleViewAdapter.OnSportsClickListener() {
             @Override
-            public void onCarClick(Car car, int position) {
+            public void onSportClick(OlympicSport sport, int position) {
                 Toast.makeText(getActivity(), "click", Toast.LENGTH_SHORT).show();
-                handleredirect(view, car, position);
+                handleredirect(view, sport, position);
             }
         };
 
-        CarAdapterRecycleView adapter = new CarAdapterRecycleView(getActivity(), cars, carsClickListener);
+
+
+     RecycleViewAdapter adapter = new RecycleViewAdapter(getActivity(), sports, sportClickListener);
         recyclerView.setAdapter(adapter);
+
 
         return view;
     }
 
-    private void handleredirect(View v, Car car, int index) {
-        String name = car.getName();
+    private void handleredirect(View v, OlympicSport car, int index) {
+     /*   String name = car.getName();
         String fullDecribtion = car.getFullDescribtion();
         String describtion = car.getDescribtion();
         String price= String.valueOf(car.getPrice());
@@ -78,5 +81,7 @@ public class RecycleFragment extends Fragment {
         RecycleFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
                 RecycleFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion, describtion, price, imageResId);
         Navigation.findNavController(v).navigate(action);
+
+      */
     }
 }

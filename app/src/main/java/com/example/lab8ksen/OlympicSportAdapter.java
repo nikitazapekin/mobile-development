@@ -41,7 +41,7 @@ public class OlympicSportAdapter extends ArrayAdapter<OlympicSport> {
         nameTextView.setText(currentSport.getName());
         detailsTextView.setText(
                 (currentSport.isSummer() ? "Summer" : "Winter") +
-                        ", " + (currentSport.isTeam() ? "Team" : "Individual") +
+                      //  ", " + (currentSport.isTeam() ? "Team" : "Individual") +
                         ", Recognized: " + currentSport.getRecognitionYear()
         );
         logoImageView.setImageResource(currentSport.getLogo());

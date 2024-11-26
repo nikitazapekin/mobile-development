@@ -1,5 +1,6 @@
-package com.example.lab8ksen;
 
+
+package com.example.lab8ksen;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,21 +12,24 @@ import android.widget.TextView;
 
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.lab8ksen.OlympicSport;
+
 import java.util.List;
 
-public class CarAdapterRecycleView extends RecyclerView.Adapter<CarAdapterRecycleView.ViewHolder> {
+public class RecycleViewAdapter extends RecyclerView.Adapter< RecycleViewAdapter.ViewHolder> {
 
 
-    interface  OnCarsClickListener {
-        void onCarClick(Car car, int position);
+    interface  OnSportsClickListener {
+        void onSportClick(OlympicSport sport, int position);
 
     }
-    private OnCarsClickListener onClickListener;
+    private OnSportsClickListener onClickListener;
     private final LayoutInflater inflater;
-    private final List<Car> cars;
+    private final List<OlympicSport> sports;
 
-    CarAdapterRecycleView(Context context, List<Car> cars, OnCarsClickListener onClickListener) {
-        this.cars = cars;
+  RecycleViewAdapter(Context context, List<OlympicSport> sports, OnSportsClickListener onClickListener) {
+        this.sports = sports;
         this.inflater = LayoutInflater.from(context);
         this.onClickListener = onClickListener;
     }
@@ -38,33 +42,43 @@ public class CarAdapterRecycleView extends RecyclerView.Adapter<CarAdapterRecycl
 
     @Override
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Car car = cars.get(position);
-        holder.nameView.setText(car.getName());
-        holder.priceView.setText(String.valueOf(car.getPrice()));
-        holder.descriptionView.setText(car.getDescribtion());
-        holder.imageView.setImageResource(car.getLogo());
+      OlympicSport sport = sports.get(position);
+        OlympicSport currentSport = sports.get(position);
+        holder.nameView.setText(sport.getName());
+      //
+        //  holder.categoryView.setText(sport.getRecognitionYear());
+
+        holder.categoryView.setText(
+                (currentSport.isSummer() ? "Summer" : "Winter") +
+                   //     ", " + (currentSport.isTeam() ? "Team" : "Individual") +
+                        ", Recognized: " + currentSport.getRecognitionYear()
+        );
+        holder.imageView.setImageResource(sport.getLogo());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickListener.onCarClick(car, position);
+                  onClickListener.onSportClick(sport, position);
             }
         });
+
     }
 
     @Override
     public int getItemCount() {
-        return cars.size();
+        return sports.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView nameView, priceView, descriptionView;
+      //  final TextView nameView, priceView, descriptionView;
+      final TextView nameView,  categoryView;
         final ImageView imageView;
         ViewHolder(View view) {
             super(view);
 
             nameView = view.findViewById(R.id.name_text_view1);
-            priceView = view.findViewById(R.id.price_text_view1);
-            descriptionView = view.findViewById(R.id.describtion_text_view1);
+
+           categoryView = view.findViewById(R.id.category_text_view1);
             imageView = view.findViewById(R.id.imageViewRecycler);
         }
     }

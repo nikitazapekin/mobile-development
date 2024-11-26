@@ -33,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/price_text_view1"
+            android:id="@+id/category_text_view1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="288dp"
@@ -43,7 +43,7 @@
             app:layout_constraintStart_toStartOf="@id/name_text_view1"
             app:layout_constraintTop_toTopOf="@id/name_text_view1" />
 
-        <TextView
+   <!--     <TextView
             android:id="@+id/describtion_text_view1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,6 +52,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             app:layout_constraintStart_toStartOf="@+id/name_text_view1"
             app:layout_constraintTop_toTopOf="@id/name_text_view1" />
+-->
 
         <ImageView
             android:id="@+id/imageViewRecycler"

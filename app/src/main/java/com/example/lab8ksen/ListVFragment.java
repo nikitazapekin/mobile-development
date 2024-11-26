@@ -65,10 +65,10 @@ public class ListVFragment extends Fragment {
         ListView lvMain = (ListView) view.findViewById(R.id.lvMain);
 
 
-        List<Car> cars = Car.getCars();
-        ArrayAdapter<Car> adapter = new CarAdapter(getActivity(), R.id.lvMain, cars);
-        lvMain.setAdapter(adapter);
 
+        List<OlympicSport> sport = OlympicSport.getSports();
+        ArrayAdapter<OlympicSport> adapter = new OlympicSportAdapter(getActivity(), R.id.lvMain, sport);
+        lvMain.setAdapter(adapter);
 
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -84,8 +84,6 @@ public class ListVFragment extends Fragment {
                 Toast.makeText(getActivity(), "Nothing selected", Toast.LENGTH_SHORT).show();
             }
         });
-
-
 
         return view;
 

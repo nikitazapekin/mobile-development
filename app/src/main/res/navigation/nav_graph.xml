@@ -18,6 +18,8 @@
         android:name="com.example.lab8ksen.RecycleFragment"
         android:label="recycler_fragment"
         tools:layout="@layout/recycler_fragment" >
+
+
         <action
             android:id="@+id/action_recyclerFragment_to_detailFragment"
             app:destination="@id/detailFragment"
@@ -26,14 +28,15 @@
                 android:name="name"
                 app:argType="string" />
             <argument
-                android:name="fullDescribtion"
-                app:argType="string" />
+                android:name="recognitionYear"
+                app:argType="integer" />
+
             <argument
-                android:name="describtion"
-                app:argType="string" />
+                android:name="isSummer"
+                app:argType="boolean" />
             <argument
-                android:name="price"
-                app:argType="string" />
+                android:name="isTeam"
+                app:argType="boolean" />
             <argument
                 android:name="imageResId"
                 app:argType="integer" />
@@ -48,15 +51,15 @@
             android:name="name"
             app:argType="string" />
         <argument
-            android:name="fullDescribtion"
-            app:argType="string" />
-        <argument
-            android:name="describtion"
-            app:argType="string" />
-        <argument
-            android:name="price"
-            app:argType="string" />
+            android:name="recognitionYear"
+            app:argType="integer" />
 
+        <argument
+            android:name="isSummer"
+            app:argType="boolean" />
+        <argument
+            android:name="isTeam"
+            app:argType="boolean" />
         <argument
             android:name="imageResId"
             app:argType="integer" />

@@ -22,6 +22,7 @@ public class DetailFragment extends Fragment {
     private String mParam2;
 
     private String name;
+    private Integer year;
     private String fullDescribtion;
     private String price;
     private String describtion;
@@ -55,7 +56,25 @@ public class DetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.detail_fragment, container, false);
 
         DetailFragmentArgs args =    DetailFragmentArgs.fromBundle(getArguments());
-        fullDescribtion = args.getFullDescribtion();
+
+        name = args.getName();
+
+        TextView titleText = view.findViewById(R.id.textView);
+        titleText.setText(name);
+
+
+        imageResId = args.getImageResId();
+
+        describtion =  args.getIsSummer() == true ? "Summer" : "Winter";
+
+        TextView describtionText = view.findViewById(R.id.textView2);
+        describtionText.setText(describtion);
+
+     //   year = args.getRecognitionYear();
+//
+ //       TextView year = view.findViewById(R.id.textView2);
+  //     year.setText("Year " +year);
+   /*     fullDescribtion = args.getFullDescribtion();
         name = args.getName();
         describtion = args.getDescribtion();
         price = args.getPrice();
@@ -68,7 +87,7 @@ public class DetailFragment extends Fragment {
         describtionText.setText(describtion);
         priceText.setText(price +"$");
         fulldescribtionText.setText( fullDescribtion);
-
+*/
 
         ImageView imageView = view.findViewById(R.id.image);
         imageView.setImageResource(imageResId);

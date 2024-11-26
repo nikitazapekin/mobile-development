@@ -71,17 +71,16 @@ public class RecycleFragment extends Fragment {
         return view;
     }
 
-    private void handleredirect(View v, OlympicSport car, int index) {
-     /*   String name = car.getName();
-        String fullDecribtion = car.getFullDescribtion();
-        String describtion = car.getDescribtion();
-        String price= String.valueOf(car.getPrice());
-        int imageResId = car.getLogo();
+    private void handleredirect(View v, OlympicSport sport, int index) {
+        String name = sport.getName();
+      int recognitionYear = sport.getRecognitionYear();
+      boolean isSummer = sport.isSummer();
+      boolean isTeam = sport.isTeam();
+        int imageResId = sport.getLogo();
 
         RecycleFragmentDirections.ActionRecyclerFragmentToDetailFragment action =
-                RecycleFragmentDirections.actionRecyclerFragmentToDetailFragment(name, fullDecribtion, describtion, price, imageResId);
+                RecycleFragmentDirections.actionRecyclerFragmentToDetailFragment(name, recognitionYear, isSummer, isTeam , imageResId);
         Navigation.findNavController(v).navigate(action);
 
-      */
     }
 }

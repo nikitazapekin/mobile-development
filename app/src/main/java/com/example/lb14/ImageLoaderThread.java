@@ -13,23 +13,24 @@ import java.net.URL;
 import java.util.List;
 
 public class ImageLoaderThread extends Thread {
-    private final List<Player> players;
-    private final PlayerAdapter adapter;
+    private final List<Movie> movies;
+    private final MovieAdapter adapter;
     private final Handler handler;
 
-    public ImageLoaderThread(List<Player> players, PlayerAdapter adapter) {
-        this.players = players;
+    public ImageLoaderThread(List<Movie> movies, MovieAdapter adapter) {
+     //   this.players = players;
+        this.movies = movies;
         this.adapter = adapter;
         this.handler = new Handler(Looper.getMainLooper());
     }
 
     @Override
     public void run() {
-        for (Player player : players) {
-            Bitmap bitmap = downloadImage(player.getImageUrl());
+        for (Movie movie :movies) {
+            Bitmap bitmap = downloadImage(movie.getImageUrl());
 
             if (bitmap != null) {
-                player.setBitmap(bitmap);
+               movie.setBitmap(bitmap);
 
                 handler.post(adapter::notifyDataSetChanged);
             }

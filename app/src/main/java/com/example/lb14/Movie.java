@@ -3,15 +3,15 @@ package com.example.lb14;
 
 import android.graphics.Bitmap;
 
-public class Player {
+public class Movie {
     private int number;
-    private String lastName;
+    private String title;
     private String imageUrl;
     private Bitmap bitmap;
 
-    public Player(int number, String lastName, String imageUrl) {
+    public Movie(int number, String title, String imageUrl) {
         this.number = number;
-        this.lastName = lastName;
+        this.title = title;
         this.imageUrl = imageUrl;
     }
 
@@ -19,8 +19,8 @@ public class Player {
         return number;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getTitle() {
+        return title;
     }
 
     public String getImageUrl() {

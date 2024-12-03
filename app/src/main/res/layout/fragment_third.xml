@@ -48,6 +48,14 @@
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_launcher_foreground" />
 
+
+                <ImageView
+                    android:id="@+id/imageViewSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_launcher_foreground" />
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

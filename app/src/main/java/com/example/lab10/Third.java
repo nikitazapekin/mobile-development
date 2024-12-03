@@ -51,9 +51,10 @@ public class Third extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_third, container, false);
         ImageView imageView = view.findViewById(R.id.imageView);
+        ImageView imageViewSmall = view.findViewById(R.id.imageViewSmall);
         TextView photoTitle = view.findViewById(R.id.photoTitle);
 
-        String url = "https://jsonplaceholder.typicode.com/photos/200";
+        String url = "https://jsonplaceholder.typicode.com/photos/8";
         JSONPlaceholderApi api = NetworkService.getInstance().getJSONApi();
 
 
@@ -79,6 +80,29 @@ public class Third extends Fragment {
                             photoTitle.setText("Something went wrong...");
                         }
                     });
+
+
+
+
+
+                    api.getImage(photo.getThumbnailUrl()).enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            if (response.isSuccessful() && response.body() != null) {
+
+                                Bitmap bmp = BitmapFactory.decodeStream(response.body().byteStream());
+                                imageViewSmall.setImageBitmap(bmp);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            photoTitle.setText("Something went wrong...");
+                        }
+                    });
+
+
+
                 }
             }
 

@@ -19,7 +19,7 @@ import retrofit2.Response;
 public class Second extends Fragment {
 
     private RecyclerView recyclerView;
-    private CommentAdapter adapter; // Changed adapter to CommentAdapter
+    private CommentAdapter adapter;
     private List<Comment> comments = new ArrayList<>();
     private TextView errorTextView;
 
@@ -47,12 +47,12 @@ public class Second extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new CommentAdapter(comments); // Changed to CommentAdapter
+        adapter = new CommentAdapter(comments);
         recyclerView.setAdapter(adapter);
 
         errorTextView = view.findViewById(R.id.errorTextView);
 
-        loadComments(); // Load comments directly
+        loadComments();
 
         return view;
     }
@@ -60,7 +60,7 @@ public class Second extends Fragment {
     private void loadComments() {
         NetworkService.getInstance()
                 .getJSONApi()
-                .getComments() // Fetch comments instead of posts
+                .getComments()
                 .enqueue(new Callback<List<Comment>>() {
                     @Override
                     public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {

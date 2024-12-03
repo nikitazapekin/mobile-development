@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,13 +19,9 @@ import retrofit2.Response;
 public class Second extends Fragment {
 
     private RecyclerView recyclerView;
-    private PostAdapter adapter;
-    private List<Post> posts = new ArrayList<>();
-    private int currentPage = 1;
-    private final int limit = 10;
-    private boolean isLoading = false;
-    private Button prevButton, nextButton;
-    private TextView pageNumber, errorTextView;
+    private CommentAdapter adapter; // Changed adapter to CommentAdapter
+    private List<Comment> comments = new ArrayList<>();
+    private TextView errorTextView;
 
     public Second() {}
 
@@ -52,52 +47,32 @@ public class Second extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new PostAdapter(posts);
+        adapter = new CommentAdapter(comments); // Changed to CommentAdapter
         recyclerView.setAdapter(adapter);
 
-        prevButton = view.findViewById(R.id.prevButton);
-        nextButton = view.findViewById(R.id.nextButton);
-        pageNumber = view.findViewById(R.id.pageNumber);
-errorTextView = view.findViewById(R.id.errorTextView);
+        errorTextView = view.findViewById(R.id.errorTextView);
 
-        loadPosts(currentPage);
-
-        prevButton.setOnClickListener(v -> {
-            if (currentPage > 1) {
-                currentPage--;
-                loadPosts(currentPage);
-            }
-        });
-
-        nextButton.setOnClickListener(v -> {
-            currentPage++;
-            loadPosts(currentPage);
-        });
+        loadComments(); // Load comments directly
 
         return view;
     }
 
-    private void loadPosts(int page) {
-        isLoading = true;
-        pageNumber.setText("Page " + page);
-        posts.clear();
+    private void loadComments() {
         NetworkService.getInstance()
                 .getJSONApi()
-                .getPosts(page, limit)
-                .enqueue(new Callback<List<Post>>() {
+                .getComments() // Fetch comments instead of posts
+                .enqueue(new Callback<List<Comment>>() {
                     @Override
-                    public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+                    public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
                         if (response.isSuccessful() && response.body() != null) {
-                            posts.addAll(response.body());
+                            comments.addAll(response.body());
                             adapter.notifyDataSetChanged();
                         }
-                        isLoading = false;
                     }
 
                     @Override
-                    public void onFailure(Call<List<Post>> call, Throwable t) {
+                    public void onFailure(Call<List<Comment>> call, Throwable t) {
                         t.printStackTrace();
-                        isLoading = false;
                         errorTextView.setVisibility(View.VISIBLE);
                     }
                 });

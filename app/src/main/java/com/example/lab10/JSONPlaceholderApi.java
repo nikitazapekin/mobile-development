@@ -17,8 +17,8 @@ public interface JSONPlaceholderApi {
     @GET("/posts/{id}")
     Call<Post> getPostWithID(@Path("id") int id);
 
-    @GET("/todos/{id}")
-    Call<Todo> getTodoWithID(@Path("id") int id);
+ //   @GET("/todos/{id}")
+  //  Call<Todo> getTodoWithID(@Path("id") int id);
 
 
 
@@ -40,6 +40,10 @@ public interface JSONPlaceholderApi {
     @GET
     Call<Photo> getPhoto(@Url String url);
 
- 
+//=====================
+    @GET("/comments/{id}")
+    Call<Comment> getCommentWithID(@Path("id") int id);
 
+    @GET("comments")
+    Call<List<Comment>> getComments();
 }

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,9 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/todoCard"
+            android:id="@+id/commentCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -34,23 +32,20 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-
                 <TextView
-                    android:id="@+id/todoTitle"
+                    android:id="@+id/commentName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="TODO Title"
+                    android:text="Comment Name"
                     android:textColor="?attr/colorPrimary"
                     android:textSize="20sp" />
 
-
                 <TextView
-                    android:id="@+id/todoStatus"
+                    android:id="@+id/commentEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Status: Not Completed"
+                    android:text="Comment Email"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="16sp" />
 
@@ -62,23 +57,12 @@
                     android:layout_gravity="center_horizontal"
                     android:indeterminate="true" />
 
-
                 <TextView
-                    android:id="@+id/userId"
+                    android:id="@+id/commentBody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="User ID: "
-                    android:textColor="?attr/colorOnSurface"
-                    android:textSize="14sp" />
-
-
-                <TextView
-                    android:id="@+id/todoId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="TODO ID: "
+                    android:text="Comment Body"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -89,32 +73,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Упс, что-то пошло не так..."
-android:visibility="gone"
+            android:text="Oops, something went wrong..."
+            android:visibility="gone"
             android:textColor="#FF0000"
-            android:textSize="22dp"
+            android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/todoCard" />
-
-
-
-<!--
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="#FFFFFF">
-
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminate="true" />
-
-        </LinearLayout>
-        -->
-
+            app:layout_constraintTop_toBottomOf="@+id/commentCard" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

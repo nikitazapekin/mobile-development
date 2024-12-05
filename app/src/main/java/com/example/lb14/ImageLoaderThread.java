@@ -25,29 +25,6 @@ public class ImageLoaderThread {
     }
 
 
-/*
-    public void loadImagesSequentially() {
-        for (Movie movie : movies) {
-            new Thread(() -> {
-                Bitmap bitmap = downloadImage(movie.getImageUrl());
-                if (bitmap != null) {
-                    movie.setBitmap(bitmap);
-
-
-                    handler.post(adapter::notifyDataSetChanged);
-                }
-
-                try {
-
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }).start();
-        }
-    }
-*/
-
     public void loadImagesSequentially() {
         new Thread(() -> {
             for (Movie movie : movies) {
@@ -57,7 +34,7 @@ public class ImageLoaderThread {
                         movie.setBitmap(bitmap);
 
 
-                        handler.post(adapter::notifyDataSetChanged);
+                       handler.post(adapter::notifyDataSetChanged);
                     }
                 });
 
@@ -74,53 +51,7 @@ public class ImageLoaderThread {
         }).start();
     }
 
-    /*
-    public void loadImagesSequentially() {
-        new Thread(() -> {
-            for (Movie movie : movies) {
-                Thread thread = new Thread(() -> {
-                    Bitmap bitmap = downloadImage(movie.getImageUrl());
-                    if (bitmap != null) {
-                        movie.setBitmap(bitmap);
 
-                        // Обновляем UI из главного потока
-                        handler.post(adapter::notifyDataSetChanged);
-                    }
-                });
-
-                thread.start();
-
-                try {
-                    // Задержка между созданием новых потоков
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-*/
-    /*  public void loadImagesSequentially() {
-        for (Movie movie : movies) {
-            executorService.submit(() -> {
-                Bitmap bitmap = downloadImage(movie.getImageUrl());
-                if (bitmap != null) {
-                    movie.setBitmap(bitmap);
-
-
-                    handler.post(adapter::notifyDataSetChanged);
-                }
-
-
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
-        }
-    }
-*/
     private Bitmap downloadImage(String urlString) {
         try {
             URL url = new URL(urlString);

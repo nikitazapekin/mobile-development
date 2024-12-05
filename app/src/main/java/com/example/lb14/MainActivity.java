@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         ImageLoaderThread imageLoaderThread = new ImageLoaderThread(players, adapter);
-        //imageLoaderThread.start();
+
         imageLoaderThread.loadImagesSequentially();
     }
 

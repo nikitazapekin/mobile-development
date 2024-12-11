@@ -6,27 +6,29 @@
     android:layout_height="match_parent">
 
     <!-- Форма для изменения данных -->
+
     <LinearLayout
         android:id="@+id/formContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
+        android:clipToOutline="true"
+        android:elevation="4dp"
         android:orientation="vertical"
         android:padding="16dp"
-        android:background="#FFFFFF"
-        android:elevation="4dp"
-        android:clipToOutline="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="Имя"
             android:textColor="#333333"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/et_name"
@@ -40,11 +42,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:text="Возраст"
             android:textColor="#333333"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/et_age"
@@ -58,11 +60,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:text="Телефон"
             android:textColor="#333333"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/et_phone"
@@ -77,12 +79,21 @@
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Сохранить"
             android:layout_marginTop="24dp"
             android:background="#6200EE"
-            android:textColor="#FFFFFF"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:text="Сохранить"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="361dp"
+        android:id="@+id/recyclerView"
+        android:layout_height="309dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/formContainer" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,14 +23,17 @@ import com.example.viewbindingactivityfragment.databinding.FragmentPersonalBindi
 import com.example.viewbindingactivityfragment.databinding.FragmentPurchaseDetailsBinding;
 import com.example.viewbindingactivityfragment.databinding.FragmentPurchasesBinding;
 
+import java.util.ArrayList;
+
 
 public class PersonalFragment extends Fragment {
     private @NonNull FragmentPersonalBinding binding;
 
     private static final String ARG_CUSTOMER_ID = "customer_id";
     private long customerId;
+    private HorseAdapter horseAdapter;
 
-    private PurchaseAdapter adapter;
+
     private MainViewModel viewModel;
 
     public static PersonalFragment newInstance(long customerId) {
@@ -65,7 +68,25 @@ public class PersonalFragment extends Fragment {
     }
 
 
+    private void setupRecyclerView() {
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        horseAdapter = new HorseAdapter(new ArrayList<>());  // Ensure it's initialized
+        binding.recyclerView.setAdapter(horseAdapter);
+    }
 
+    private void setupViewModel() {
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
+        // Make sure horseAdapter is initialized before setting the observer
+        viewModel.getHorsesByOwner(customerId).observe(getViewLifecycleOwner(), horses -> {
+            if (horseAdapter != null) {
+                horseAdapter.setHorseList(horses);  // Safely set horse list
+            }
+        });
+    }
+
+
+/*
     private void setupRecyclerView() {
         //     binding.recyclerViewPurchases.setLayoutManager(new LinearLayoutManager(getContext()));
         //   adapter = new PurchaseAdapter(purchase -> openPurchaseDetails(purchase.id));
@@ -74,9 +95,11 @@ public class PersonalFragment extends Fragment {
 
     private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-       //  viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-      //    viewModel.getPurchasesByCustomer(customerId).observe(getViewLifecycleOwner(), adapter::submitList);
+
     }
+
+
+ */
     /*
         private void setupFab() {
             binding.button2.setOnClickListener(v -> openAddPurchase());
@@ -108,7 +131,6 @@ public class PersonalFragment extends Fragment {
         String ageStr = binding.etAge.getText().toString().trim();
         String phone = binding.etPhone.getText().toString().trim();
 
-        // Проверка на пустые поля
         if (name.isEmpty() || ageStr.isEmpty() || phone.isEmpty()) {
             showErrorDialog("Пожалуйста, заполните все поля.");
             return;
@@ -117,16 +139,16 @@ public class PersonalFragment extends Fragment {
         // Преобразуем возраст в число
         int age = Integer.parseInt(ageStr);
 
-        // Создаем объект Human для обновления данных
+
         Human human = new Human();
-        human.setId(customerId);  // Устанавливаем ID для обновления
+        human.setId(customerId);
         human.setName(name);
         human.setAge(age);
         human.setPhone(phone);
 
-        // Обновляем данные в базе данных
+
         viewModel.updateHuman(human);
-        getParentFragmentManager().popBackStack(); // Закрыть фрагмент после обновления
+        getParentFragmentManager().popBackStack();
     }
 
     private void showErrorDialog(String message) {
@@ -158,9 +180,3 @@ public class PersonalFragment extends Fragment {
     }
 }
 
-/*
-package com.example.lab12test;
-
-public class HorseFragment {
-}
-*/

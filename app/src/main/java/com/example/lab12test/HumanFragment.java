@@ -64,6 +64,7 @@ public class HumanFragment extends Fragment {
 
     private void setupFab() {
         binding.button.setOnClickListener(v -> openAddParticipant());
+        binding.button1.setOnClickListener(v -> openAddHorse());
 
     }
     private void openAddParticipant() {
@@ -73,6 +74,14 @@ public class HumanFragment extends Fragment {
                 .addToBackStack(null)
                 .commit();
     }
+    private void openAddHorse() {
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new HorseFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
 
     /*
     private void openHorses(long customerId) {
@@ -97,6 +106,8 @@ public class HumanFragment extends Fragment {
                 .addToBackStack(null)
                 .commit();
     }
+
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

@@ -1,5 +1,68 @@
 package com.example.lab12test;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.viewbindingactivityfragment.databinding.FragmentHorseBinding;
+
+public class HorseFragment extends Fragment {
+
+    private FragmentHorseBinding binding;
+    private MainViewModel viewModel;
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentHorseBinding.inflate(inflater, container, false);
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
+        binding.btnSubmit.setOnClickListener(v -> addHorse());
+
+        return binding.getRoot();
+    }
+
+    private void addHorse() {
+        String name = binding.etName.getText().toString().trim();
+        String ageStr = binding.etAge.getText().toString().trim();
+        String ownerIdStr = binding.etOwnerId.getText().toString().trim();
+
+        if (name.isEmpty() || ageStr.isEmpty() || ownerIdStr.isEmpty()) {
+            Toast.makeText(getContext(), "Пожалуйста, заполните все поля.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int age = Integer.parseInt(ageStr);
+        long ownerId = Long.parseLong(ownerIdStr);
+
+        Horse horse = new Horse();
+        horse.setName(name);
+        horse.setAge(age);
+        horse.setOwner_id(ownerId);
+
+        viewModel.insertHorse(horse);
+        Toast.makeText(getContext(), "Лошадь добавлена!", Toast.LENGTH_SHORT).show();
+
+        getParentFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+}
+
+
+/*
+package com.example.lab12test;
+
 
 
 import android.os.Bundle;
@@ -59,48 +122,16 @@ public class HorseFragment extends Fragment {
 
 
     private void setupRecyclerView() {
-   //     binding.recyclerViewPurchases.setLayoutManager(new LinearLayoutManager(getContext()));
-     //   adapter = new PurchaseAdapter(purchase -> openPurchaseDetails(purchase.id));
-     //   binding.recyclerViewPurchases.setAdapter(adapter);
+
     }
 
     private void setupViewModel() {
-      //  viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-     //   viewModel.getPurchasesByCustomer(customerId).observe(getViewLifecycleOwner(), adapter::submitList);
-    }
-/*
-    private void setupFab() {
-        binding.button2.setOnClickListener(v -> openAddPurchase());
-    }
 
-    private void openAddPurchase() {
-        AddPurchaseFragment fragment = AddPurchaseFragment.newInstance(customerId);
-        getParentFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit();
     }
-
-    private void openPurchaseDetails(long purchaseId) {
-        PurchaseDetailsFragment fragment = PurchaseDetailsFragment.newInstance(purchaseId);
-        getParentFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit();
-    }
-*/
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-}
-
-/*
-package com.example.lab12test;
-
-public class HorseFragment {
 }
 */

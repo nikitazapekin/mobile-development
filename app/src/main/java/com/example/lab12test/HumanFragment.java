@@ -83,19 +83,6 @@ public class HumanFragment extends Fragment {
     }
 
 
-    /*
-    private void openHorses(long customerId) {
-  //  HorseFragment  fragment =HorseFragment.newInstance(customerId);
-        HorseFragment fragment = HorseFragment.newInstance(customerId);
-        getParentFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit();
-    }
-*/
-
-    //PersonalFragment
 
     private void openPersonal(long customerId) {
         //  HorseFragment  fragment =HorseFragment.newInstance(customerId);

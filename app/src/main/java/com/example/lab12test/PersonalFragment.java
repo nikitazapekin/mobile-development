@@ -76,52 +76,14 @@ public class PersonalFragment extends Fragment {
     private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        // Make sure horseAdapter is initialized before setting the observer
+
         viewModel.getHorsesByOwner(customerId).observe(getViewLifecycleOwner(), horses -> {
             if (horseAdapter != null) {
-                horseAdapter.setHorseList(horses);  // Safely set horse list
+                horseAdapter.setHorseList(horses);
             }
         });
     }
 
-
-/*
-    private void setupRecyclerView() {
-        //     binding.recyclerViewPurchases.setLayoutManager(new LinearLayoutManager(getContext()));
-        //   adapter = new PurchaseAdapter(purchase -> openPurchaseDetails(purchase.id));
-        //   binding.recyclerViewPurchases.setAdapter(adapter);
-    }
-
-    private void setupViewModel() {
-        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-
-    }
-
-
- */
-    /*
-        private void setupFab() {
-            binding.button2.setOnClickListener(v -> openAddPurchase());
-        }
-
-        private void openAddPurchase() {
-            AddPurchaseFragment fragment = AddPurchaseFragment.newInstance(customerId);
-            getParentFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .addToBackStack(null)
-                    .commit();
-        }
-
-        private void openPurchaseDetails(long purchaseId) {
-            PurchaseDetailsFragment fragment = PurchaseDetailsFragment.newInstance(purchaseId);
-            getParentFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .addToBackStack(null)
-                    .commit();
-        }
-    */
 
 
 

@@ -72,10 +72,3 @@ human.phone =phone;
     }
 }
 
-
-/*
-package com.example.lab12test;
-
-public class AddParticipant {
-}
-*/

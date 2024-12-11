@@ -60,7 +60,6 @@ public class HorseFragment extends Fragment {
         getParentFragmentManager().popBackStack();
     }
 
-    // Диалог с ошибкой
     private void showErrorDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.custom_alert_dialog, null);

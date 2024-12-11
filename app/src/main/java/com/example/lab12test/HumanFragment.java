@@ -42,7 +42,7 @@ public class HumanFragment extends Fragment {
 
 
         adapter = new HumanAdapter(
-              human -> openHorses(human.getId()),
+              human -> openPersonal(human.getId()),
               human -> {
                     viewModel.deleteHuman(human);
 
@@ -73,6 +73,8 @@ public class HumanFragment extends Fragment {
                 .addToBackStack(null)
                 .commit();
     }
+
+    /*
     private void openHorses(long customerId) {
   //  HorseFragment  fragment =HorseFragment.newInstance(customerId);
         HorseFragment fragment = HorseFragment.newInstance(customerId);
@@ -82,9 +84,19 @@ public class HumanFragment extends Fragment {
                 .addToBackStack(null)
                 .commit();
     }
+*/
 
+    //PersonalFragment
 
-
+    private void openPersonal(long customerId) {
+        //  HorseFragment  fragment =HorseFragment.newInstance(customerId);
+        PersonalFragment fragment =PersonalFragment.newInstance(customerId);
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

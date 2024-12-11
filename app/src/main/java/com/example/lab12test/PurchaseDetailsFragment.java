@@ -22,7 +22,7 @@ public class PurchaseDetailsFragment extends Fragment {
     private static final String ARG_PURCHASE_ID = "purchase_id";
     private long purchaseId;
 
-    private PurchaseViewModel viewModel;
+
 
     public static PurchaseDetailsFragment newInstance(long purchaseId) {
         PurchaseDetailsFragment fragment = new PurchaseDetailsFragment();
@@ -40,7 +40,7 @@ public class PurchaseDetailsFragment extends Fragment {
             purchaseId = getArguments().getLong(ARG_PURCHASE_ID);
         }
     }
-
+/*
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,6 +58,8 @@ public class PurchaseDetailsFragment extends Fragment {
         });
     }
 
+
+ */
     private void displayPurchaseDetails(Purchase purchase) {
         binding.tvProduct.setText(purchase.product);
         binding.tvCount.setText(String.valueOf(purchase.count));

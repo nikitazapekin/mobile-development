@@ -20,8 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.viewbindingactivityfragment.R;
 import com.example.viewbindingactivityfragment.databinding.FragmentHorseBinding;
 import com.example.viewbindingactivityfragment.databinding.FragmentPersonalBinding;
-import com.example.viewbindingactivityfragment.databinding.FragmentPurchaseDetailsBinding;
-import com.example.viewbindingactivityfragment.databinding.FragmentPurchasesBinding;
+
 
 import java.util.ArrayList;
 

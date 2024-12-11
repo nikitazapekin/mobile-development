@@ -98,7 +98,7 @@ public class AddPurchaseFragment extends Fragment {
         purchase.price = Double.parseDouble(priceStr);
         purchase.customerId = customerId;
 
-        viewModel.insertPurchase(purchase);
+   //     viewModel.insertPurchase(purchase);
         getParentFragmentManager().popBackStack();
     }
 

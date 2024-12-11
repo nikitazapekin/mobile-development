@@ -10,13 +10,15 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
-
+/*
 @Entity(foreignKeys = @ForeignKey(
         entity = Customer.class,
         parentColumns = "id",
         childColumns = "customer_id",
         onDelete = CASCADE
 ))
+
+ */
 public class Purchase {
 
     @PrimaryKey(autoGenerate = true)

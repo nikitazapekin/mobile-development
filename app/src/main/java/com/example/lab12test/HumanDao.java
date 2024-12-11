@@ -13,7 +13,7 @@ import java.util.List;
 
 @Dao
 public interface HumanDao {
-/*
+
     @Query("SELECT * FROM human")
     LiveData<List<Human>> getAll();
 
@@ -29,5 +29,5 @@ public interface HumanDao {
     @Delete
     void delete(Human human);
 
- */
+
 }

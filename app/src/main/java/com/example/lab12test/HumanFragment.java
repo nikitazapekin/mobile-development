@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.viewbindingactivityfragment.R;
 import com.example.viewbindingactivityfragment.databinding.FragmentHumanBinding;
@@ -19,7 +21,7 @@ import com.example.viewbindingactivityfragment.databinding.FragmentHumanBinding;
 public class HumanFragment extends Fragment {
 
     private FragmentHumanBinding binding;
-    //private CustomerAdapter adapter;
+   private HumanAdapter adapter;
     private MainViewModel viewModel;
 
     @Override
@@ -27,7 +29,7 @@ public class HumanFragment extends Fragment {
         binding = FragmentHumanBinding.inflate(inflater, container, false);
 
         setupRecyclerView();
-       // setupViewModel();
+        setupViewModel();
         setupFab();
 
         return binding.getRoot();
@@ -35,8 +37,39 @@ public class HumanFragment extends Fragment {
 
 
     private void setupRecyclerView() {
-       // binding.recyclerViewCustomers.setLayoutManager(new LinearLayoutManager(getContext()));
+     binding.recyclerViewHuman.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
+
+        adapter = new HumanAdapter(
+              human -> openHorses(human.getId()),
+              human -> {
+                    viewModel.deleteHuman(human);
+
+                }
+        );
+
+
+
+        /*  adapter = new HumanAdapter(
+                         human -> open(human.getId()), // Параметр 'human' не должен быть null
+                human -> viewModel.deleteHuman(human) // Убедитесь, что 'viewModel' инициализирован
+        );
+
+         */
+
+        /*
+        adapter = new HumanAdapter(
+     human -> ope(customer.getId()),
+                customer -> {
+                    viewModel.deleteCustomer(customer);
+
+                }
+
+
+        );
+*/
+        binding.recyclerViewHuman.setAdapter(adapter);
 /*
         adapter = new CustomerAdapter(
                 customer -> openPurchases(customer.getId()),
@@ -49,15 +82,11 @@ public class HumanFragment extends Fragment {
         binding.recyclerViewCustomers.setAdapter(adapter); */
     }
 
-   /* private void setupViewModel() {
+ private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        viewModel.getCustomers().observe(getViewLifecycleOwner(), adapter::submitList);
+        viewModel.getHumans().observe(getViewLifecycleOwner(), adapter::submitList);
     }
-
-    private void setupFab() {
-        binding.button.setOnClickListener(v -> openAddCustomer());
-        //binding.fabAddCustomer.setOnClickListener(v -> openAddCustomer());
-    }
+/*
 
     private void openAddCustomer() {
         getParentFragmentManager()
@@ -89,7 +118,15 @@ public class HumanFragment extends Fragment {
                 .addToBackStack(null)
                 .commit();
     }
-
+    private void openHorses(long customerId) {
+  //  HorseFragment  fragment =HorseFragment.newInstance(customerId);
+        HorseFragment fragment = HorseFragment.newInstance(customerId);
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
 
 
 

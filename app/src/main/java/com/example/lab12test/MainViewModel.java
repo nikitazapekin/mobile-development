@@ -59,7 +59,6 @@ public class MainViewModel extends ViewModel {
 
 
 
-/*
 
 
     private final HumanDao humanDao = App.getInstance().getDatabase().humanDao();
@@ -71,7 +70,7 @@ public class MainViewModel extends ViewModel {
     }
 
     // Получить все лошади по id хозяина
-    public LiveData<List<Horse>> getHorsesByOwner(long ownerId) {
+   public LiveData<List<Horse>> getHorsesByOwner(long ownerId) {
         return horseDao.getAllByOwnerId(ownerId);
     }
 
@@ -105,7 +104,6 @@ public class MainViewModel extends ViewModel {
         Executors.newSingleThreadExecutor().execute(() -> horseDao.delete(horse));
     }
 
- */
 
 
 }

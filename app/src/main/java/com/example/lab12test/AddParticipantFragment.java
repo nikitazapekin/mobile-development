@@ -26,26 +26,27 @@ public class AddParticipantFragment extends Fragment {
         binding = FragmentAddParticipantBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        binding.btnAddCustomer.setOnClickListener(v -> addCustomer());
+        binding.btnSubmit.setOnClickListener(v -> addCustomer());
         return binding.getRoot();
     }
 
     private void addCustomer() {
         String name = binding.etName.getText().toString().trim();
-        String lastName = binding.etLastName.getText().toString().trim();
+        String  age= binding.etAge.getText().toString().trim();
         String phone = binding.etPhone.getText().toString().trim();
 
-        if (name.isEmpty() || lastName.isEmpty() || phone.isEmpty()) {
+        if (name.isEmpty()  || age.isEmpty() ||  phone.isEmpty()) {
             showErrorDialog("Пожалуйста, заполните все поля.");
             return;
         }
 
-        Customer customer = new Customer();
-        customer.name = name;
-        customer.lastName = lastName;
-        customer.phone = phone;
 
-        viewModel.insertCustomer(customer);
+        Human human = new Human();
+human.name = name;
+human.age = Integer.parseInt(age);
+human.phone =phone;
+      //  viewModel.insertCustomer(customer);
+        viewModel.insertHuman(human);
         getParentFragmentManager().popBackStack();
     }
 

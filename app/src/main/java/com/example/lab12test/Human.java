@@ -4,16 +4,16 @@ package com.example.lab12test;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+//@Entity(tableName = "human")
 @Entity(tableName = "human")
 public class Human {
 
     @PrimaryKey(autoGenerate = true)
-    private long id;
-    private String name;
-    private int age;
-    private String phone;
+    public long id;
+  public String name;
+    public int age;
+    public String phone;
 
-    // Геттеры и сеттеры
     public long getId() {
         return id;
     }

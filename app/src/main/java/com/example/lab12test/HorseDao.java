@@ -12,7 +12,7 @@ import java.util.List;
 
 @Dao
 public interface HorseDao {
-/*
+
     @Query("SELECT * FROM horse")
     LiveData<List<Horse>> getAll();
 
@@ -31,5 +31,4 @@ public interface HorseDao {
     @Delete
     void delete(Horse horse);
 
- */
 }

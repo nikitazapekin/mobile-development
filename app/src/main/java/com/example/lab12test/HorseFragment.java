@@ -13,12 +13,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.viewbindingactivityfragment.R;
+import com.example.viewbindingactivityfragment.databinding.FragmentHorseBinding;
 import com.example.viewbindingactivityfragment.databinding.FragmentPurchaseDetailsBinding;
 import com.example.viewbindingactivityfragment.databinding.FragmentPurchasesBinding;
 
 
 public class HorseFragment extends Fragment {
-    private @NonNull FragmentPurchasesBinding binding;
+    private @NonNull FragmentHorseBinding binding;
 
     private static final String ARG_CUSTOMER_ID = "customer_id";
     private long customerId;
@@ -46,11 +47,11 @@ public class HorseFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentPurchasesBinding.inflate(inflater, container, false);
+        binding = FragmentHorseBinding.inflate(inflater, container, false);
 
         setupRecyclerView();
         setupViewModel();
-        setupFab();
+    //    setupFab();
 
         return binding.getRoot();
     }
@@ -58,16 +59,16 @@ public class HorseFragment extends Fragment {
 
 
     private void setupRecyclerView() {
-        binding.recyclerViewPurchases.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new PurchaseAdapter(purchase -> openPurchaseDetails(purchase.id));
-        binding.recyclerViewPurchases.setAdapter(adapter);
+   //     binding.recyclerViewPurchases.setLayoutManager(new LinearLayoutManager(getContext()));
+     //   adapter = new PurchaseAdapter(purchase -> openPurchaseDetails(purchase.id));
+     //   binding.recyclerViewPurchases.setAdapter(adapter);
     }
 
     private void setupViewModel() {
-        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        viewModel.getPurchasesByCustomer(customerId).observe(getViewLifecycleOwner(), adapter::submitList);
+      //  viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+     //   viewModel.getPurchasesByCustomer(customerId).observe(getViewLifecycleOwner(), adapter::submitList);
     }
-
+/*
     private void setupFab() {
         binding.button2.setOnClickListener(v -> openAddPurchase());
     }
@@ -89,7 +90,7 @@ public class HorseFragment extends Fragment {
                 .addToBackStack(null)
                 .commit();
     }
-
+*/
     @Override
     public void onDestroyView() {
         super.onDestroyView();

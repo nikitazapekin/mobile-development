@@ -51,65 +51,20 @@ public class HumanFragment extends Fragment {
 
 
 
-        /*  adapter = new HumanAdapter(
-                         human -> open(human.getId()), // Параметр 'human' не должен быть null
-                human -> viewModel.deleteHuman(human) // Убедитесь, что 'viewModel' инициализирован
-        );
 
-         */
-
-        /*
-        adapter = new HumanAdapter(
-     human -> ope(customer.getId()),
-                customer -> {
-                    viewModel.deleteCustomer(customer);
-
-                }
-
-
-        );
-*/
         binding.recyclerViewHuman.setAdapter(adapter);
-/*
-        adapter = new CustomerAdapter(
-                customer -> openPurchases(customer.getId()),
-                customer -> {
-                    viewModel.deleteCustomer(customer);
 
-                }
-        );
-
-        binding.recyclerViewCustomers.setAdapter(adapter); */
     }
 
  private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         viewModel.getHumans().observe(getViewLifecycleOwner(), adapter::submitList);
     }
-/*
-
-    private void openAddCustomer() {
-        getParentFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, new AddCustomerFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-
-    private void openPurchases(long customerId) {
-        PurchasesFragment fragment = PurchasesFragment.newInstance(customerId);
-        getParentFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit();
-    }
-*/
 
 
     private void setupFab() {
         binding.button.setOnClickListener(v -> openAddParticipant());
-        //binding.fabAddCustomer.setOnClickListener(v -> openAddCustomer());
+
     }
     private void openAddParticipant() {
         getParentFragmentManager()

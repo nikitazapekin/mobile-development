@@ -3,6 +3,7 @@ package com.example.lab12test;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -63,7 +64,7 @@ public class HumanAdapter extends ListAdapter<Human, HumanAdapter.HumanViewHolde
         private final TextView tvPhone;
         private final TextView tvId;
         private final TextView tvAge;
-        private final ImageButton btnDelete;
+        private final Button btnDelete;
 
         public HumanViewHolder(@NonNull View itemView) {
             super(itemView);

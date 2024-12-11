@@ -2,6 +2,8 @@ package com.example.lab12test;
 
 
 
+
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,25 +11,23 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.viewbindingactivityfragment.R;
-import com.example.viewbindingactivityfragment.databinding.FragmentCustomersBinding;
+import com.example.viewbindingactivityfragment.databinding.FragmentHumanBinding;
 
 
-public class CustomerFragment extends Fragment {
+public class HumanFragment extends Fragment {
 
-    private FragmentCustomersBinding binding;
-    private CustomerAdapter adapter;
+    private FragmentHumanBinding binding;
+    //private CustomerAdapter adapter;
     private MainViewModel viewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentCustomersBinding.inflate(inflater, container, false);
+        binding = FragmentHumanBinding.inflate(inflater, container, false);
 
         setupRecyclerView();
-        setupViewModel();
+       // setupViewModel();
         setupFab();
 
         return binding.getRoot();
@@ -35,9 +35,9 @@ public class CustomerFragment extends Fragment {
 
 
     private void setupRecyclerView() {
-        binding.recyclerViewCustomers.setLayoutManager(new LinearLayoutManager(getContext()));
+       // binding.recyclerViewCustomers.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
+/*
         adapter = new CustomerAdapter(
                 customer -> openPurchases(customer.getId()),
                 customer -> {
@@ -46,10 +46,10 @@ public class CustomerFragment extends Fragment {
                 }
         );
 
-        binding.recyclerViewCustomers.setAdapter(adapter);
+        binding.recyclerViewCustomers.setAdapter(adapter); */
     }
 
-    private void setupViewModel() {
+   /* private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         viewModel.getCustomers().observe(getViewLifecycleOwner(), adapter::submitList);
     }
@@ -75,6 +75,23 @@ public class CustomerFragment extends Fragment {
                 .addToBackStack(null)
                 .commit();
     }
+*/
+
+
+    private void setupFab() {
+        binding.button.setOnClickListener(v -> openAddParticipant());
+        //binding.fabAddCustomer.setOnClickListener(v -> openAddCustomer());
+    }
+    private void openAddParticipant() {
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new AddParticipantFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+
+
 
     @Override
     public void onDestroyView() {

@@ -1,24 +1,19 @@
 package com.example.lab12test;
 
 
-
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
-@Entity
-public class Customer {
+@Entity(tableName = "human")
+public class Human {
 
     @PrimaryKey(autoGenerate = true)
-    public long id;
-    public String name;
-    @ColumnInfo(name = "last_name")
-    public String lastName;
+    private long id;
+    private String name;
+    private int age;
+    private String phone;
 
-    public String phone;
-
+    // Геттеры и сеттеры
     public long getId() {
         return id;
     }
@@ -35,15 +30,13 @@ public class Customer {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public int getAge() {
+        return age;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setAge(int age) {
+        this.age = age;
     }
-
-
 
     public String getPhone() {
         return phone;

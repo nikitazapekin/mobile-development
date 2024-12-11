@@ -18,7 +18,7 @@ public class App extends Application {
         instance = this;
         database = Room.databaseBuilder(this, AppDatabase.class,
                         "database1")
-                .allowMainThreadQueries()
+               // .allowMainThreadQueries()
                 .build();
     }
     public static App getInstance() {return instance;}

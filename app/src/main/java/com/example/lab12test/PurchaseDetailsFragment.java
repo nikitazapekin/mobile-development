@@ -18,7 +18,7 @@ import com.example.viewbindingactivityfragment.databinding.FragmentPurchaseDetai
 public class PurchaseDetailsFragment extends Fragment {
 
     private FragmentPurchaseDetailsBinding binding;
-  //  private FragmentPurchaseDetailsBinding binding;
+
     private static final String ARG_PURCHASE_ID = "purchase_id";
     private long purchaseId;
 

@@ -23,6 +23,10 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.app.DatePickerDialog;
+import android.widget.Button;
+import java.util.Calendar;
+
 public class ListOfEarthquakes extends Fragment {
 
     private RecyclerView recyclerView;
@@ -30,8 +34,11 @@ public class ListOfEarthquakes extends Fragment {
     private List<EarthquakeResponse.Feature> earthquakes = new ArrayList<>();
     private ProgressBar progressBar;
     private TextView errorTextView;
-    private EditText startDateInput, endDateInput, minMagnitudeInput;
-    private Button searchButton;
+    private Button startDateButton, endDateButton, searchButton;
+    private EditText minMagnitudeInput;
+
+    private String startDate = "";
+    private String endDate = "";
 
     public ListOfEarthquakes() {}
 
@@ -50,14 +57,22 @@ public class ListOfEarthquakes extends Fragment {
         progressBar = view.findViewById(R.id.progressBar);
         errorTextView = view.findViewById(R.id.errorTextView);
 
-        startDateInput = view.findViewById(R.id.startDateInput);
-        endDateInput = view.findViewById(R.id.endDateInput);
+        startDateButton = view.findViewById(R.id.startDateButton);
+        endDateButton = view.findViewById(R.id.endDateButton);
         minMagnitudeInput = view.findViewById(R.id.minMagnitudeInput);
         searchButton = view.findViewById(R.id.searchButton);
 
+        startDateButton.setOnClickListener(v -> showDatePickerDialog((date) -> {
+            startDate = date;
+            startDateButton.setText("Start Date: " + date);
+        }));
+
+        endDateButton.setOnClickListener(v -> showDatePickerDialog((date) -> {
+            endDate = date;
+            endDateButton.setText("End Date: " + date);
+        }));
+
         searchButton.setOnClickListener(v -> {
-            String startDate = startDateInput.getText().toString();
-            String endDate = endDateInput.getText().toString();
             String minMagnitudeStr = minMagnitudeInput.getText().toString();
 
             if (validateInputs(startDate, endDate, minMagnitudeStr)) {
@@ -70,6 +85,21 @@ public class ListOfEarthquakes extends Fragment {
         });
 
         return view;
+    }
+
+    private void showDatePickerDialog(DatePickerCallback callback) {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                (view, year1, month1, dayOfMonth) -> {
+                    String date = String.format("%d-%02d-%02d", year1, month1 + 1, dayOfMonth);
+                    callback.onDateSelected(date);
+                },
+                year, month, day);
+        datePickerDialog.show();
     }
 
     private boolean validateInputs(String startDate, String endDate, String minMagnitude) {
@@ -101,6 +131,10 @@ public class ListOfEarthquakes extends Fragment {
                         errorTextView.setVisibility(View.VISIBLE);
                     }
                 });
+    }
+
+    interface DatePickerCallback {
+        void onDateSelected(String date);
     }
 }
 

@@ -47,17 +47,6 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
     public void onBindViewHolder(@NonNull MarvelItemViewHolder holder, @SuppressLint("RecyclerView") int position) {
         MarvelItem marvelItem = marvelItems.get(position);
 
-       /* if(marvelItem.getName()!=null) {
-
-
-            holder.nameTextView.setText(marvelItem.getName());
-        } else {
-            holder.nameTextView.setText("No name");
-        }
-
-        holder.nameTextView.setText(marvelItem.getTitle());
-
-        */
 
 
         if (marvelItem.getName() != null) {
@@ -70,8 +59,7 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
         String imagePath;
         String imageExtension;
         String imageUrl="";
-        //  String imageUrl = marvelItem.getImagePath() + "." + marvelItem.getImageExtension();
-       // Log.d("url", imageUrl);
+
 
         try {
 
@@ -79,17 +67,19 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
              imageExtension = marvelItem.getImageExtension();
 
             if (imagePath != null && imageExtension != null) {
-
+                /*
             imageUrl = imagePath + "." + imageExtension;
                 Log.d("url", imageUrl);
 
 
-              //  holder.nameTextView.setText(marvelItem.getName() + "|" + imageUrl);
+
+                 */
+
             } else {
 
                 Log.e("MarvelItemAdapter", "Error: imagePath or imageExtension is null");
 
-          //      holder.nameTextView.setText(marvelItem.getName() + "| No image");
+
             }
         } catch (Exception e) {
 
@@ -99,7 +89,7 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
         }
 
 
-
+/*
         MarvelApi marvelApi = NetworkService.getInstance().getMarvelApi();
         Call<ResponseBody> imageCall = marvelApi.getImage(imageUrl);
 
@@ -114,7 +104,7 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
 
 
                         if (holder.getAdapterPosition() == position) {
-                            // Set the bitmap to ImageView
+
                             holder.imageView.setImageBitmap(bmp);
                         }
                     } catch (Exception e) {
@@ -123,6 +113,8 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
                 } else {
                     Log.e("MarvelItemAdapter", "Failed to load image: " + response.message());
                 }
+
+
             }
 
             @Override
@@ -130,7 +122,7 @@ public class MarvelItemAdapter extends RecyclerView.Adapter<MarvelItemAdapter.Ma
                 Log.e("MarvelItemAdapter", "Image request failed", t);
             }
         });
-
+*/
 
 
 

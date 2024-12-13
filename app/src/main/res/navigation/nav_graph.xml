@@ -4,7 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/listOfEvents">
+    app:startDestination="@id/listOfEarthquakes">
+
+
+
+    <fragment
+        android:id="@+id/listOfEarthquakes"
+        android:name="com.example.lab11fix.ListOfEarthquakes"
+        android:label="fragment_list_of_earthquakes"
+        tools:layout="@layout/list_of_earthquakes" >
+        <action
+            android:id="@+id/action_listOfEvents_to_card"
+            app:destination="@id/card" >
+            <argument
+                android:name="id"
+                app:argType="string" />
+
+        </action>
+    </fragment>
+
 
     <fragment
         android:id="@+id/listOfEvents"

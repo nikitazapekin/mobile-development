@@ -104,7 +104,7 @@ public class Card extends Fragment {
 
 
     private void loadData(String type) {
-        textView.setVisibility(View.GONE);
+    /*    textView.setVisibility(View.GONE);
         Log.d("API Response", "START");
         Log.d("loadData", "Type: " + type + ", ID: " + id);
         progressBar.setVisibility(View.VISIBLE);
@@ -168,6 +168,8 @@ public class Card extends Fragment {
                     Log.e("MarvelResponse", "Error processing response", e);
                     Toast.makeText(getContext(), "An error occurred while processing data", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
 
 
@@ -178,6 +180,8 @@ public class Card extends Fragment {
                 Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+     */
     }
 
 }

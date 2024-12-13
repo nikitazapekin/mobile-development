@@ -20,14 +20,7 @@ public interface MarvelApi {
             @Query("hash") String hash
     );
 
-    @GET("v1/public/events/{id}")
-    Call<MarvelResponse<Event>> getEventById(
-            @Path("id") int id,
-            @Query("ts") String ts,
-            @Query("apikey") String apiKey,
-            @Query("hash") String hash
-    );
-
+ 
 
 
     @GET("v1/public/events/{eventId}/characters")

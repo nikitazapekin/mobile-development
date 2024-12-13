@@ -36,8 +36,10 @@ public class ListOfEvents extends Fragment {
     private boolean isLoading = false;
     private Button prevButton, nextButton;
     private TextView pageNumber, errorTextView;
-private ProgressBar progressBar;
-    public  ListOfEvents() {}
+    private ProgressBar progressBar;
+
+    public ListOfEvents() {
+    }
 
     @Nullable
     @Override
@@ -50,7 +52,7 @@ private ProgressBar progressBar;
 
         adapter = new EventAdapter(events, event -> {
 
-          ListOfEventsDirections.ActionListOfEventsToCard action = ListOfEventsDirections.actionListOfEventsToCard(String.valueOf(event.getId()));
+            ListOfEventsDirections.ActionListOfEventsToCard action = ListOfEventsDirections.actionListOfEventsToCard(String.valueOf(event.getId()));
             Navigation.findNavController(view).navigate(action);
         });
         recyclerView.setAdapter(adapter);
@@ -79,7 +81,7 @@ private ProgressBar progressBar;
 
 
     private void loadEvents(int page) {
-        isLoading = true;
+   /*     isLoading = true;
         progressBar.setVisibility(View.VISIBLE);
         errorTextView.setVisibility(View.GONE);
         pageNumber.setText("Page " + (page + 1));
@@ -108,9 +110,8 @@ private ProgressBar progressBar;
                 });
     }
 
+    */
 
 
-
-
-
+    }
 }

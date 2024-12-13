@@ -14,15 +14,25 @@
         android:label="fragment_list_of_earthquakes"
         tools:layout="@layout/list_of_earthquakes" >
         <action
-            android:id="@+id/action_listOfEvents_to_card"
-            app:destination="@id/card" >
+            android:id="@+id/action_listOfEarthquakes_to_eartquakeInfo"
+            app:destination="@id/eartquakeInfo" >
             <argument
                 android:name="id"
                 app:argType="string" />
 
+
         </action>
     </fragment>
+    <fragment
+        android:id="@+id/eartquakeInfo"
+        android:name="com.example.lab11fix.EarthquakeInfo"
+        android:label="fragment_eartquake_info"
+        tools:layout="@layout/fragment_eartquake_info" >
+        <argument
+            android:name="id"
+            app:argType="string" />
 
+    </fragment>
 
     <fragment
         android:id="@+id/listOfEvents"
@@ -47,5 +57,6 @@
             android:name="id"
             app:argType="string" />
     </fragment>
+
 
 </navigation>

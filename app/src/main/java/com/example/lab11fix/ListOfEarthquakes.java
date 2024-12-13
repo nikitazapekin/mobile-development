@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,7 +52,20 @@ public class ListOfEarthquakes extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new EarthquakeAdapter(earthquakes);
+
+   adapter = new EarthquakeAdapter(earthquakes, earthquake -> {
+
+       //ListOfEarthquakesDirections.ActionListOfEarthquakesToEartquakeInfo action = ListOfEarthquakes.actionListEarthquakesToEartquakeInfo("e");
+     //  Navigation.findNavController(view).navigate(action);
+
+
+       ListOfEarthquakesDirections.ActionListOfEarthquakesToEartquakeInfo action =
+               ListOfEarthquakesDirections.actionListOfEarthquakesToEartquakeInfo("e");
+       Navigation.findNavController(view).navigate(action);
+   });
+
+
+
         recyclerView.setAdapter(adapter);
 
         progressBar = view.findViewById(R.id.progressBar);

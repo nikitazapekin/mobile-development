@@ -13,9 +13,16 @@ public class EarthquakeResponse {
 
     public static class Feature {
         private Properties properties;
-
+        private String id;
         public Properties getProperties() {
             return properties;
+        }
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
         }
 
         public static class Properties {

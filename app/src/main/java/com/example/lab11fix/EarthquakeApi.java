@@ -14,4 +14,10 @@ public interface EarthquakeApi {
             @Query("endtime") String endTime,
             @Query("minmagnitude") double minMagnitude
     );
+    @GET("query")
+    Call<Earthquake> getEarthquakeDetails(
+            @Query("eventid") String id,
+            @Query("format") String format
+    );
+
 }

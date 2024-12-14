@@ -76,7 +76,7 @@
         app:layout_constraintTop_toBottomOf="@id/typeTextView"
         app:layout_constraintStart_toStartOf="parent"
      />
-
+<!--
     <TextView
         android:id="@+id/coordinatesTextView"
         android:layout_width="wrap_content"
@@ -87,7 +87,17 @@
         app:layout_constraintStart_toStartOf="parent"
        />
     <TextView
-        android:id="@+id/magTextView"
+        android:id="@+id/alertTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coordinates"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/coordinatesTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/cdiTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Coordinates"
@@ -104,7 +114,7 @@
         android:contentDescription="Earthquake Image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/coordinatesTextView" />
-
+-->
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

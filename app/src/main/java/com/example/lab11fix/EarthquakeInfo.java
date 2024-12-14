@@ -17,7 +17,9 @@ import java.util.Arrays;
 
 public class EarthquakeInfo extends Fragment {
 
-    private TextView idTextView, placeTextView, magnitudeTextView, timeTextView, statusTextView, typeTextView, titleTextView, coordinatesTextView;
+    private TextView idTextView, placeTextView, magnitudeTextView, timeTextView, statusTextView,
+
+    typeTextView, titleTextView, coordinatesTextView,    alertTextView,  cdiTextView ;
 
     private String id;
 
@@ -44,11 +46,12 @@ public class EarthquakeInfo extends Fragment {
         timeTextView = view.findViewById(R.id.timeTextView);
         statusTextView = view.findViewById(R.id.statusTextView);
         titleTextView = view.findViewById(R.id.titleTextView);
-        //       alertTextView = view.findViewById(R.id.alertTextView);
-        //   cdiTextView = view.findViewById(R.id.cdiTextView);
+            //   alertTextView = view.findViewById(R.id.alertTextView);
+    //     cdiTextView = view.findViewById(R.id.cdiTextView);
+       idTextView = view.findViewById(R.id.idTextView);
         //   mmiTextView = view.findViewById(R.id.mmiTextView);
 
-
+   //  coordinatesTextView = view.findViewById(R.id.coordinatesTextView);
         // Запрос данных о землетрясении
         loadEarthquakeDetails(id);
 
@@ -72,15 +75,15 @@ public class EarthquakeInfo extends Fragment {
                             Earthquake.Properties props = earthquake.getProperties();
                             if (props != null) {
                                  magnitudeTextView.setText("Magnitude: " + props.getMag());
-                                //  magTextView.setText("Magnitude: " + earthquake.getProperties());
-                                placeTextView.setText("Place: " + props.getAlert());
-                                //     timeTextView.setText("Time: " + props.getTime());
+idTextView.setText("ID: "+ earthquake.getId());
+                                placeTextView.setText("Place: " + props.getPlace());
+                         timeTextView.setText("Time: " + props.getTime());
                                 //       magTextView.setText("Magnitude: " + earthquake.getProperties().getTime());
                                 statusTextView.setText("Status: " + props.getStatus());
                                 titleTextView.setText("Title: " + props.getTitle());
-                                //     alertTextView.setText("Alert: " + props.getAlert());
-                                //    cdiTextView.setText("CDI: " + (props.getCdi() != null ? props.getCdi() : "N/A"));
-                                //    mmiTextView.setText("MMI: " + (props.getMmi() != null ? props.getMmi() : "N/A"));
+                             //      alertTextView.setText("Alert: " + props.getAlert());
+                              //    cdiTextView.setText("CDI: " + (props.getCdi() != null ? props.getCdi() : "N/A"));
+
 
                             }
 

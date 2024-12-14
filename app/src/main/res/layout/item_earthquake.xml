@@ -34,9 +34,3 @@
 
 
 </LinearLayout>
-
-<!--
-         placeTextView = itemView.findViewById(R.id.placeTextView);
-            magnitudeTextView = itemView.findViewById(R.id.magnitudeTextView);
-            timeTextView = itemView.findViewById(R.id.timeTextView);
--->

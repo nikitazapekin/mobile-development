@@ -34,29 +34,5 @@
 
     </fragment>
 
-    <fragment
-        android:id="@+id/listOfEvents"
-        android:name="com.example.lab11fix.ListOfEvents"
-        android:label="fragment_list_of_events"
-        tools:layout="@layout/fragment_list_of_events" >
-        <action
-            android:id="@+id/action_listOfEvents_to_card"
-            app:destination="@id/card" >
-            <argument
-                android:name="id"
-                app:argType="string" />
-
-        </action>
-    </fragment>
-    <fragment
-        android:id="@+id/card"
-        android:name="com.example.lab11fix.Card"
-        android:label="fragment_card"
-        tools:layout="@layout/fragment_card" >
-        <argument
-            android:name="id"
-            app:argType="string" />
-    </fragment>
-
 
 </navigation>

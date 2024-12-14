@@ -39,14 +39,15 @@ public class EarthquakeInfo extends Fragment {
         View view = inflater.inflate(R.layout.fragment_eartquake_info, container, false);
 
         // Инициализация TextView
-        idTextView = view.findViewById(R.id.idTextView);
+           magnitudeTextView = view.findViewById(R.id.magnitudeTextView);
         placeTextView = view.findViewById(R.id.placeTextView);
-        magnitudeTextView = view.findViewById(R.id.magnitudeTextView);
         timeTextView = view.findViewById(R.id.timeTextView);
         statusTextView = view.findViewById(R.id.statusTextView);
-        typeTextView = view.findViewById(R.id.typeTextView);
         titleTextView = view.findViewById(R.id.titleTextView);
-        coordinatesTextView = view.findViewById(R.id.coordinatesTextView);
+        //       alertTextView = view.findViewById(R.id.alertTextView);
+        //   cdiTextView = view.findViewById(R.id.cdiTextView);
+        //   mmiTextView = view.findViewById(R.id.mmiTextView);
+
 
         // Запрос данных о землетрясении
         loadEarthquakeDetails(id);
@@ -65,25 +66,24 @@ public class EarthquakeInfo extends Fragment {
                         if (response.isSuccessful() && response.body() != null) {
                             Earthquake earthquake = response.body();
 
-                            // Заполняем текстовые поля данными о землетрясении
-                            idTextView.setText("ID: " + earthquake.getId());
-                            placeTextView.setText("Place: " + earthquake.getPlace());
-                            magnitudeTextView.setText("Magnitude: " + earthquake.getMagnitude());
-                            timeTextView.setText("Time: " + earthquake.getTime());
-                            statusTextView.setText("Status: " + earthquake.getStatus());
-                            typeTextView.setText("Type: " + earthquake.getType());
-                            titleTextView.setText("Title: " + earthquake.getTitle());
 
-                            // Обработка координат
-                            double[] coordinates = earthquake.getCoordinates();
-                            if (coordinates != null && coordinates.length >= 3) {
-                                coordinatesTextView.setText("Coordinates: Lat: " + coordinates[1] + ", Long: " + coordinates[0] + ", Depth: " + coordinates[2]);
-                            } else {
-                                coordinatesTextView.setText("Coordinates: Not available");
+
+
+                            Earthquake.Properties props = earthquake.getProperties();
+                            if (props != null) {
+                                 magnitudeTextView.setText("Magnitude: " + props.getMag());
+                                //  magTextView.setText("Magnitude: " + earthquake.getProperties());
+                                placeTextView.setText("Place: " + props.getAlert());
+                                //     timeTextView.setText("Time: " + props.getTime());
+                                //       magTextView.setText("Magnitude: " + earthquake.getProperties().getTime());
+                                statusTextView.setText("Status: " + props.getStatus());
+                                titleTextView.setText("Title: " + props.getTitle());
+                                //     alertTextView.setText("Alert: " + props.getAlert());
+                                //    cdiTextView.setText("CDI: " + (props.getCdi() != null ? props.getCdi() : "N/A"));
+                                //    mmiTextView.setText("MMI: " + (props.getMmi() != null ? props.getMmi() : "N/A"));
+
                             }
 
-                            // Логирование для проверки координат
-                            Log.d("EarthquakeInfo", "Coordinates: " + Arrays.toString(coordinates));
                         }
                     }
 
@@ -95,25 +95,34 @@ public class EarthquakeInfo extends Fragment {
     }
 }
 
+
 /*
 package com.example.lab11fix;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.io.InputStream;
+
 public class EarthquakeInfo extends Fragment {
 
-    private TextView idTextView, placeTextView, magnitudeTextView, timeTextView, statusTextView, typeTextView, titleTextView, coordinatesTextView;
-
+    private TextView magTextView, placeTextView, timeTextView, statusTextView, titleTextView, alertTextView, cdiTextView, mmiTextView;
+    private ImageView earthquakeImageView;  // ImageView for the earthquake image
     private String id;
 
     public EarthquakeInfo() {
@@ -123,7 +132,129 @@ public class EarthquakeInfo extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            // Получаем id из аргументов
+   id = EarthquakeInfoArgs.fromBundle(getArguments()).getId();
+
+        }
+    }
+
+
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+     //   magTextView = view.findViewById(R.id.magTextView);
+        placeTextView = view.findViewById(R.id.placeTextView);
+        timeTextView = view.findViewById(R.id.timeTextView);
+        statusTextView = view.findViewById(R.id.statusTextView);
+        titleTextView = view.findViewById(R.id.titleTextView);
+ //       alertTextView = view.findViewById(R.id.alertTextView);
+     //   cdiTextView = view.findViewById(R.id.cdiTextView);
+     //   mmiTextView = view.findViewById(R.id.mmiTextView);
+
+        loadEarthquakeDetails(id);
+    }
+
+    private void loadEarthquakeDetails(String id) {
+        NetworkService.getInstance()
+                .getEarthquakeApi()
+                .getEarthquakeDetails(id, "geojson")
+                .enqueue(new Callback<Earthquake>() {
+                    @Override
+                    public void onResponse(Call<Earthquake> call, Response<Earthquake> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            Earthquake earthquake = response.body();
+
+                            Earthquake.Properties props = earthquake.getProperties();
+                            if (props != null) {
+                             //  magTextView.setText("Magnitude: " + props.getMag());
+                              //  magTextView.setText("Magnitude: " + earthquake.getProperties());
+                                placeTextView.setText("Place: " + props.getAlert());
+                           //     timeTextView.setText("Time: " + props.getTime());
+                         //       magTextView.setText("Magnitude: " + earthquake.getProperties().getTime());
+                                statusTextView.setText("Status: " + props.getStatus());
+                                titleTextView.setText("Title: " + props.getTitle());
+                           //     alertTextView.setText("Alert: " + props.getAlert());
+                         //    cdiTextView.setText("CDI: " + (props.getCdi() != null ? props.getCdi() : "N/A"));
+                         //    mmiTextView.setText("MMI: " + (props.getMmi() != null ? props.getMmi() : "N/A"));
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Earthquake> call, Throwable t) {
+                        Log.e("EarthquakeInfo", "Failed to load earthquake details", t);
+                    }
+                });
+    }
+
+
+
+
+}
+*/
+/*
+    private void loadEarthquakeImage(String imageUrl) {
+        NetworkService.getInstance()
+                .getEarthquakeApi()
+              //  .getEarthquakeImage(imageUrl)  // Assuming you have a method to fetch image
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            try {
+                                InputStream inputStream = response.body().byteStream();
+                                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                                earthquakeImageView.setImageBitmap(bitmap);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+    }
+
+ */
+/*
+package com.example.lab11fix;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import java.io.InputStream;
+import java.util.Arrays;
+public class EarthquakeInfo extends Fragment {
+
+    private TextView idTextView, placeTextView, magnitudeTextView, timeTextView, statusTextView, typeTextView, titleTextView, coordinatesTextView;
+    private ImageView earthquakeImageView;  // ImageView for the earthquake image
+    private String id;
+
+    public EarthquakeInfo() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
             id = EarthquakeInfoArgs.fromBundle(getArguments()).getId();
         }
     }
@@ -133,7 +264,7 @@ public class EarthquakeInfo extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_eartquake_info, container, false);
 
-        // Инициализация TextView
+        // Initialize TextViews
         idTextView = view.findViewById(R.id.idTextView);
         placeTextView = view.findViewById(R.id.placeTextView);
         magnitudeTextView = view.findViewById(R.id.magnitudeTextView);
@@ -142,15 +273,15 @@ public class EarthquakeInfo extends Fragment {
         typeTextView = view.findViewById(R.id.typeTextView);
         titleTextView = view.findViewById(R.id.titleTextView);
         coordinatesTextView = view.findViewById(R.id.coordinatesTextView);
+        earthquakeImageView = view.findViewById(R.id.earthquakeImageView);
 
-        // Запрос данных о землетрясении
+        // Load earthquake details
         loadEarthquakeDetails(id);
 
         return view;
     }
 
     private void loadEarthquakeDetails(String id) {
-        // Запрос на получение данных о землетрясении по id
         NetworkService.getInstance()
                 .getEarthquakeApi()
                 .getEarthquakeDetails(id, "geojson")
@@ -160,18 +291,17 @@ public class EarthquakeInfo extends Fragment {
                         if (response.isSuccessful() && response.body() != null) {
                             Earthquake earthquake = response.body();
 
+                            // Fill the TextViews with earthquake data
+                             idTextView.setText("ID: " + earthquake.getId());
+                            placeTextView.setText("Place: " + earthquake.getPlace());
+                            magnitudeTextView.setText("Magnitude: " + earthquake.getMagnitude());
+                            timeTextView.setText("Time: " + earthquake.getTime());
+                            statusTextView.setText("Status: " + earthquake.getStatus());
+                            typeTextView.setText("Type: " + earthquake.getType());
+                           titleTextView.setText("Title: " + earthquake.getTitle());
 
-                            idTextView.setText("ID: " + earthquake.getId()+"");
-                            placeTextView.setText("Place: " + earthquake.getPlace()+"");
-                            magnitudeTextView.setText("Magnitude: " + earthquake.getMagnitude()+"");
-                            timeTextView.setText("Time: " + earthquake.getTime()+"");
-                            statusTextView.setText("Status: " + earthquake.getStatus()+"");
-                            typeTextView.setText("Type: " + earthquake.getType()+"");
-                            titleTextView.setText("Title: " + earthquake.getTitle()+"");
 
-                            // Отображение координат
-                            double[] coordinates = earthquake.getCoordinates();
-                            coordinatesTextView.setText("Coordinates: Lat: " + coordinates[1] + ", Long: " + coordinates[0] + ", Depth: " + coordinates[2]);
+
                         }
                     }
 
@@ -181,97 +311,7 @@ public class EarthquakeInfo extends Fragment {
                     }
                 });
     }
-}
-*/
-/*
-
-package com.example.lab11fix;
-
-
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class EarthquakeInfo extends Fragment {
-
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-
-    private String mParam1;
-    private String mParam2;
-
-
-    private String id;
-    public EarthquakeInfo() {
-
-    }
-
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            EarthquakeInfoArgs args = EarthquakeInfoArgs.fromBundle(getArguments());
-            id = args.getId(); // Получаем ID из Safe Args
-            loadEarthquakeDetails(id); // Загружаем данные
-        }
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_eartquake_info, container, false);
-    }
-
-
-
-    private void loadEarthquakeDetails(String id) {
-        NetworkService.getInstance()
-                .getEarthquakeApi()
-                .getEarthquakeDetails(id, "geojson")
-                .enqueue(new Callback<Earthquake>() {
-
-                    public void onResponse(Call<Earthquake> call, Response<Earthquake> response) {
-                        if (response.isSuccessful() && response.body() != null) {
-                            Earthquake earthquake = response.body();
-
-                            updateUI(earthquake);
-                        }
-                    }
-
-
-                    public void onFailure(Call<Earthquake> call, Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
-    }
-
-    private void updateUI(Earthquake earthquake) {
-        // Пример обновления UI
-        TextView placeTextView = getView().findViewById(R.id.placeTextView);
-        TextView magnitudeTextView = getView().findViewById(R.id.magnitudeTextView);
-
-        placeTextView.setText(earthquake.getPlace());
-        magnitudeTextView.setText(String.valueOf(earthquake.getMagnitude()));
-    }
-
-
 
 
 }
-*/
+ */

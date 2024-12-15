@@ -66,7 +66,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- TextView to display coordinates -->
+
     <TextView
         android:id="@+id/coordinatesTextView"
         android:layout_width="0dp"

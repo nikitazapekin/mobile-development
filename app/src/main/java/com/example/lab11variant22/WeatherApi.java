@@ -14,4 +14,13 @@ public interface WeatherApi {
             @Query("appid") String apiKey,
             @Query("units") String units
     );
+
+    @GET("data/2.5/forecast")
+    Call<WeatherResponse> getWeatherForecastByCoordinates(
+            @Query("lat") double latitude,
+            @Query("lon") double longitude,
+            @Query("cnt") int cnt,
+            @Query("appid") String apiKey,
+            @Query("units") String units
+    );
 }

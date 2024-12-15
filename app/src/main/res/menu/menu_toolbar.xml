@@ -4,28 +4,33 @@
 
 
     <item
-        android:id="@+id/characters"
-        android:title="Персонажи"
+        android:id="@+id/minsk"
+        android:title="Минск"
         app:showAsAction="always"
         />
     <item
-        android:id="@+id/stories"
-        android:title="Истории"
+        android:id="@+id/mogilev"
+        android:title="Могилев"
         app:showAsAction="always"
         />
     <item
-        android:id="@+id/creators"
-        android:title="Создатели"
+        android:id="@+id/vitebsk"
+        android:title="Витебск"
         app:showAsAction="always"
         />
     <item
-        android:id="@+id/comics"
-        android:title="Комиксы"
+        android:id="@+id/grodno"
+        android:title="Гродно"
         app:showAsAction="always"
         />
     <item
-        android:id="@+id/series"
-        android:title="Серии"
+        android:id="@+id/gomel"
+        android:title="Гомель"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/brest"
+        android:title="Брест"
         app:showAsAction="always"
         />
 </menu>

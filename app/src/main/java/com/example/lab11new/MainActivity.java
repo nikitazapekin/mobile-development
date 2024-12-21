@@ -24,19 +24,22 @@ public class MainActivity extends AppCompatActivity {
     private List<SunriseSunsetAdapter.Item> items = new ArrayList<>();
 
 
-    /*
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Button datePickerButton = findViewById(R.id.datePickerButton);
+        Button searchButton = findViewById(R.id.searchButton);
         EditText longitudeInput = findViewById(R.id.longitudeInput);
         recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new SunriseSunsetAdapter(items);
         recyclerView.setAdapter(adapter);
+
 
         datePickerButton.setOnClickListener(v -> {
             Calendar calendar = Calendar.getInstance();
@@ -50,44 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }, year, month, day).show();
         });
 
-        findViewById(R.id.datePickerButton).setOnClickListener(v -> {
-            String longitudeStr = longitudeInput.getText().toString();
-            if (!selectedDate.isEmpty() && !longitudeStr.isEmpty()) {
-                double longitude = Double.parseDouble(longitudeStr);
-                fetchSunriseSunset(longitude);
-            }
-        });
-    }
-*/
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Button datePickerButton = findViewById(R.id.datePickerButton);
-        Button searchButton = findViewById(R.id.searchButton); // Добавить кнопку в макет
-        EditText longitudeInput = findViewById(R.id.longitudeInput);
-        recyclerView = findViewById(R.id.recyclerView);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new SunriseSunsetAdapter(items);
-        recyclerView.setAdapter(adapter);
-
-        // Логика для выбора даты
-        datePickerButton.setOnClickListener(v -> {
-            Calendar calendar = Calendar.getInstance();
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-            new DatePickerDialog(this, (view, year1, month1, dayOfMonth) -> {
-                selectedDate = year1 + "-" + (month1 + 1) + "-" + dayOfMonth;
-                datePickerButton.setText(selectedDate);
-            }, year, month, day).show();
-        });
-
-        // Логика для поиска
         searchButton.setOnClickListener(v -> {
             String longitudeStr = longitudeInput.getText().toString();
             if (!selectedDate.isEmpty() && !longitudeStr.isEmpty()) {
@@ -120,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(Call<SunriseResponse> call, Response<SunriseResponse> response) {
                             if (response.body() != null) {
                                 items.add(new SunriseSunsetAdapter.Item(finalLatitude,
-                                        response.body().getResults().toString(),
+                                        response.body().getResults().getSunrise(),
                                         response.body().getResults().getSunset()));
                                 adapter.notifyDataSetChanged();
                             }

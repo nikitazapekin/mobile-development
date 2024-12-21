@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private SunriseSunsetAdapter adapter;
     private List<SunriseSunsetAdapter.Item> items = new ArrayList<>();
 
+
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,57 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+*/
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button datePickerButton = findViewById(R.id.datePickerButton);
+        Button searchButton = findViewById(R.id.searchButton); // Добавить кнопку в макет
+        EditText longitudeInput = findViewById(R.id.longitudeInput);
+        recyclerView = findViewById(R.id.recyclerView);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new SunriseSunsetAdapter(items);
+        recyclerView.setAdapter(adapter);
+
+        // Логика для выбора даты
+        datePickerButton.setOnClickListener(v -> {
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            new DatePickerDialog(this, (view, year1, month1, dayOfMonth) -> {
+                selectedDate = year1 + "-" + (month1 + 1) + "-" + dayOfMonth;
+                datePickerButton.setText(selectedDate);
+            }, year, month, day).show();
+        });
+
+        // Логика для поиска
+        searchButton.setOnClickListener(v -> {
+            String longitudeStr = longitudeInput.getText().toString();
+            if (!selectedDate.isEmpty() && !longitudeStr.isEmpty()) {
+                try {
+                    double longitude = Double.parseDouble(longitudeStr);
+                    fetchSunriseSunset(longitude);
+                } catch (NumberFormatException e) {
+                    longitudeInput.setError("Введите корректное число");
+                }
+            } else {
+                if (selectedDate.isEmpty()) {
+                    datePickerButton.setError("Выберите дату");
+                }
+                if (longitudeStr.isEmpty()) {
+                    longitudeInput.setError("Введите долготу");
+                }
+            }
+        });
+    }
+
+
 
     private void fetchSunriseSunset(double longitude) {
         items.clear();
@@ -81,5 +134,13 @@ public class MainActivity extends AppCompatActivity {
 
                     });
         }
-    }
+
+
+
+
+
+
+
+
+}
 }

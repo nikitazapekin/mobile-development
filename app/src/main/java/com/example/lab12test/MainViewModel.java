@@ -35,4 +35,13 @@ public class MainViewModel extends ViewModel {
     public void insertPurchase(Purchase purchase) {
         Executors.newSingleThreadExecutor().execute(() -> purchaseDao.insert(purchase));
     }
+
+
+    public void updateCustomer(Customer customer) {
+        Executors.newSingleThreadExecutor().execute(() -> customerDao.update(customer));
+    }
+
+
+
+
 }

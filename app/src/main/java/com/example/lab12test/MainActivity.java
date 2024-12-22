@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(binding.fragmentContainer.getId(), new HumanFragment())
+                    .replace(binding.fragmentContainer.getId(), new CustomerFragment())
                     .commit();
         }
     }

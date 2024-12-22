@@ -1,17 +1,20 @@
 package com.example.lab12test;
 
-
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-//@Entity(tableName = "human")
-@Entity(tableName = "human")
-public class Human {
+import java.util.Date;
+
+@Entity
+public class Customer {
 
     @PrimaryKey(autoGenerate = true)
     public long id;
-  public String name;
-    public int age;
+    public String name;
+    @ColumnInfo(name = "last_name")
+    public String lastName;
+ //   public Date birthday;
     public String phone;
 
     public long getId() {
@@ -30,14 +33,19 @@ public class Human {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
+
+   /* public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+*/
     public String getPhone() {
         return phone;
     }

@@ -1,4 +1,3 @@
-
 package com.example.lab12test;
 
 
@@ -13,46 +12,27 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 public class MainViewModel extends ViewModel {
+    private final CustomerDao customerDao = App.getInstance().getDatabase().customerDao();
+    private final PurchaseDao purchaseDao = App.getInstance().getDatabase().purchaseDao();
 
+    public LiveData<List<Customer>> getCustomers() {
+        return customerDao.getAll();
+    }
 
-    private final HumanDao humanDao = App.getInstance().getDatabase().humanDao();
-    private final HorseDao horseDao = App.getInstance().getDatabase().horseDao();
+    public LiveData<List<Purchase>> getPurchasesByCustomer(long customerId) {
+        return purchaseDao.getAllByCustomerId(customerId);
+    }
 
+    public void insertCustomer(Customer customer) {
+        Executors.newSingleThreadExecutor().execute(() -> customerDao.insert(customer));
+    }
 
-    public LiveData<List<Human>> getHumans() {
-        return humanDao.getAll();
+    public void deleteCustomer(Customer customer) {
+        Executors.newSingleThreadExecutor().execute(() -> customerDao.delete(customer));
     }
 
 
-    public LiveData<List<Horse>> getHorsesByOwner(long ownerId) {
-        return horseDao.getAllByOwnerId(ownerId);
+    public void insertPurchase(Purchase purchase) {
+        Executors.newSingleThreadExecutor().execute(() -> purchaseDao.insert(purchase));
     }
-
-    public void insertHuman(Human human) {
-        Executors.newSingleThreadExecutor().execute(() -> humanDao.insert(human));
-    }
-
-    public void updateHuman(Human human) {
-        Executors.newSingleThreadExecutor().execute(() -> humanDao.update(human));
-    }
-
-    public void deleteHuman(Human human) {
-        Executors.newSingleThreadExecutor().execute(() -> humanDao.delete(human));
-    }
-
-    public void insertHorse(Horse horse) {
-        Executors.newSingleThreadExecutor().execute(() -> horseDao.insert(horse));
-    }
-
-    public void updateHorse(Horse horse) {
-        Executors.newSingleThreadExecutor().execute(() -> horseDao.update(horse));
-    }
-
-
-    public void deleteHorse(Horse horse) {
-        Executors.newSingleThreadExecutor().execute(() -> horseDao.delete(horse));
-    }
-
-
-
 }

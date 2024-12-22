@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:background="@android:color/white"
-    android:elevation="4dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:radius="8dp">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
+
 
         <LinearLayout
             android:id="@+id/linear_texts"
@@ -48,27 +48,20 @@
                 android:text="Телефон"
                 android:textSize="14sp"
                 android:textColor="#666" />
-
-            <TextView
-                android:id="@+id/text_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Возраст"
-                android:textSize="14sp"
-                android:textColor="#666" />
         </LinearLayout>
 
-        <Button
+
+        <ImageButton
             android:id="@+id/btn_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Удалить"
-            android:background="?android:attr/selectableItemBackground"
-            android:textColor="#FF4081"
-            android:textStyle="bold"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+
+            android:contentDescription="Удалить"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

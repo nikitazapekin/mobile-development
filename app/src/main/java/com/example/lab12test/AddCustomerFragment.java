@@ -1,62 +1,51 @@
 package com.example.lab12test;
 
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.viewbindingactivityfragment.R;
-import com.example.viewbindingactivityfragment.databinding.FragmentHorseBinding;
+import com.example.viewbindingactivityfragment.databinding.FragmentAddCustomerBinding;
 
-public class HorseFragment extends Fragment {
+public class AddCustomerFragment extends Fragment {
 
-    private FragmentHorseBinding binding;
+    private FragmentAddCustomerBinding binding;
     private MainViewModel viewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentHorseBinding.inflate(inflater, container, false);
+        binding = FragmentAddCustomerBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        binding.btnSubmit.setOnClickListener(v -> addHorse());
-
+        binding.btnAddCustomer.setOnClickListener(v -> addCustomer());
         return binding.getRoot();
     }
-    private void addHorse() {
-        String name = binding.etName.getText().toString().trim();
-        String ageStr = binding.etAge.getText().toString().trim();
-        String ownerIdStr = binding.etOwnerId.getText().toString().trim();
 
-        // Проверка на пустые поля
-        if (name.isEmpty() || ageStr.isEmpty() || ownerIdStr.isEmpty()) {
+    private void addCustomer() {
+        String name = binding.etName.getText().toString().trim();
+        String lastName = binding.etLastName.getText().toString().trim();
+        String phone = binding.etPhone.getText().toString().trim();
+
+        if (name.isEmpty() || lastName.isEmpty() || phone.isEmpty()) {
             showErrorDialog("Пожалуйста, заполните все поля.");
             return;
         }
 
-        // Преобразование данных
-        int age = Integer.parseInt(ageStr);
-        long ownerId = Long.parseLong(ownerIdStr);
+        Customer customer = new Customer();
+        customer.name = name;
+        customer.lastName = lastName;
+        customer.phone = phone;
 
-        Horse horse = new Horse();
-        horse.setName(name);
-        horse.setAge(age);
-        horse.setOwner_id(ownerId);
-
-
-        viewModel.insertHorse(horse);
-        Toast.makeText(getContext(), "Лошадь добавлена!", Toast.LENGTH_SHORT).show();
-
-
+        viewModel.insertCustomer(customer);
         getParentFragmentManager().popBackStack();
     }
 
@@ -79,12 +68,6 @@ public class HorseFragment extends Fragment {
         }
 
         alertDialog.show();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
     }
 }
 

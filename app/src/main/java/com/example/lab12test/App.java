@@ -1,7 +1,5 @@
 package com.example.lab12test;
 
-
-
 import android.app.Application;
 
 import androidx.room.Room;
@@ -17,8 +15,8 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         database = Room.databaseBuilder(this, AppDatabase.class,
-                        "database4")
-               // .allowMainThreadQueries()
+                        "database1")
+                .allowMainThreadQueries()
                 .build();
     }
     public static App getInstance() {return instance;}

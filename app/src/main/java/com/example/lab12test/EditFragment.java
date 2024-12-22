@@ -53,27 +53,7 @@ public class EditFragment extends Fragment {
             binding.editId.setError("ID is required for editing");
         }
     }
-/*
-    private void deleteCustomer() {
-        String idString = binding.editId.getText().toString().trim();
-        String name = binding.editName.getText().toString().trim();
-        String lastName = binding.editLastName.getText().toString().trim();
-        String phone = binding.editPhone.getText().toString().trim();
 
-        if (!idString.isEmpty()) {
-            long id = Long.parseLong(idString);
-
-            Customer customer = new Customer();
-            customer.id = id;
-            customer.name = name;
-            customer.lastName = lastName;
-            customer.phone = phone;
-
-
-        }
-
-    }
-*/
 
     private void deleteCustomer() {
         String idString = binding.editId.getText().toString().trim();

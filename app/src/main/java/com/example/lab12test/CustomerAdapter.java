@@ -63,14 +63,14 @@ public class CustomerAdapter extends ListAdapter<Customer, CustomerAdapter.Custo
         private final TextView tvName;
         private final TextView tvPhone;
         private final TextView tvId;
-        private final ImageButton btnDelete;
+
 
         public CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.text_name);
             tvPhone = itemView.findViewById(R.id.text_phone);
             tvId = itemView.findViewById(R.id.text_id);
-            btnDelete = itemView.findViewById(R.id.btn_delete);
+
 
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
@@ -86,12 +86,7 @@ public class CustomerAdapter extends ListAdapter<Customer, CustomerAdapter.Custo
             tvId.setText("Номер пользователя: " + customer.id);
 
 
-            btnDelete.setOnClickListener(v -> {
-                int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    onDeleteClickListener.onDeleteClick(getItem(position));
-                }
-            });
+
         }
     }
 }

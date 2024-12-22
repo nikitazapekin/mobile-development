@@ -2,91 +2,74 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <!-- Заголовок -->
+
     <TextView
         android:id="@+id/tv_add_purchase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Добавить покупку"
-        android:textSize="32dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        android:layout_marginBottom="16dp" />
 
-    <!-- Карточка -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+
+    <LinearLayout
+        android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_add_purchase"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:elevation="4dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_purchase"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout
+
+        <EditText
+            android:id="@+id/et_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:hint="Товар"
+            android:padding="12dp"
+            android:background="@android:drawable/editbox_background"
+            android:layout_marginBottom="12dp" />
 
-            <!-- Поле ввода Товара -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Товар">
+        <EditText
+            android:id="@+id/et_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Количество"
+            android:padding="12dp"
+            android:background="@android:drawable/editbox_background"
+            android:layout_marginBottom="12dp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_product"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Поле ввода Количества -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Количество">
+        <EditText
+            android:id="@+id/et_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Цена за штуку"
+            android:padding="12dp"
+            android:background="@android:drawable/editbox_background"
+            android:layout_marginBottom="16dp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_count"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Поле ввода Цены -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Цена за штуку">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Кнопка -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_add_purchase"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:padding="8dp"
-                android:text="Добавить покупку" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/btn_add_purchase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Добавить покупку"
+            android:textAllCaps="false" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

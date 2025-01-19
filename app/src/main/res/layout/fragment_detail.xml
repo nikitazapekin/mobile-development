@@ -37,29 +37,18 @@
             android:layout_height="wrap_content"
             android:text=""/>
 
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+
         <TextView
             android:id="@+id/fullDescribtion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""/>
 
-      <!--  <TextView
-            android:id="@+id/smartphone_manufacturer_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Manufacturer"/>
-
-        <TextView
-            android:id="@+id/smartphone_release_year_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Release Year"/>
-
-        <TextView
-            android:id="@+id/smartphone_quantity_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quantity"/>
--->
     </LinearLayout>
 </ScrollView>

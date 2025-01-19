@@ -1,8 +1,6 @@
 package com.example.lab9;
 
-
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,7 @@ import java.util.List;
 
 public class RecyclerFragment extends Fragment {
 
-    private CarViewModel viewModel;
+    private WatchViewModel viewModel;
 
     @Nullable
     @Override
@@ -26,13 +24,11 @@ public class RecyclerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_recycler, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
 
+        viewModel = new ViewModelProvider(requireActivity()).get(WatchViewModel.class);
 
-
-        viewModel = new ViewModelProvider(requireActivity()).get(CarViewModel.class);
-
-        List<Car> cars =CarStore.getCars();
-      CarsRecyclerAdapter adapter = new  CarsRecyclerAdapter(cars, car -> {
-            viewModel.selectCar(car);
+        List<Watch> watches = WatchStore.getWatches();
+        WatchesRecyclerAdapter adapter = new WatchesRecyclerAdapter(watches, watch -> {
+            viewModel.selectWatch(watch);
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -41,3 +37,6 @@ public class RecyclerFragment extends Fragment {
         return view;
     }
 }
+
+
+//dbdbsd

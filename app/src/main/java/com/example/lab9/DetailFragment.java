@@ -1,3 +1,52 @@
+
+package com.example.lab9;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+public class DetailFragment extends Fragment {
+
+    private WatchViewModel viewModel;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_detail, container, false);
+
+        viewModel = new ViewModelProvider(requireActivity()).get(WatchViewModel.class);
+
+        TextView titleView = view.findViewById(R.id.title);
+        TextView descView = view.findViewById(R.id.describtion);
+        TextView descFullView = view.findViewById(R.id.fullDescribtion);
+        TextView price = view.findViewById(R.id.price);
+        TextView quantity = view.findViewById(R.id.quantity);
+        ImageView imageView = view.findViewById(R.id.logo);
+
+        viewModel.getSelectedWatch().observe(getViewLifecycleOwner(), watch -> {
+            if (watch != null) {
+                titleView.setText(watch.getBrand());
+                price.setText(watch.getPrice() + "$");
+                descView.setText(watch.getManufacturerDetails());
+                descFullView.setText("Type:"+watch.getType());
+               quantity.setText("Quantity:"+watch.getQuantity());
+                imageView.setImageResource(watch.getPhoto());
+            }
+        });
+
+        return view;
+    }
+}
+
+/*
 package com.example.lab9;
 
 import android.os.Bundle;
@@ -43,3 +92,4 @@ public class DetailFragment extends Fragment {
         return view;
     }
 }
+*/

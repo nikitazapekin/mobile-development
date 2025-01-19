@@ -9,6 +9,12 @@ public class WatchStore {
         List<Watch> watches = new ArrayList<>();
         if (watches.isEmpty()) {
             watches.add(new Watch("Rolex Submariner", "Luxury diving watch", 200, 3,"A luxurious diving watch known for its reliability and style.", R.drawable.car));
+            watches.add(new Watch("Rolex Submariner", "Luxury diving watch", 200, 3,"A luxurious diving watch known for its reliability and style.", R.drawable.car));
+            watches.add(new Watch("Rolex Submariner", "Luxury diving watch", 200, 3,"A luxurious diving watch known for its reliability and style.", R.drawable.car));
+            watches.add(new Watch("Rolex Submariner", "Luxury diving watch", 200, 3,"A luxurious diving watch known for its reliability and style.", R.drawable.car));
+            watches.add(new Watch("Rolex Submariner", "Luxury diving watch", 200, 3,"A luxurious diving watch known for its reliability and style.", R.drawable.car));
+            watches.add(new Watch("Rolex Submariner", "Luxury diving watch", 200, 3,"A luxurious diving watch known for its reliability and style.", R.drawable.car));
+            watches.add(new Watch("Rolex Submariner", "Luxury diving watch", 200, 3,"A luxurious diving watch known for its reliability and style.", R.drawable.car));
 
         }
 

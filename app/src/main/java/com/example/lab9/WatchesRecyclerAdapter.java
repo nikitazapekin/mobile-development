@@ -49,14 +49,19 @@ public class WatchesRecyclerAdapter extends RecyclerView.Adapter<WatchesRecycler
         private TextView brandTextView;
         private TextView typeTextView;
         private TextView priceTextView;
+        private TextView  describtionTextView;
 
         public WatchesViewHolder(@NonNull View itemView) {
             super(itemView);
 
             brandTextView = itemView.findViewById(R.id.titleView);
+           priceTextView = itemView.findViewById(R.id.priceView);
        //     typeTextView = itemView.findViewById(R.id.typeView);
-            priceTextView = itemView.findViewById(R.id.priceView);
+            priceTextView = itemView.findViewById(R.id.describtionView);
             imageView = itemView.findViewById(R.id.imageView);
+
+
+
         }
 
         public void bind(Watch watch, OnItemClickListener listener) {

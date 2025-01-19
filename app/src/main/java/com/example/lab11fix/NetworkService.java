@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkService {
 
     private static NetworkService instance;
-    private static final String BASE_URL = "https://earthquake.usgs.gov/fdsnws/event/1/";
+    private static final String BASE_URL = "https://api.nasa.gov/";
     private final Retrofit retrofit;
 
     private NetworkService() {
@@ -23,7 +23,7 @@ public class NetworkService {
         return instance;
     }
 
-    public EarthquakeApi getEarthquakeApi() {
-        return retrofit.create(EarthquakeApi.class);
+    public NasaApi getNasaApi() {
+        return retrofit.create(NasaApi.class);
     }
 }

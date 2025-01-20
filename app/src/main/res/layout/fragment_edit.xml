@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Заголовок -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -20,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp" />
 
-    <!-- Карточка с формой -->
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
@@ -88,7 +87,7 @@
                 android:id="@+id/edit_edit_customer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Изменить покупателя"
+                android:text="Изменить участника"
                 android:layout_marginBottom="8dp" />
 
 
@@ -96,7 +95,7 @@
                 android:id="@+id/edit_delete_customer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Удалить покупателя" />
+                android:text="Удалить участника" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

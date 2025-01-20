@@ -53,7 +53,7 @@ public class AddHorseFragment extends Fragment {
 
     private void addPurchase() {
         String name = binding.etProduct.getText().toString().trim();
-        String age = binding.etCount.getText().toString().trim();
+        String age = binding.etAge.getText().toString().trim();
 
       Horse horse = new Horse();
         horse.name = name;

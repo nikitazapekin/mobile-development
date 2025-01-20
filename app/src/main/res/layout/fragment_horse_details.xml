@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="17dp"
-        android:text="Информация о товаре"
+        android:text="Информация о лошади"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Product:"
+                    android:text="Лошадь:"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -60,15 +60,8 @@
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
-                <!-- Поле Count -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="Count:"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+
+
 
                 <TextView
                     android:id="@+id/tv_count"
@@ -78,12 +71,11 @@
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
-                <!-- Поле Price -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Price:"
+                    android:text="Возраст:"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />

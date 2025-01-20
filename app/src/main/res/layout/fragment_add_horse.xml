@@ -11,7 +11,7 @@
         android:id="@+id/tv_add_purchase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Добавить покупку"
+        android:text="Добавить лошадь"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,36 +39,29 @@
             android:id="@+id/et_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Товар"
+            android:hint="Имя"
             android:padding="12dp"
             android:background="@android:drawable/editbox_background"
             android:layout_marginBottom="12dp" />
 
         <EditText
-            android:id="@+id/et_count"
+            android:id="@+id/et_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Количество"
+            android:hint="Возраст лошади"
             android:padding="12dp"
             android:background="@android:drawable/editbox_background"
             android:layout_marginBottom="12dp" />
 
 
-        <EditText
-            android:id="@+id/et_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Цена за штуку"
-            android:padding="12dp"
-            android:background="@android:drawable/editbox_background"
-            android:layout_marginBottom="16dp" />
+
 
 
         <Button
             android:id="@+id/btn_add_horse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Добавить покупку"
+            android:text="Добавить лошадь"
             android:textAllCaps="false" />
     </LinearLayout>
 

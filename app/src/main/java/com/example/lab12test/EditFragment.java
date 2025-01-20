@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.viewbindingactivityfragment.databinding.FragmentCustomersBinding;
+
 import com.example.viewbindingactivityfragment.databinding.FragmentEditBinding;
 
 public class EditFragment extends Fragment {
@@ -31,7 +31,7 @@ public class EditFragment extends Fragment {
 
 
 
-    private void editCustomer() {
+    private void editHuman() {
         String idString = binding.editId.getText().toString().trim();
         String name = binding.editName.getText().toString().trim();
         String lastName = binding.editLastName.getText().toString().trim();
@@ -40,13 +40,13 @@ public class EditFragment extends Fragment {
         if (!idString.isEmpty()) {
             long id = Long.parseLong(idString);
 
-            Customer customer = new Customer();
-            customer.id = id; // Важное исправление — установка ID
+            Human customer = new Human();
+            customer.id = id;
             customer.name = name;
             customer.lastName = lastName;
             customer.phone = phone;
 
-            viewModel.updateCustomer(customer);
+            viewModel.updateHuman(customer);
             getParentFragmentManager().popBackStack();
         } else {
 
@@ -55,17 +55,17 @@ public class EditFragment extends Fragment {
     }
 
 
-    private void deleteCustomer() {
+    private void deleteHuman() {
         String idString = binding.editId.getText().toString().trim();
 
         if (!idString.isEmpty()) {
             long id = Long.parseLong(idString);
 
-            Customer customer = new Customer();
-            customer.id = id;
+            Human human= new Human();
+           human.id = id;
 
 
-            viewModel.deleteCustomer(customer);
+            viewModel.deleteHuman(human);
 
 
             getParentFragmentManager().popBackStack();
@@ -86,8 +86,8 @@ public class EditFragment extends Fragment {
     }
 
     private void setupFab() {
-        binding.editEditCustomer.setOnClickListener(v -> editCustomer());
-     binding.editDeleteCustomer.setOnClickListener(v ->deleteCustomer());
+        binding.editEditCustomer.setOnClickListener(v -> editHuman());
+     binding.editDeleteCustomer.setOnClickListener(v ->deleteHuman());
 
     }
 

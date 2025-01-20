@@ -1,5 +1,6 @@
 package com.example.lab12test;
 
+
 import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -14,39 +15,60 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.viewbindingactivityfragment.R;
-import com.example.viewbindingactivityfragment.databinding.FragmentAddCustomerBinding;
+import com.example.viewbindingactivityfragment.databinding.FragmentAddHorseBinding;
 
-public class AddCustomerFragment extends Fragment {
 
-    private FragmentAddCustomerBinding binding;
+
+public class AddHorseFragment extends Fragment {
+
+    private FragmentAddHorseBinding binding;
+    private static final String ARG_HUMAN_ID = "human_id";
+    private long humanId;
     private MainViewModel viewModel;
+
+    public static AddHorseFragment newInstance(long humanId) {
+        AddHorseFragment fragment = new AddHorseFragment();
+        Bundle args = new Bundle();
+        args.putLong(ARG_HUMAN_ID, humanId);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            humanId = getArguments().getLong(ARG_HUMAN_ID);
+        }
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentAddCustomerBinding.inflate(inflater, container, false);
+        binding = FragmentAddHorseBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        binding.btnAddCustomer.setOnClickListener(v -> addCustomer());
+        binding.btnAddHorse.setOnClickListener(v -> addPurchase());
         return binding.getRoot();
     }
 
-    private void addCustomer() {
-        String name = binding.etName.getText().toString().trim();
-        String lastName = binding.etLastName.getText().toString().trim();
-        String phone = binding.etPhone.getText().toString().trim();
+    private void addPurchase() {
+        String name = binding.etProduct.getText().toString().trim();
+        String age = binding.etCount.getText().toString().trim();
 
-        if (name.isEmpty() || lastName.isEmpty() || phone.isEmpty()) {
-            showErrorDialog("Пожалуйста, заполните все поля.");
-            return;
-        }
+      Horse horse = new Horse();
+        horse.name = name;
+        horse.age = Integer.parseInt(age);
+    //    horse.price = Double.parseDouble(priceStr);
+        horse.humanId = humanId;
 
-        Customer customer = new Customer();
-        customer.name = name;
-        customer.lastName = lastName;
-        customer.phone = phone;
-
-        viewModel.insertCustomer(customer);
+        viewModel.insertHorse(horse);
         getParentFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     private void showErrorDialog(String message) {
@@ -70,4 +92,3 @@ public class AddCustomerFragment extends Fragment {
         alertDialog.show();
     }
 }
-

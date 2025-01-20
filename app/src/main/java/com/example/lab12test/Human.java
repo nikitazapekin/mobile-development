@@ -4,10 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity
-public class Customer {
+public class Human {
 
     @PrimaryKey(autoGenerate = true)
     public long id;
@@ -16,6 +14,8 @@ public class Customer {
     public String lastName;
  //   public Date birthday;
     public String phone;
+
+    public String age;
 
     public long getId() {
         return id;
@@ -33,24 +33,30 @@ public class Customer {
         this.name = name;
     }
 
+
     public String getLastName() {
         return lastName;
     }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String name) {
+        this.lastName = name;
     }
 
 
-   /* public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-*/
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 }

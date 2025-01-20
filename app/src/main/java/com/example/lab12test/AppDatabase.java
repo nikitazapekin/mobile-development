@@ -6,8 +6,8 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 
-@Database(entities = {Customer.class, Purchase.class}, version = 1)
+@Database(entities = {Human.class, Horse.class}, version = 5)
 public abstract class AppDatabase extends RoomDatabase {
-    public abstract CustomerDao customerDao();
-    public abstract PurchaseDao purchaseDao();
+    public abstract  HumanDao humanDao();
+    public abstract HorseDao horseDao();
 }

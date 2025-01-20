@@ -10,33 +10,33 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 public class MainViewModel extends ViewModel {
-    private final CustomerDao customerDao = App.getInstance().getDatabase().customerDao();
-    private final PurchaseDao purchaseDao = App.getInstance().getDatabase().purchaseDao();
+    private final HumanDao humanDao = App.getInstance().getDatabase().humanDao();
+    private final HorseDao horseDao = App.getInstance().getDatabase().horseDao();
 
-    public LiveData<List<Customer>> getCustomers() {
-        return customerDao.getAll();
+    public LiveData<List<Human>> getHuman() {
+        return humanDao.getAll();
     }
 
-    public LiveData<List<Purchase>> getPurchasesByCustomer(long customerId) {
-        return purchaseDao.getAllByCustomerId(customerId);
+    public LiveData<List<Horse>> getHorseByHuman(long humanId) {
+        return horseDao.getAllByHumanId(humanId);
     }
 
-    public void insertCustomer(Customer customer) {
-        Executors.newSingleThreadExecutor().execute(() -> customerDao.insert(customer));
+    public void insertHuman(Human human) {
+        Executors.newSingleThreadExecutor().execute(() -> humanDao.insert(human));
     }
 
-    public void deleteCustomer(Customer customer) {
-        Executors.newSingleThreadExecutor().execute(() -> customerDao.delete(customer));
-    }
-
-
-    public void insertPurchase(Purchase purchase) {
-        Executors.newSingleThreadExecutor().execute(() -> purchaseDao.insert(purchase));
+    public void deleteHuman(Human human) {
+        Executors.newSingleThreadExecutor().execute(() -> humanDao.delete(human));
     }
 
 
-    public void updateCustomer(Customer customer) {
-        Executors.newSingleThreadExecutor().execute(() -> customerDao.update(customer));
+    public void insertHorse(Horse horse) {
+        Executors.newSingleThreadExecutor().execute(() -> horseDao.insert(horse));
+    }
+
+
+    public void updateHuman(Human human) {
+        Executors.newSingleThreadExecutor().execute(() -> humanDao.update(human));
     }
 
 

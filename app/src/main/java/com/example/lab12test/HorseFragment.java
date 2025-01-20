@@ -12,23 +12,22 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.viewbindingactivityfragment.R;
-import com.example.viewbindingactivityfragment.databinding.FragmentPurchaseDetailsBinding;
-import com.example.viewbindingactivityfragment.databinding.FragmentPurchasesBinding;
+import com.example.viewbindingactivityfragment.databinding.FragmentHorseBinding;
 
 
-public class PurchasesFragment extends Fragment {
-private @NonNull FragmentPurchasesBinding binding;
-  //  private FragmentPurchasesBinding binding;
-    private static final String ARG_CUSTOMER_ID = "customer_id";
-    private long customerId;
+public class HorseFragment extends Fragment {
+private @NonNull FragmentHorseBinding binding;
 
-    private PurchaseAdapter adapter;
+    private static final String ARG_HUMAN_ID = "human_id";
+    private long humanId;
+
+    private HorseAdapter adapter;
     private MainViewModel viewModel;
 
-    public static PurchasesFragment newInstance(long customerId) {
-        PurchasesFragment fragment = new PurchasesFragment();
+    public static HorseFragment newInstance(long customerId) {
+        HorseFragment fragment = new HorseFragment();
         Bundle args = new Bundle();
-        args.putLong(ARG_CUSTOMER_ID, customerId);
+        args.putLong(ARG_HUMAN_ID, customerId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -39,13 +38,13 @@ private @NonNull FragmentPurchasesBinding binding;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            customerId = getArguments().getLong(ARG_CUSTOMER_ID);
+            humanId = getArguments().getLong(ARG_HUMAN_ID);
         }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentPurchasesBinding.inflate(inflater, container, false);
+        binding = FragmentHorseBinding.inflate(inflater, container, false);
 
         setupRecyclerView();
         setupViewModel();
@@ -58,21 +57,21 @@ private @NonNull FragmentPurchasesBinding binding;
 
     private void setupRecyclerView() {
         binding.recyclerViewPurchases.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new PurchaseAdapter(purchase -> openPurchaseDetails(purchase.id));
+        adapter = new HorseAdapter(purchase -> openHorseDetails(purchase.id));
         binding.recyclerViewPurchases.setAdapter(adapter);
     }
 
     private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        viewModel.getPurchasesByCustomer(customerId).observe(getViewLifecycleOwner(), adapter::submitList);
+        viewModel.getHorseByHuman(humanId).observe(getViewLifecycleOwner(), adapter::submitList);
     }
 
     private void setupFab() {
-        binding.button2.setOnClickListener(v -> openAddPurchase());
+        binding.button2.setOnClickListener(v -> openAddHorse());
     }
 
-    private void openAddPurchase() {
-        AddPurchaseFragment fragment = AddPurchaseFragment.newInstance(customerId);
+    private void openAddHorse() {
+        AddHorseFragment fragment = AddHorseFragment.newInstance(humanId);
         getParentFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, fragment)
@@ -80,8 +79,8 @@ private @NonNull FragmentPurchasesBinding binding;
                 .commit();
     }
 
-    private void openPurchaseDetails(long purchaseId) {
-        PurchaseDetailsFragment fragment = PurchaseDetailsFragment.newInstance(purchaseId);
+    private void openHorseDetails(long purchaseId) {
+        HorseDetailsFragment fragment = HorseDetailsFragment.newInstance(purchaseId);
         getParentFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, fragment)

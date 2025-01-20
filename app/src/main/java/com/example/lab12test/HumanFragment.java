@@ -13,18 +13,18 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.viewbindingactivityfragment.R;
-import com.example.viewbindingactivityfragment.databinding.FragmentCustomersBinding;
+import com.example.viewbindingactivityfragment.databinding.FragmentHumanBinding;
 
 
-public class CustomerFragment extends Fragment {
+public class HumanFragment extends Fragment {
 
-    private FragmentCustomersBinding binding;
-    private CustomerAdapter adapter;
+    private FragmentHumanBinding binding;
+    private HumanAdapter adapter;
     private MainViewModel viewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentCustomersBinding.inflate(inflater, container, false);
+        binding = FragmentHumanBinding.inflate(inflater, container, false);
 
         setupRecyclerView();
         setupViewModel();
@@ -38,10 +38,10 @@ public class CustomerFragment extends Fragment {
        binding.recyclerViewCustomers.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-       adapter = new CustomerAdapter(
-               customer -> openPurchases(customer.getId()),
-               customer -> {
-                   viewModel.deleteCustomer(customer);
+       adapter = new HumanAdapter(
+               human -> openHorse(human.getId()),
+               human -> {
+                   viewModel.deleteHuman(human);
 
                }
        );
@@ -51,32 +51,32 @@ public class CustomerFragment extends Fragment {
 
     private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        viewModel.getCustomers().observe(getViewLifecycleOwner(), adapter::submitList);
+        viewModel.getHuman().observe(getViewLifecycleOwner(), adapter::submitList);
     }
 
     private void setupFab() {
-        binding.button.setOnClickListener(v -> openAddCustomer());
+        binding.button.setOnClickListener(v -> openAddHuman());
 
-        binding.button3.setOnClickListener(v -> openEditCustomer());
+        binding.button3.setOnClickListener(v -> openEditHuman());
         //binding.fabAddCustomer.setOnClickListener(v -> openAddCustomer());
     }
 
-    private void openAddCustomer() {
+    private void openAddHuman() {
         getParentFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container, new AddCustomerFragment())
+                .replace(R.id.fragment_container, new AddHumanFragment())
                 .addToBackStack(null)
                 .commit();
     }
-    private void openEditCustomer() {
+    private void openEditHuman() {
         getParentFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, new EditFragment())
                 .addToBackStack(null)
                 .commit();
     }
-    private void openPurchases(long customerId) {
-        PurchasesFragment fragment = PurchasesFragment.newInstance(customerId);
+    private void openHorse(long humanId) {
+        HorseFragment fragment = HorseFragment.newInstance(humanId);
         getParentFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, fragment)
